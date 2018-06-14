@@ -35,11 +35,6 @@ class CityJumbo extends Component {
     return (
       <div className="jumbotron jumbotron-fluid" style={imgStyle}>
         <div className="container">
-          {/* <img
-            src={this.state.cityPic}
-            alt="cityPic"
-            style={this.styles.image}
-          /> */}
           <h1 className="display-4 text-center" style={this.styles.cityText}>
             Raleigh
           </h1>
