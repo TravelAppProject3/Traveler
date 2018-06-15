@@ -12,7 +12,8 @@ const styles = {
     textAlign: 'center'
   },
   button: {
-    marginTop: '30px'
+    marginTop: '30px',
+    width: '7%'
   }
 };
 // background: ("https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
