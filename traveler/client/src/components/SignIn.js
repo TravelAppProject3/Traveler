@@ -4,8 +4,7 @@ import CityJumbo from "./CityJumbo";
 
 class SignIn extends Component {
   state = {
-    city: "raleigh",
-    cityPic: ""
+    
   };
 
   styles = {
