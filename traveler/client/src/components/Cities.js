@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import cityPicApi from "../utils/cityPicApi";
 import CityJumbo from "./CityJumbo";
+import Hotels from "./Hotels";
 
 class Cities extends Component {
   state = {
@@ -78,6 +79,7 @@ class Cities extends Component {
             </div>
           </div>
         </div>
+        <Hotels />
       </div>
     );
   }
