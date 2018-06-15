@@ -22,9 +22,7 @@ class Home extends Component {
   render() {
     return (
       <div style={styles.root}>
-        
-        
-        
+  
         <button style={styles.button} className="btn btn-dark">Button</button>
       </div>
       
