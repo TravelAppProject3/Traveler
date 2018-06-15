@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
@@ -14,9 +17,29 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+//encrypts cookie
+app.use(
+  cookieSession({
+    //maxage is the age of the cookie
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
+  })
+);
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//connect to mongodb --> pass connection string and then a second parameter to console log message
+mongoose.connect(
+  keys.mongodb.dbURI,
+  () => {
+    console.log("connected to mongoDB");
+  }
+);
 
 // Start the API server
 app.listen(PORT, function() {
