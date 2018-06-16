@@ -1,12 +1,23 @@
 import React, { Component } from "react";
-import cityPicApi from "../utils/cityPicApi";
+import {
+  restaurant,
+  getEvents,
+  getHotels,
+  museum,
+  landmarks,
+  active,
+  weather
+} from "../utils/API";
 import CityJumbo from "./CityJumbo";
 import Hotels from "./Hotels";
 
 class Cities extends Component {
   state = {
-    city: "raleigh",
-    cityPic: ""
+    city: "San Diego",
+    cityPic: "",
+    lat: "",
+    lon: "",
+    hotelObj: []
   };
 
   styles = {
@@ -32,15 +43,56 @@ class Cities extends Component {
     }
   };
 
+  componentDidMount() {
+    const city = this.state.city;
+    weather(city)
+      .then(data =>
+        this.setState({ lat: data.data.coord.lat, lon: data.data.coord.lon })
+      )
+      .then(console.log(this.state))
+      .catch(err => console.log("error:  " + err));
+  }
+
+  getHotels = () => {
+    console.log("click worked");
+    const lat = this.state.lat;
+    const lon = this.state.lon;
+
+    getHotels(lat, lon)
+      .then(data => this.setState({ hotelObj: data.data.results }))
+      .then(console.log(this.state.hotelObj))
+      .catch(err => console.log(err));
+  };
+
+  renderHotels = hotelObj => {
+    console.log(hotelObj);
+    return (
+      <div>
+        {hotelObj.map(hotel => {
+          return (
+            <Hotels
+              icon={hotel.icon}
+              name={hotel.name}
+              address={hotel.vicinity}
+              rating={hotel.rating}
+              key={hotel.id}
+            />
+          );
+        })}
+      </div>
+    );
+  };
+
   render() {
     return (
       <div>
-        <CityJumbo />
+        <CityJumbo city={this.state.city} />
 
         <div className="row justify-content-center">
           <div
-            className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12"
+            className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12 hotelCard"
             style={this.styles.card}
+            onClick={() => this.getHotels(this.state.lat, this.state.lon)}
           >
             <div className="card-body">
               <h5 className="card-title text-center">Lodging</h5>
@@ -55,7 +107,7 @@ class Cities extends Component {
           </div>
 
           <div
-            className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12"
+            className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12 sightsCard"
             style={this.styles.card}
           >
             <div className="card-body">
@@ -69,7 +121,7 @@ class Cities extends Component {
           </div>
 
           <div
-            className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12"
+            className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12 drinkCard"
             style={this.styles.card}
           >
             <div className="card-body">
@@ -79,7 +131,7 @@ class Cities extends Component {
             </div>
           </div>
         </div>
-        <Hotels />
+        {this.renderHotels(this.state.hotelObj)}
       </div>
     );
   }

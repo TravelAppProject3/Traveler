@@ -3,7 +3,7 @@ import cityPicApi from "../utils/cityPicApi";
 
 class CityJumbo extends Component {
   state = {
-    city: "San Francisco",
+    city: "",
     cityPic: ""
   };
 
@@ -19,7 +19,8 @@ class CityJumbo extends Component {
   };
 
   componentDidMount() {
-    const city = this.state.city;
+    const city = this.props.city;
+    console.log(city);
     let cityLower = city.toLowerCase();
     if (cityLower === "san francisco") {
       cityLower = "san francisco bay area";
@@ -45,7 +46,7 @@ class CityJumbo extends Component {
       <div className="jumbotron jumbotron-fluid" style={imgStyle}>
         <div className="container">
           <h1 className="display-4 text-center" style={this.styles.cityText}>
-            {this.state.city}
+            {this.props.city}
           </h1>
         </div>
       </div>
