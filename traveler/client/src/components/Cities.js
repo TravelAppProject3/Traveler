@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import cityPicApi from "../utils/cityPicApi";
 import CityJumbo from "./CityJumbo";
 import Hotels from "./Hotels";
+import Navtabs from "./Navtabs";
 
 class Cities extends Component {
   state = {
@@ -35,6 +36,7 @@ class Cities extends Component {
   render() {
     return (
       <div>
+        <Navtabs />
         <CityJumbo />
 
         <div className="row justify-content-center">

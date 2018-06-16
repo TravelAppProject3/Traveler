@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navtabs from "./components/Navtabs";
 import Cities from "./components/Cities";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn/SignIn";
@@ -19,8 +18,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navtabs cities={this.state.cities} />
-          <br />
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
           <Route exact path="/Cities" component={Cities} />
