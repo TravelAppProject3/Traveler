@@ -15,6 +15,9 @@ const styles = {
   },
   margin: {
     marginTop: "50px"
+  },
+  textSize: {
+    fontSize: "20px"
   }
 };
 
@@ -33,13 +36,13 @@ class SignIn extends Component {
               </div>
 
               <div className="col">
-                <a href="#" className="fb btn">
+                <a style={styles.textSize} href="#" className="fb btn">
                   <i className="fa fa-facebook fa-fw" /> Login with Facebook
                 </a>
-                <a href="#" className="twitter btn">
+                <a style={styles.textSize} href="#" className="twitter btn">
                   <i className="fa fa-twitter fa-fw" /> Login with Twitter
                 </a>
-                <a href="#" className="google btn">
+                <a style={styles.textSize} href="#" className="google btn">
                   <i className="fa fa-google fa-fw" /> Login with Google+
                 </a>
               </div>
@@ -61,7 +64,7 @@ class SignIn extends Component {
                   placeholder="Password"
                   required
                 />
-                <input type="submit" value="Login" />
+                <input style={styles.textSize} type="submit" value="Login" />
               </div>
             </div>
           </form>
