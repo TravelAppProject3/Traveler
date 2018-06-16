@@ -3,11 +3,17 @@ import React from "react";
 const styles = {
   card: {
     width: "18rem",
-    margin: 20
+    margin: 20,
+    borderWidth: 7,
+    borderRadius: 5,
+    boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
+    transition: "0.3s"
   },
   icon: {
     height: 50,
-    width: 50
+    width: 50,
+    position: "relative",
+    top: 20
   },
   rating: {
     paddingLeft: 80
@@ -17,7 +23,7 @@ const Hotels = props => (
   <div className="container">
     <div className="row">
       <div
-        className="card border-dark col-md-6 col-sm-12 col-xs-12"
+        className="card border-dark col-md-12 col-sm-12 col-xs-12"
         style={styles.card}
       >
         <div className="row">
@@ -25,9 +31,9 @@ const Hotels = props => (
             src={props.icon}
             alt="hotelIcon"
             style={styles.icon}
-            className="col-md-2"
+            className="col-md-1 col-sm-2 col-xs-2"
           />
-          <div className="card-header col-md-10">
+          <div className="card-header col-md-11 col-sm-10 col-xs-10">
             <h2>{props.name}</h2>
             <h4>{props.address}</h4>
           </div>
@@ -36,9 +42,9 @@ const Hotels = props => (
           <h3 className="card-title" style={styles.rating}>
             Rating: {props.rating ? props.rating : "None Provided"}
           </h3>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+          <p className="card-text text-left" style={styles.rating}>
+            This is where we'll display those in our DB who have stayed here/are
+            staying here
           </p>
         </div>
         <button type="button" className="btn btn-dark addBtn">
