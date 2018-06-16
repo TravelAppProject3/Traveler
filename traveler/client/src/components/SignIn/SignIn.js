@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import Navtabs from "../NavtabsHome.js";
 
 const styles = {
   body: {
@@ -8,13 +9,13 @@ const styles = {
       "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
     backgroundSize: "cover",
     overflow: "hidden",
-    height: "720px",
+    height: "730px",
     marginTop: "-40px",
     textAlign: "center",
     width: "100%"
   },
   margin: {
-    marginTop: "50px"
+    marginTop: "130px"
   },
   textSize: {
     fontSize: "20px"
@@ -26,6 +27,8 @@ class SignIn extends Component {
 
   render() {
     return (
+      <div>
+        <Navtabs />
       <div style={styles.body}>
         <div className="container">
           <form action="/action_page.php" style={styles.margin}>
@@ -69,6 +72,7 @@ class SignIn extends Component {
             </div>
           </form>
         </div>
+      </div>
       </div>
     );
   }
