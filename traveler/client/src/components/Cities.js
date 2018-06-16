@@ -66,10 +66,18 @@ class Cities extends Component {
   };
 
   renderHotels = hotelObj => {
-    console.log(hotelObj);
     return (
       <div>
         {hotelObj.map(hotel => {
+          let href;
+          hotel.photos
+            ? (href = hotel.photos[0].html_attributions[0])
+            : "no photo";
+          const thisHref = href
+            ? href.match(/\".*\"/)[0].replace(/\"/g, "")
+            : null;
+          console.log(thisHref);
+
           return (
             <Hotels
               icon={hotel.icon}
@@ -77,6 +85,7 @@ class Cities extends Component {
               address={hotel.vicinity}
               rating={hotel.rating}
               key={hotel.id}
+              photo={thisHref}
             />
           );
         })}
