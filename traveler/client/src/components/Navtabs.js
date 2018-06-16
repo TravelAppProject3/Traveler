@@ -9,7 +9,7 @@ const styles = {
     marginRight: "10px"
   },
   height: {
-    padding: "30px",
+    padding: "15px",
     fontSize: "24px"
   },
   logo: {

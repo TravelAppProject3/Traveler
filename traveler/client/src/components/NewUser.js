@@ -19,10 +19,14 @@ class NewUser extends Component {
       height: "720px",
       marginTop: "-40px",
       textAlign: "center",
-      width: "100%"
+      width: "100%",
+      fontSize: "20px" 
     },
     text: {
       textAlign: "left"
+    },
+    textSize: {
+      fontSize: "20px"
     }
   };
 
@@ -44,6 +48,7 @@ class NewUser extends Component {
               className="form-control"
               aria-describedby="emailHelp"
               placeholder="Where are you going?"
+             
             />
           </div>
           <div style={this.styles.text} class="form-group">
@@ -53,6 +58,7 @@ class NewUser extends Component {
               className="form-control"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+             
             />
             <small className="form-text text-muted">
               We'll never share your email with anyone else.
@@ -64,9 +70,10 @@ class NewUser extends Component {
               type="password"
               className="form-control"
               placeholder="Password"
+              
             />
           </div>
-          <button type="submit" className="btn btn-dark">
+          <button style={this.styles.textSize} type="submit" className="btn btn-dark">
             Submit
           </button>
         </form>
