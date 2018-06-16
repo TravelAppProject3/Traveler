@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import Navtabs from "./NavtabsHome.js";
 
 class NewUser extends Component {
   state = {};
 
   styles = {
     form: {
-      marginTop: "40px",
+      marginTop: "80px",
       width: "500px",
       height: "200px",
       display: "inline-block"
@@ -32,6 +33,8 @@ class NewUser extends Component {
 
   render() {
     return (
+      <div>
+        <Navtabs />
       <div style={this.styles.body}>
         <form style={this.styles.form}>
           <div style={this.styles.text} class="form-group">
@@ -40,15 +43,6 @@ class NewUser extends Component {
               className="form-control"
               aria-describedby="emailHelp"
               placeholder="Name"
-            />
-          </div>
-          <div style={this.styles.text} class="form-group">
-            <label for="exampleInputEmail1">Destination</label>
-            <input
-              className="form-control"
-              aria-describedby="emailHelp"
-              placeholder="Where are you going?"
-             
             />
           </div>
           <div style={this.styles.text} class="form-group">
@@ -77,6 +71,7 @@ class NewUser extends Component {
             Submit
           </button>
         </form>
+      </div>
       </div>
     );
   }

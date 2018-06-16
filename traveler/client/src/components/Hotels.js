@@ -34,13 +34,29 @@ const Hotels = props => (
         </div>
         <div className="card-body text-dark">
           <h3 className="card-title" style={styles.rating}>
-            Rating: {props.rating}
+            Rating: {props.rating ? props.rating : "None Provided"}
           </h3>
           <p className="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
         </div>
+        <button type="button" className="btn btn-dark addBtn">
+          Add to My Path
+        </button>
+        {props.photo ? (
+          <a href={props.photo} alt="hotelMap">
+            <button
+              type="button"
+              href={props.photo}
+              className="btn btn-dark mapBtn"
+            >
+              View on Google Maps
+            </button>
+          </a>
+        ) : (
+          " "
+        )}
       </div>
     </div>
   </div>

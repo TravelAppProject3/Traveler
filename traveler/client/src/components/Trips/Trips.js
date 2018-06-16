@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Navtabs from "../Navtabs";
 
 class Trips extends Component {
   state = {};
@@ -9,7 +10,9 @@ class Trips extends Component {
 
   render() {
     return (
-        <div></div>
+        <div>
+            <Navtabs />
+        </div>
     );
   }
 }

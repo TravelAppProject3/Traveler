@@ -14,11 +14,20 @@ var TripLegScehma = new Schema({
   departureDate: {
     type: Date
   },
-  shelter: {
-    type: String
+  shelter: {[
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Shelter"
+    }
+  ]
   },
   activities: {
-    type: String
+    [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Activity"
+      }
+    ]
   }
 });
 
