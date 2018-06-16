@@ -1,10 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const styles = {
+  color: {
+    color: "white",
+    textDecoration: "none",
+    float: "right",
+    marginRight: "10px"
+  },
+  height: {
+    padding: "30px",
+    fontSize: "24px"
+  },
+  logo: {
+    fontSize: "30px"
+  }
+};
+
 const Navtabs = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav
+    style={styles.height}
+    className="navbar navbar-expand-lg navbar-dark bg-dark"
+  >
     <Link to="/Home">
-      <span className="navbar-brand">Travelo</span>
+      <span style={styles.logo} className="navbar-brand">
+        Travelo
+      </span>
     </Link>
     <button
       className="navbar-toggler"
@@ -17,20 +38,25 @@ const Navtabs = () => (
     >
       <span className="navbar-toggler-icon" />
     </button>
-    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul className="navbar-nav">
-        <li className="nav-item active">
-          <Link to="/Cities">
-            <span className="nav-link">
+    <div
+      className="collapse navbar-collapse"
+      id="navbarNavDropdown"
+      style={styles.color}
+    >
+      <ul className="navbar-nav" style={styles.color}>
+        <li className="nav-item active" style={styles.color}>
+          <Link to="/Cities" style={styles.color}>
+            <span className="nav-link" style={styles.color}>
               My Profile <span className="sr-only">(current)</span>
             </span>
           </Link>
         </li>
         <li className="nav-item dropdown">
-          <Link to="/Trips">
+          <Link to="/Trips" style={styles.color}>
             <span
               className="nav-link dropdown-toggle"
               href="#"
+              style={styles.color}
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"

@@ -1,4 +1,6 @@
-* {box-sizing: border-box}
+* {
+  box-sizing: border-box;
+}
 
 /* style the container */
 .container {
@@ -6,7 +8,7 @@
   border-radius: 5px;
   /* background-color: #f2f2f2; */
   padding: 20px 0 30px 0;
-} 
+}
 
 /* style inputs and link buttons */
 input,
@@ -30,12 +32,12 @@ input:hover,
 
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {
-  background-color: #3B5998;
+  background-color: #3b5998;
   color: white;
 }
 
 .twitter {
-  background-color: #55ACEE;
+  background-color: #55acee;
   color: white;
 }
 
@@ -45,7 +47,7 @@ input:hover,
 }
 
 /* style the submit button */
-input[type=submit] {
+input[type="submit"] {
   background-color: black;
   color: white;
   cursor: pointer;
