@@ -87,12 +87,9 @@ class Cities extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
+
         <Navtabs />
         <CityJumbo />
-=======
-        <CityJumbo city={this.state.city} />
->>>>>>> ce141891990a8f1c77b40ca48e673b333141b482
 
         <div className="row justify-content-center">
           <div
