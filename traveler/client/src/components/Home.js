@@ -13,7 +13,6 @@ const styles = {
     width: "100%"
   },
   button1: {
-    // marginTop: "330px",
     width: "220px",
     height: "60px",
     marginRight: "50px",
@@ -21,7 +20,6 @@ const styles = {
     color: "white"
   },
   button2: {
-    // marginTop: "330px",
     height: "60px",
     fontSize: "30px",
     width: "220px"
@@ -47,16 +45,16 @@ class Home extends Component {
           {" "}
           Take solo travel to the next level with Travelo.
         </div>
-        <button style={styles.button1} className="btn btn-dark">
-          <Link to="/NewUser" style={styles.color}>
+        <Link to="/NewUser" style={styles.color}>
+          <button style={styles.button1} className="btn btn-dark">
             Sign Up
-          </Link>
-        </button>
-        <button style={styles.button2} className="btn btn-dark">
-          <Link to="/SignIn" style={styles.color}>
+          </button>{" "}
+        </Link>
+        <Link to="/SignIn" style={styles.color}>
+          <button style={styles.button2} className="btn btn-dark">
             Sign In
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     );
   }
