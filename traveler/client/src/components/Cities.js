@@ -10,10 +10,11 @@ import {
 } from "../utils/API";
 import CityJumbo from "./CityJumbo";
 import Hotels from "./Hotels";
+import Navtabs from "./Navtabs";
 
 class Cities extends Component {
   state = {
-    city: "San Diego",
+    city: "Philadelphia",
     cityPic: "",
     lat: "",
     lon: "",
@@ -65,10 +66,16 @@ class Cities extends Component {
   };
 
   renderHotels = hotelObj => {
-    console.log(hotelObj);
     return (
       <div>
         {hotelObj.map(hotel => {
+          let href;
+          hotel.photos
+            ? (href = hotel.photos[0].html_attributions[0])
+            : "no photo";
+          const thisHref = href
+            ? href.match(/\".*\"/)[0].replace(/\"/g, "")
+            : null;
           return (
             <Hotels
               icon={hotel.icon}
@@ -76,6 +83,7 @@ class Cities extends Component {
               address={hotel.vicinity}
               rating={hotel.rating}
               key={hotel.id}
+              photo={thisHref}
             />
           );
         })}
@@ -86,6 +94,7 @@ class Cities extends Component {
   render() {
     return (
       <div>
+        <Navtabs />
         <CityJumbo city={this.state.city} />
 
         <div className="row justify-content-center">
@@ -131,6 +140,7 @@ class Cities extends Component {
             </div>
           </div>
         </div>
+
         {this.renderHotels(this.state.hotelObj)}
       </div>
     );
