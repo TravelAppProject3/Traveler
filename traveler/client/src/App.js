@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn/SignIn";
 import NewUser from "./components/NewUser";
 import Trips from "./components/Trips/Trips";
 
+
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -27,6 +28,7 @@ class App extends Component {
           <Route exact path="/SignIn" component={SignIn} />
           <Route exact path="/NewUser" component={NewUser} />
           <Route exact path="/Trips" component={Trips} />
+
         </div>
       </Router>
     );
