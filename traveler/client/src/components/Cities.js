@@ -14,7 +14,7 @@ import Navtabs from "./Navtabs";
 
 class Cities extends Component {
   state = {
-    city: "San Diego",
+    city: "Philadelphia",
     cityPic: "",
     lat: "",
     lon: "",
@@ -76,8 +76,6 @@ class Cities extends Component {
           const thisHref = href
             ? href.match(/\".*\"/)[0].replace(/\"/g, "")
             : null;
-          console.log(thisHref);
-
           return (
             <Hotels
               icon={hotel.icon}
@@ -96,9 +94,8 @@ class Cities extends Component {
   render() {
     return (
       <div>
-
         <Navtabs />
-        <CityJumbo />
+        <CityJumbo city={this.state.city} />
 
         <div className="row justify-content-center">
           <div
@@ -143,6 +140,7 @@ class Cities extends Component {
             </div>
           </div>
         </div>
+
         {this.renderHotels(this.state.hotelObj)}
       </div>
     );
