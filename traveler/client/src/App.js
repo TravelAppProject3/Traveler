@@ -27,7 +27,7 @@ class App extends Component {
           <Route exact path="/SignIn" component={SignIn} />
           <Route exact path="/NewUser" component={NewUser} />
           {/* <Route exact path="/Trips" component={Trips} /> */}
-          <a href="/auth/google">Sign in with google</a>
+          <a href="/logout">Logout</a>
         </div>
       </Router>
     );
