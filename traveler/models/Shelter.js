@@ -8,13 +8,7 @@ var ShelterSchema = new Schema({
   },
   address: {
     type: String
-  },
-  guests: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ]
+  }
 });
 
 var Shelter = mongoose.model("Shelter", ShelterSchema);
