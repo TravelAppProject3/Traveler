@@ -1,5 +1,4 @@
 module.exports = {
-  Book: require("./book"),
   Activity: require("./activity"),
   Shelter: require("./shelter"),
   Trip: require("./trip"),
