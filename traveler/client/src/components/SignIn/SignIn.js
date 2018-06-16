@@ -33,7 +33,6 @@ class SignIn extends Component {
         <div className="container">
           <form action="/action_page.php" style={styles.margin}>
             <div className="row">
-              {/* <h2 style={this.styles.body} >Login with Social Media or Manually</h2> */}
               <div className="vl">
                 <span className="vl-innertext">or</span>
               </div>
