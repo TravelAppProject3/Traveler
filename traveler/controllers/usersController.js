@@ -30,3 +30,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   }
 };
+
+db.User.create({
+  username: "jamiekeith",
+  name: "Jamie Keith",
+  password: "jamie"
+})
+  .then(function(dbUser) {
+    // If saved successfully, print the new Library document to the console
+    console.log(dbUser);
+  })
+  .catch(function(err) {
+    // If an error occurs, print it to the console
+    console.log(err.message);
+  });
