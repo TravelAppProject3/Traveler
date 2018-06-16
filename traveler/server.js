@@ -7,6 +7,7 @@ const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const PORT = process.env.PORT || 3001;
+const db = require("./models");
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,7 +42,9 @@ mongoose.connect(
   }
 );
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-});
+db.User.create({ username: "jamiek", name: "Jamie", password: "jamie1" });
+
+app // Start the API server
+  .listen(PORT, function() {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
