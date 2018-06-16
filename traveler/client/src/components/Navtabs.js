@@ -55,7 +55,6 @@ const Navtabs = () => (
           <Link to="/Trips" style={styles.color}>
             <span
               className="nav-link dropdown-toggle"
-              href="#"
               style={styles.color}
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
@@ -69,15 +68,14 @@ const Navtabs = () => (
             className="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink"
           >
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
+            <Link to="/Cities" style={styles.color}>
+              <a className="dropdown-item" href="#">
+                My Profile
+              </a>
+            </Link>
+            <Link to="/Trips" style={styles.color}>
+              <a className="dropdown-item">My Trips</a>
+            </Link>
           </div>
         </li>
       </ul>
