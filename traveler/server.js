@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const authRoutes = require("./routes/auth-routes");
+const profileRoutes = require("./routes/profile-routes");
+const passportSetup = require("./config/passport-setup");
 const app = express();
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
@@ -16,12 +19,6 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
-app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes);
-
-//encrypts cookie
 app.use(
   cookieSession({
     //maxage is the age of the cookie
@@ -34,6 +31,15 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Add routes, both API and view
+app.use(routes);
+app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
+
+//set up view engine
+app.set("view engine", "ejs");
+//encrypts cookie
+
 //connect to mongodb --> pass connection string and then a second parameter to console log message
 mongoose.connect(
   keys.mongodb.dbURI,
@@ -42,7 +48,10 @@ mongoose.connect(
   }
 );
 
-db.User.create({ username: "jamiek", name: "Jamie", password: "jamie1" });
+//create home route
+app.get("/", (req, res) => {
+  res.render("home", { user: req.user });
+});
 
 app // Start the API server
   .listen(PORT, function() {

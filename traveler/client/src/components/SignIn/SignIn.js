@@ -44,7 +44,11 @@ class SignIn extends Component {
                 <a style={styles.textSize} href="#" className="twitter btn">
                   <i className="fa fa-twitter fa-fw" /> Login with Twitter
                 </a>
-                <a style={styles.textSize} href="#" className="google btn">
+                <a
+                  style={styles.textSize}
+                  href="/auth/google"
+                  className="google btn"
+                >
                   <i className="fa fa-google fa-fw" /> Login with Google+
                 </a>
               </div>
