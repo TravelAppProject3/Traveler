@@ -8,7 +8,10 @@ var TripSchema = new Schema({
     trim: true,
     required: "Trip Name is required"
   },
-
+  tripUser: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   tripLegs: [
     {
       type: Schema.Types.ObjectId,

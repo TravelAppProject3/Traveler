@@ -14,21 +14,18 @@ var TripLegScehma = new Schema({
   departureDate: {
     type: Date
   },
-  shelter: {[
+  shelter: [
     {
       type: Schema.Types.ObjectId,
       ref: "Shelter"
     }
+  ],
+  activities: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Activity"
+    }
   ]
-  },
-  activities: {
-    [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Activity"
-      }
-    ]
-  }
 });
 
 var TripLeg = mongoose.model("TripLeg", TripLegScehma);
