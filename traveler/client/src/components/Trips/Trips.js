@@ -159,7 +159,7 @@ class Trips extends Component {
                 <div className="row">
                     {/* <div style={this.styles.col} className="col-md-4"> */}
                         <ul style={this.styles.ul} className="col-md-4">
-                            <li style={this.styles.liTitle}>Events</li>
+                            <li style={this.styles.liTitle}><span style={this.styles.span} className="fa fa-ticket"></span>Events</li>
                             <li style={this.styles.li}>doing this</li>
                             <li style={this.styles.li}>that</li>
                             <li style={this.styles.li}>& the other</li>
@@ -167,7 +167,7 @@ class Trips extends Component {
                     {/* </div> */}
                     {/* <div style={this.styles.col} className="col-md-4"> */}
                         <ul style={this.styles.ul} className="col-md-4">
-                            <li style={this.styles.liTitle}>Hotels</li>
+                            <li style={this.styles.liTitle}><span style={this.styles.span} className="fa fa-bed"></span>Hotels</li>
                             <li style={this.styles.li}>doing this</li>
                             <li style={this.styles.li}>that</li>
                             <li style={this.styles.li}>& the other</li>
@@ -175,7 +175,7 @@ class Trips extends Component {
                     {/* </div> */}
                     {/* <div style={this.styles.col} className="col-md-4"> */}
                         <ul style={this.styles.ul} className="col-md-4">
-                            <li style={this.styles.liTitle}>Restaurants</li>
+                            <li style={this.styles.liTitle}><span style={this.styles.span} className="fa fa-cutlery"></span>Restaurants</li>
                             <li style={this.styles.li}>doing this</li>
                             <li style={this.styles.li}>that</li>
                             <li style={this.styles.li}>& the other</li>
