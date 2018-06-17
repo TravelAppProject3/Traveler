@@ -23,14 +23,14 @@ var UserSchema = new Schema({
   userCreated: {
     type: Date,
     default: Date.now
-  },
+  }
 
-  trips: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Trip"
-    }
-  ]
+  // trips: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Trip"
+  //   }
+  // ]
 });
 
 var User = mongoose.model("User", UserSchema);

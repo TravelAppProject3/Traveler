@@ -8,6 +8,8 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const PORT = process.env.PORT || 3001;
 const db = require("./models");
+const authRoutes = require("./routes/auth-routes");
+const profileRoutes = require("./routes/profile-routes");
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
