@@ -10,7 +10,7 @@ const styles = {
     backgroundSize: "cover",
     overflow: "hidden",
     height: "730px",
-    marginTop: "-40px",
+    marginTop: "-75px",
     textAlign: "center",
     width: "100%"
   },
@@ -18,7 +18,8 @@ const styles = {
     marginTop: "130px"
   },
   textSize: {
-    fontSize: "20px"
+    fontSize: "20px",
+    opacity: "10"
   }
 };
 
