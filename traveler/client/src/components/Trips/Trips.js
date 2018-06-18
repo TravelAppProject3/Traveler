@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navtabs from "../Navtabs";
+import { Link } from "react-router-dom";
 
 class Trips extends Component {
   state = {};
@@ -91,6 +92,17 @@ class Trips extends Component {
         // marginLeft: "10px",
         marginTop: "3px",
         marginRight: "10px"
+    },
+    profileBtn: {
+        border: "2px solid white",
+        color: "white",
+        background: "black",
+        borderRadius: "5px",
+        float: "left",
+        position: "absolute",
+        top: "70px",
+        right: "50px"
+
     }
   };
 
@@ -103,6 +115,10 @@ class Trips extends Component {
             <div style={this.styles.border}>
                 <p style={this.styles.p}>New York 8/15/18</p>
                 <img style={this.styles.img} src="http://www.camp-campbell.com/wp-content/uploads/2014/09/o-NEW-YORK.jpg"></img>
+                <Link to="/Cities">
+                <button style={this.styles.profileBtn}
+                ><span className="fa fa-user"></span></button>
+                </Link>
                 <div className="row">
                     {/* <div style={this.styles.col} className="col-md-4"> */}
                         <ul style={this.styles.ul} className="col-md-4">

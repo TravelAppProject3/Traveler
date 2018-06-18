@@ -25,7 +25,7 @@ const styles = {
     fontSize: "30px",
     width: "220px",
     opacity: "10",
-    pointerEvents: "none"
+    color: "white"
   },
   color: {
     color: "white",
