@@ -29,5 +29,8 @@
     "mongoose": "^5.0.17",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0"
+  },
+  "/api": {
+    "target": "http://localhost:3001"
   }
 }
