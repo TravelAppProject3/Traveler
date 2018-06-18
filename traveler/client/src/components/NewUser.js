@@ -17,8 +17,8 @@ class NewUser extends Component {
         "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
       backgroundSize: "cover",
       overflow: "hidden",
-      height: "720px",
-      marginTop: "-40px",
+      height: "730px",
+      marginTop: "-75px",
       textAlign: "center",
       width: "100%",
       fontSize: "20px" 
@@ -27,7 +27,11 @@ class NewUser extends Component {
       textAlign: "left"
     },
     textSize: {
-      fontSize: "20px"
+      fontSize: "20px",
+      opacity: "10",
+      // cursor: "pointer",
+      // pointerEvents: "auto",
+      // pointerEvents: "unset"
     }
   };
 
