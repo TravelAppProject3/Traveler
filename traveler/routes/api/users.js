@@ -12,5 +12,5 @@ router
   .put(usersController.update)
   .delete(usersController.remove);
 
-router.route("/userTrips/:id").put(usersController.addTrip);
+// router.route("/userTrips/:id").put(usersController.addTrip);
 module.exports = router;

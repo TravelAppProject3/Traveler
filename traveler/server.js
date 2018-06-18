@@ -1,9 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const routes = require("./routes");
-const authRoutes = require("./routes/auth-routes");
-const profileRoutes = require("./routes/profile-routes");
 const passportSetup = require("./config/passport-setup");
 const app = express();
 const keys = require("./config/keys");
@@ -13,6 +10,7 @@ const PORT = process.env.PORT || 3001;
 const db = require("./models");
 const authRoutes = require("./routes/auth-routes");
 const profileRoutes = require("./routes/profile-routes");
+const routes = require("./routes");
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -59,3 +57,5 @@ app // Start the API server
   .listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
+
+// db.User.create({ username: "jfksajfjkjf", name: "Jamie", password: "jamie1" });
