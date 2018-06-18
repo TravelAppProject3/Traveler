@@ -31,7 +31,8 @@ class NewUser extends Component {
       opacity: "10",
       // cursor: "pointer",
       // pointerEvents: "auto",
-      // pointerEvents: "unset"
+      // pointerEvents: "unset",
+      color: "white"
     }
   };
 
