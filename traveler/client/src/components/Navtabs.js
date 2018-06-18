@@ -56,10 +56,10 @@ const Navtabs = () => (
             <span
               className="nav-link dropdown-toggle"
               style={styles.color}
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              // id="navbarDropdownMenuLink"
+              // data-toggle="dropdown"
+              // aria-haspopup="true"
+              // aria-expanded="false"
             >
               My Trips
             </span>
