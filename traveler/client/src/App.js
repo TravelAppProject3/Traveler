@@ -4,7 +4,7 @@ import Cities from "./components/Cities";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn/SignIn";
 import NewUser from "./components/NewUser";
-import Trips from "./components/Trips";
+import Trips from "./components/Trips/Trips";
 import logo from "./logo.svg";
 import "./App.css";
 

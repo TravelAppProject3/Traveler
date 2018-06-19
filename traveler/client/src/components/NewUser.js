@@ -59,7 +59,7 @@ class NewUser extends Component {
               placeholder="Enter email"
              
             />
-            <small className="form-text text-muted">
+            <small className="form-text">
               We'll never share your email with anyone else.
             </small>
           </div>
