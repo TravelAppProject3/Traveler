@@ -41,6 +41,13 @@ const museum = (lat, lon) => {
 };
 
 const landmarks = (lat, lon) => {
+  console.log(
+    "https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=HCJBHeK2kmFy3ZdA2wv4&app_code=bT9W3jH2FDVF4ZHS3nHaIg&mode=retrieveLandmarks&prox=" +
+      lat +
+      "," +
+      lon +
+      ",1000"
+  );
   return axios.get(
     "https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=HCJBHeK2kmFy3ZdA2wv4&app_code=bT9W3jH2FDVF4ZHS3nHaIg&mode=retrieveLandmarks&prox=" +
       lat +

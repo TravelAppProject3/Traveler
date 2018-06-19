@@ -15,14 +15,17 @@ import Sights from "./Sights";
 
 class Cities extends Component {
   state = {
-    city: "Raleigh",
+    city: "Seattle",
     cityPic: "",
     lat: "",
     lon: "",
     hotelObj: [],
     museumObj: [],
     landmarkObj: [],
-    activeObj: []
+    activeObj: [],
+    hotelClick: false,
+    sightsClick: false,
+    drinksClick: false
   };
 
   styles = {
@@ -65,6 +68,14 @@ class Cities extends Component {
 
     const lat = this.state.lat;
     const lon = this.state.lon;
+    this.setState({ sightsClick: true, hotelClick: false });
+
+    console.log(
+      "Hotels click:  " +
+        this.state.hotelClick +
+        "\nSights Click:  " +
+        this.state.sightsClick
+    );
 
     museum(lat, lon)
       .then(data => this.setState({ museumObj: data.data.results }))
@@ -84,13 +95,19 @@ class Cities extends Component {
   };
 
   getHotels = () => {
-    document.getElementsByClassName("hotelsDiv").innerHTML = "";
     document.getElementsByClassName("sightsDiv").innerHTML = "";
     document.getElementsByClassName("drinksDiv").innerHTML = "";
 
     console.log("click worked");
     const lat = this.state.lat;
     const lon = this.state.lon;
+    this.setState({ hotelClick: true, sightsClick: false });
+    console.log(
+      "Hotels click:  " +
+        this.state.hotelClick +
+        "\nSights Click:  " +
+        this.state.sightsClick
+    );
 
     getHotels(lat, lon)
       .then(data => this.setState({ hotelObj: data.data.results }))
@@ -185,10 +202,12 @@ class Cities extends Component {
           </div>
         </div>
         <div className="hotelsDiv">
-          {this.renderHotels(this.state.hotelObj)}
+          {this.state.hotelClick === true
+            ? this.renderHotels(this.state.hotelObj)
+            : " "}
         </div>
         <div className="sightsDiv">
-          {this.state.museumObj.length !== 0
+          {this.state.sightsClick === true
             ? this.renderSights(
                 this.state.museumObj,
                 this.state.landmarkObj,

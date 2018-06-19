@@ -1,26 +1,7 @@
 import React from "react";
+const styles = {};
 
-const styles = {
-  card: {
-    width: "18rem",
-    margin: 20,
-    borderWidth: 7,
-    borderRadius: 5,
-    boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
-    transition: "0.3s"
-  },
-  icon: {
-    height: 50,
-    width: 50,
-    position: "relative",
-    top: 20
-  },
-  rating: {
-    paddingLeft: 80
-  }
-};
-
-const Museums = props => (
+const Landmarks = props => (
   <div className="container">
     <div className="row">
       <div
@@ -28,18 +9,23 @@ const Museums = props => (
         style={styles.card}
       >
         <div className="row">
-          <img
-            src={props.icon}
-            alt="hotelIcon"
-            style={styles.icon}
-            className="col-md-1 col-sm-2 col-xs-2"
-          />
           <div className="card-header col-md-11 col-sm-10 col-xs-10">
             <h2>{props.name}</h2>
             <h4>{props.address}</h4>
+            {props.type === "park" ? (
+              <h4>Park</h4>
+            ) : props.type === "shoppingCentre" ? (
+              <h4>Shopping Center</h4>
+            ) : props.type === "cemetery" ? (
+              <h4>Cemetery</h4>
+            ) : props.type === "universityCollege" ? (
+              <h4>Univerity/College</h4>
+            ) : (
+              <h4>{props.type}</h4>
+            )}
           </div>
         </div>
-        <div className="card-body text-dark">
+        {/* <div className="card-body text-dark">
           <h3 className="card-title" style={styles.rating}>
             Rating: {props.rating ? props.rating : "None Provided"}
           </h3>
@@ -64,10 +50,10 @@ const Museums = props => (
           </a>
         ) : (
           " "
-        )}
+        )} */}
       </div>
     </div>
   </div>
 );
 
-export default Museums;
+export default Landmarks;
