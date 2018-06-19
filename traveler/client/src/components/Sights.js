@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Museums from "./Museums";
+import Landmarks from "./Landmarks";
 
 class Sights extends Component {
   state = {
@@ -11,6 +12,7 @@ class Sights extends Component {
     activeClick: false
   };
 
+  //When the component mounts, setState to the data we passed it from Cities//
   componentDidMount() {
     this.setState({
       museumObj: this.props.museum,
@@ -19,6 +21,7 @@ class Sights extends Component {
     });
   }
 
+  //A function to render museums found by the API to the page//
   renderMuseum = museumObj => {
     return (
       <div>
@@ -38,6 +41,35 @@ class Sights extends Component {
               rating={museum.rating}
               key={museum.id}
               photo={thisHref}
+            />
+          );
+        })}
+      </div>
+    );
+  };
+
+  //A funciton to render landmarks found by the API to the page//
+  renderLandmark = landmarkObj => {
+    console.log("Landmarks say hello");
+    console.log(landmarkObj);
+    return (
+      <div>
+        {landmarkObj.map(landmark => {
+          let href;
+          landmark.photos
+            ? (href = landmark.photos[0].html_attributions[0])
+            : "no photo";
+          const thisHref = href
+            ? href.match(/\".*\"/)[0].replace(/\"/g, "")
+            : null;
+          return (
+            <Landmarks
+              name={landmark.Location.Name}
+              address={landmark.Location.Address.Label}
+              type={landmark.Location.LocationType}
+              lat={landmark.Location.DisplayPosition.Latitude}
+              lon={landmark.Location.DisplayPosition.Longitude}
+              key={landmark.Location.Name}
             />
           );
         })}
@@ -72,6 +104,7 @@ class Sights extends Component {
               role="tab"
               aria-controls="landmark"
               aria-selected="false"
+              onClick={() => this.renderLandmark(this.state.landmarkObj)}
             >
               Landmarks
             </a>
@@ -97,7 +130,7 @@ class Sights extends Component {
             role="tabpanel"
             aria-labelledby="museum-tab"
           >
-            <h1>The Museum component renders here</h1>
+            <h1 className="text-center">Museums to Make You Smarter</h1>
             {this.renderMuseum(this.state.museumObj)}
           </div>
           <div
@@ -106,7 +139,8 @@ class Sights extends Component {
             role="tabpanel"
             aria-labelledby="landmark-tab"
           >
-            <h1>The Landmark component renders here</h1>
+            <h1 className="text-center">Landmarks to Snap Instagrams Of</h1>
+            {this.renderLandmark(this.state.landmarkObj)}
           </div>
           <div
             className="tab-pane fade"
