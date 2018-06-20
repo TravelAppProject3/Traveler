@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 const getEvents = (lat, lon) => {
   return axios.get(
@@ -41,13 +42,6 @@ const museum = (lat, lon) => {
 };
 
 const landmarks = (lat, lon) => {
-  console.log(
-    "https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=HCJBHeK2kmFy3ZdA2wv4&app_code=bT9W3jH2FDVF4ZHS3nHaIg&mode=retrieveLandmarks&prox=" +
-      lat +
-      "," +
-      lon +
-      ",1000"
-  );
   return axios.get(
     "https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=HCJBHeK2kmFy3ZdA2wv4&app_code=bT9W3jH2FDVF4ZHS3nHaIg&mode=retrieveLandmarks&prox=" +
       lat +
@@ -58,8 +52,19 @@ const landmarks = (lat, lon) => {
 };
 
 const active = (lat, lon) => {
+  console.log(
+    "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?start_date=" +
+      moment().format("YYYY-MM-DD") +
+      "&lat_lon=" +
+      lat +
+      "," +
+      lon +
+      "&api_key=femervwexgb28gepuw67s3x4"
+  );
   return axios.get(
-    "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?query=running&start_date=2018-06-12&lat_lon=" +
+    "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?start_date=" +
+      moment().format("YYYY-MM-DD") +
+      "&lat_lon=" +
       lat +
       "," +
       lon +
