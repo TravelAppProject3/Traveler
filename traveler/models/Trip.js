@@ -15,29 +15,8 @@ var TripSchema = new Schema({
   },
   tripLegs: [
     {
-      city: {
-        type: String,
-        trim: true,
-        required: "City is required"
-      },
-      arrivalDate: {
-        type: Date
-      },
-      departureDate: {
-        type: Date
-      },
-      shelter: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "Shelter"
-        }
-      ],
-      activities: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "Activity"
-        }
-      ]
+      type: Schema.Types.ObjectId,
+      ref: "TripLeg"
     }
   ]
 });
