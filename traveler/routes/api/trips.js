@@ -14,6 +14,6 @@ router
   .put(tripsController.update)
   .delete(tripsController.remove);
 
-router.route("/new/:id").post(tripsController.create);
+router.route("/new/").post(tripsController.create);
 
 module.exports = router;

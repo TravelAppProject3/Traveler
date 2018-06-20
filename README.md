@@ -23,3 +23,19 @@ The project details were of the following:
 15. Must have a polished frontend / UI
 16. Must meet good quality coding standards (folder structure, indentation, scoping, naming)
 17. Must not expose sensitive API key information on the server, see Protecting-API-Keys-In-Node.md
+
+## API Routes
+
+### User Data
+
+- api/users
+  - GET - returns list of users
+- api/users/:id
+  - GET - returns user information of user with id in params
+
+### Trip Data
+
+- api/trips/:userID
+  - GET - Returns all trip information for the user - including trip leg, activiites and accomedations.
+- api/trips/new/:userID
+  - POST - create a new trip - userID required in req.params
