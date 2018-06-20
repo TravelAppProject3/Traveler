@@ -11,17 +11,17 @@ const styles = {
       }
 }
 
-class Img extends Component {
-    render () {
+const Img = props => {
+  
         return(
             <div>
                 <img
                 style={styles.img}
-                src="http://www.camp-campbell.com/wp-content/uploads/2014/09/o-NEW-YORK.jpg"
+                src={props.href}
                 />
             </div>
         )
-    }
+    
 }
 
 export default Img;

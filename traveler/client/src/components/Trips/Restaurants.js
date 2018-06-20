@@ -7,9 +7,9 @@ const styles = {
         textAlign: "center",
         margin: "3px",
         marginTop: "10px",
+        marginBottom: "5px",
         marginRight: "30px",
         marginLeft: "-20px",
-        marginBottom: "5px",
         background: "black",
         color: "white",
         fontWeight: "normal",
@@ -26,12 +26,13 @@ const styles = {
         margin: "3px",
         // background: "black",
         // color: "white",
-        marginLeft: "-20px",
         marginRight: "30px",
+        marginLeft: "-20px",
         fontWeight: "normal",
         fontSize: "20px",
         listStyleType: "none",
         paddingLeft: "10px",
+        marginRight: "35px",
         boxShadow: "1px 3px 8px 1px #888888"
       },
       span: {
@@ -43,7 +44,7 @@ const styles = {
       }
 }
 
-const Events = props => {
+const Restaurants = props => {
     
         return(
               <div className="row">
@@ -68,4 +69,4 @@ const Events = props => {
         )
 }
 
-export default Events;
+export default Restaurants;
