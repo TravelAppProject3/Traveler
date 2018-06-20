@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import Navtabs from "../NavtabsHome.js";
+import { Link } from "react-router-dom";
 
 const styles = {
   body: {
@@ -71,7 +72,14 @@ class SignIn extends Component {
                     placeholder="Password"
                     required
                   />
-                  <input style={styles.textSize} type="submit" value="Login" />
+                  <Link to="/CreateTrip">
+                    {" "}
+                    <input
+                      style={styles.textSize}
+                      type="submit"
+                      value="Login"
+                    />
+                  </Link>
                 </div>
               </div>
             </form>
