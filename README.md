@@ -35,7 +35,15 @@ The project details were of the following:
 
 ### Trip Data
 
-- api/trips/:userID
-  - GET - Returns all trip information for the user - including trip leg, activiites and accomedations.
-- api/trips/new/:userID
-  - POST - create a new trip - userID required in req.params
+- api/trips/
+  - GET - Returns all trips of all users
+- api/trips/:tripId
+  - GET - Returns all trip information for tripId in req.params
+  - PUT - Update the trip by passing in object in req.body
+  - DELETE - Delete the trip from database
+- api/trips/new
+  - POST - create a new trip - tripUser required in req.body
+- api/trips/getUserTrips/:userId
+  - GET - Returns all trips for a user based on userId
+- api/trips/addShelter/:tripId
+  - POST
