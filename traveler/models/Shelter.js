@@ -8,6 +8,9 @@ var ShelterSchema = new Schema({
   },
   address: {
     type: String
+  },
+  hotelId: {
+    type: String
   }
 });
 

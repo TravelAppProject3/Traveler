@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   googleId: String,
-  thumbnail: String
+  thumbnail: String,
+  name: String
 });
 
 //creating the model or collection --> for every record define the structure of the records according to the userSchema
