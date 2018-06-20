@@ -68,7 +68,7 @@ class Cities extends Component {
 
     const lat = this.state.lat;
     const lon = this.state.lon;
-    this.setState({ sightsClick: true, hotelClick: false });
+    this.setState({ sightsClick: true, hotelClick: false, drinksClick: false });
 
     console.log(
       "Hotels click:  " +
@@ -78,20 +78,22 @@ class Cities extends Component {
     );
 
     museum(lat, lon)
-      .then(data => this.setState({ museumObj: data.data.results }))
+      .then(data => {
+        this.setState({ museumObj: data.data.results });
+        landmarks(lat, lon)
+          .then(data => {
+            this.setState({
+              landmarkObj: data.data.Response.View[0].Result
+            });
+            active(lat, lon)
+              .then(data => {
+                this.setState({ activeObj: data.data.results });
+              })
+              .catch(err => console.log(err));
+          })
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
-
-    landmarks(lat, lon)
-      .then(data =>
-        this.setState({ landmarkObj: data.data.Response.View[0].Result })
-      )
-      .catch(err => console.log(err));
-
-    active(lat, lon)
-      .then(data => this.setState({ activeObj: data.data.results }))
-      .catch(err => console.log(err));
-
-    this.renderSights();
   };
 
   getHotels = () => {
@@ -101,7 +103,7 @@ class Cities extends Component {
     console.log("click worked");
     const lat = this.state.lat;
     const lon = this.state.lon;
-    this.setState({ hotelClick: true, sightsClick: false });
+    this.setState({ hotelClick: true, sightsClick: false, drinksClick: false });
     console.log(
       "Hotels click:  " +
         this.state.hotelClick +
@@ -162,7 +164,7 @@ class Cities extends Component {
             onClick={() => this.getHotels(this.state.lat, this.state.lon)}
           >
             <div className="card-body">
-              <h5 className="card-title text-center">Lodging</h5>
+              <h3 className="card-title text-center">Lodging</h3>
               <p className="card-text text-center">
                 Hotel, Motel, Hostels & Inns
               </p>
@@ -180,7 +182,7 @@ class Cities extends Component {
             onClick={() => this.getSights(this.state.lat, this.state.lon)}
           >
             <div className="card-body">
-              <h5 className="card-title text-center">Sights & Sounds</h5>
+              <h3 className="card-title text-center">Sights & Sounds</h3>
               <p className="card-text text-center">Go Ahead, Be a Tourist</p>
               <i
                 className="fas fa-camera-retro fa-5x col-lg-12 col-md-12"
@@ -195,25 +197,25 @@ class Cities extends Component {
             style={this.styles.card}
           >
             <div className="card-body">
-              <h5 className="card-title text-center">Eat, Drink, Do</h5>
+              <h3 className="card-title text-center">Eat, Drink, Do</h3>
               <p className="card-text text-center">Live It Up Like a Local</p>
               <i className="fas fa-beer fa-5x" style={this.styles.beerIcon} />
             </div>
           </div>
         </div>
         <div className="hotelsDiv">
-          {this.state.hotelClick === true
-            ? this.renderHotels(this.state.hotelObj)
-            : " "}
+          {this.state.hotelClick ? this.renderHotels(this.state.hotelObj) : " "}
         </div>
         <div className="sightsDiv">
-          {this.state.sightsClick === true
-            ? this.renderSights(
-                this.state.museumObj,
-                this.state.landmarkObj,
-                this.state.activeObj
-              )
-            : " "}
+          {this.state.sightsClick ? (
+            <Sights
+              museum={this.state.museumObj}
+              landmark={this.state.landmarkObj}
+              active={this.state.activeObj}
+            />
+          ) : (
+            " "
+          )}
         </div>
         {/* <div className="drinksDiv">{this.renderDrinks}</div> */}
       </div>
