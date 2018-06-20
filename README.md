@@ -45,5 +45,5 @@ The project details were of the following:
   - POST - create a new trip - tripUser required in req.body
 - api/trips/getUserTrips/:userId
   - GET - Returns all trips for a user based on userId
-- api/trips/addShelter/:tripId
-  - POST
+- api/trips/addTripLeg/:tripId
+  - POST - Adds the Tripleg to the array in the Trip collection

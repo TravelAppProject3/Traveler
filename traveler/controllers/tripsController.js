@@ -36,6 +36,19 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  addTripLeg: function(req, res) {
+    db.TripLeg.create(req.body)
+      .then(dbModel =>
+        db.Trip.findOneAndUpdate(
+          { _id: req.params.tripId },
+          { $push: { tripLegs: dbModel._id } }
+        )
+      )
+      .then(dbModel => res.json(dbModel))
+
+      .catch(err => res.status(422).json(err));
+    // db.Trip.findOneAndUpdate({_id: req.parmas.tripId}, )
+  },
   addShelter: function(req, res) {
     if (db.Shelter.find({ hotelId: req.body.hotelId })) {
       db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
