@@ -4,6 +4,12 @@ import Landmarks from "./Landmarks";
 import Active from "./Active";
 
 const Sights = props => {
+  const styles = {
+    tabs: {
+      fontSize: 20,
+      textAlign: "center"
+    }
+  };
   //A function to render museums found by the API to the page//
   const renderMuseum = () => {
     return (
@@ -55,11 +61,21 @@ const Sights = props => {
     return (
       <div>
         {props.active.map(act => {
-          console.log(act.assetChannels[0]);
+          //   console.log(act.assetDescriptions[0]);
+          //   console.log(act.assetDescriptions[0]);
+
+          let href;
+          act.assetDescriptions[0]
+            ? (href = act.assetDescriptions[0].description)
+            : (href = "No Description Provided");
+
+          console.log(href);
+          //   const thisHref = href
+          //     ? href.match(/\".*\"/)[0].replace(/\"/g, "")
+          //     : null;
           return (
             <Active
-              //   type={act.assetChannels[0].channel.channelName}
-              description={act.assetDescriptions.description}
+              description={href}
               endDate={act.activityEndDate}
               startDate={act.activityStartDate}
               address={act.place.addressLine1Txt}
@@ -74,6 +90,7 @@ const Sights = props => {
               org={act.organization.organizationName}
               name={act.assetName}
               saleStatus={act.salesStatus}
+              key={act.assetName}
             />
           );
         })}
@@ -83,7 +100,12 @@ const Sights = props => {
 
   return (
     <div className="container">
-      <ul className="nav nav-tabs" id="myTab" role="tablist">
+      <ul
+        className="nav nav-tabs"
+        id="myTab"
+        role="tablist"
+        style={styles.tabs}
+      >
         <li className="nav-item active">
           <a
             className="nav-link"

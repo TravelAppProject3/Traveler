@@ -15,7 +15,7 @@ import Sights from "./Sights";
 
 class Cities extends Component {
   state = {
-    city: "Seattle",
+    city: "Raleigh",
     cityPic: "",
     lat: "",
     lon: "",
