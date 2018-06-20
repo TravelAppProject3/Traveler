@@ -36,18 +36,24 @@ class Cities extends Component {
     },
     hotelIcon: {
       position: "absolute",
-      left: 160
+      marginTop: "10px",
+      left: 145
     },
     cameraIcon: {
       position: "absolute",
-      left: 145
+      marginTop: "10px",
+      left: 130
     },
     beerIcon: {
       position: "absolute",
-      left: 175
+      marginTop: "10px",
+      left: 155
     },
     city: {
       backgroundImage: `url(${this.state.cityPic})`
+    },
+    center: {
+      textAlign: "center"
     }
   };
 
@@ -155,9 +161,9 @@ class Cities extends Component {
       <div>
         <Navtabs />
         <CityJumbo city={this.state.city} />
-
-        {/* Museum Card */}
+        <h2 style={this.styles.center}> Click a card below to get started! </h2>
         <div className="row justify-content-center">
+          {/* Hotel Card */}
           <div
             className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12 hotelCard"
             style={this.styles.card}
@@ -174,7 +180,6 @@ class Cities extends Component {
               />
             </div>
           </div>
-
           {/* Sights Card */}
           <div
             className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12 sightsCard"

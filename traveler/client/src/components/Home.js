@@ -7,13 +7,13 @@ const styles = {
       "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
     backgroundSize: "cover",
     overflow: "hidden",
-    height: "730px",
+    height: "750px",
     marginTop: "-75px",
     textAlign: "center",
     width: "100%"
   },
   button1: {
-    width: "220px",
+    width: "250px",
     height: "60px",
     marginRight: "50px",
     fontSize: "30px",
@@ -23,7 +23,7 @@ const styles = {
   button2: {
     height: "60px",
     fontSize: "30px",
-    width: "220px",
+    width: "250px",
     opacity: "10",
     color: "white"
   },
@@ -33,7 +33,7 @@ const styles = {
   },
   inspiration: {
     color: "black",
-    marginTop: "150px",
+    marginTop: "200px",
     marginBottom: "40px",
     fontSize: "40px",
     fontWeight: "bold"
@@ -45,23 +45,22 @@ class Home extends Component {
     return (
       <div>
         <Navtabs />
-      <div style={styles.root}>
-        
-        <div style={styles.inspiration}>
-          {" "}
-          Take solo travel to the next level with Travelo.
+        <div style={styles.root}>
+          <div style={styles.inspiration}>
+            {" "}
+            Take solo travel to the next level with Travelo.
+          </div>
+          <Link to="/NewUser" style={styles.color}>
+            <button style={styles.button1} className="btn btn-dark">
+              Sign Up
+            </button>{" "}
+          </Link>
+          <Link to="/SignIn" style={styles.color}>
+            <button style={styles.button2} className="btn btn-dark">
+              Sign In
+            </button>
+          </Link>
         </div>
-        <Link to="/NewUser" style={styles.color}>
-          <button style={styles.button1} className="btn btn-dark">
-            Sign Up
-          </button>{" "}
-        </Link>
-        <Link to="/SignIn" style={styles.color}>
-          <button style={styles.button2} className="btn btn-dark">
-            Sign In
-          </button>
-        </Link>
-      </div>
       </div>
     );
   }
