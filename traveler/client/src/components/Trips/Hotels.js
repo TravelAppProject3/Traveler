@@ -7,10 +7,10 @@ const styles = {
         textAlign: "center",
         margin: "3px",
         marginTop: "10px",
-        marginRight: "30px",
-        marginLeft: "-20px",
         marginBottom: "5px",
         background: "black",
+        marginRight: "30px",
+        marginLeft: "-20px",
         color: "white",
         fontWeight: "normal",
         fontSize: "20px",
@@ -24,10 +24,10 @@ const styles = {
         borderRadius: "5px",
         // textAlign: "center",
         margin: "3px",
+        marginRight: "30px",
+        marginLeft: "-20px",
         // background: "black",
         // color: "white",
-        marginLeft: "-20px",
-        marginRight: "30px",
         fontWeight: "normal",
         fontSize: "20px",
         listStyleType: "none",
@@ -43,7 +43,7 @@ const styles = {
       }
 }
 
-const Events = props => {
+const Hotels = props => {
     
         return(
               <div className="row">
@@ -68,4 +68,4 @@ const Events = props => {
         )
 }
 
-export default Events;
+export default Hotels;

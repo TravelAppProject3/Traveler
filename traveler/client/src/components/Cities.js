@@ -118,7 +118,11 @@ class Cities extends Component {
     );
 
     getHotels(lat, lon)
-      .then(data => this.setState({ hotelObj: data.data.results }))
+
+      .then(data =>
+        console.log(data)
+        // this.setState({ hotelObj: data.data.results })
+        )
       .then(console.log(this.state.hotelObj))
       .catch(err => console.log(err));
   };

@@ -24,11 +24,12 @@ const styles = {
       }
 }
 
-class Destination extends Component {
-    render() {
+const Destination = props => {
+    
+    
         return(
             <div>
-                <p style={styles.p}>New York 8/15/18</p>
+                <p style={styles.p}>{props.name} {props.arrival}</p>
                 <Link to="/Cities">
                 <button style={styles.profileBtn}>
                     <span className="fa fa-user" />
@@ -36,7 +37,7 @@ class Destination extends Component {
                 </Link>
             </div>
         )
-    }
+    
 }
 
 export default Destination;
