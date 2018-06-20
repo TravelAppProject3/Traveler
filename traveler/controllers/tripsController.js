@@ -45,7 +45,6 @@ module.exports = {
         )
       )
       .then(dbModel => res.json(dbModel))
-
       .catch(err => res.status(422).json(err));
     // db.Trip.findOneAndUpdate({_id: req.parmas.tripId}, )
   },
@@ -56,6 +55,12 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     } else {
       db.Shelter.create(req.body)
+        .then(dbModel =>
+          db.TripLeg.findOneAndUpdate(
+            { _id: req.params.tripLegId },
+            { $push: { shelter: dbModel._id } }
+          )
+        )
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }
@@ -67,9 +72,12 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     } else {
       db.Activity.create(req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-      db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel =>
+          db.TripLeg.findOneAndUpdate(
+            { _id: req.params.tripLegId },
+            { $push: { activities: dbModel._id } }
+          )
+        )
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }
