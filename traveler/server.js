@@ -57,5 +57,3 @@ app // Start the API server
   .listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
-
-// db.User.create({ username: "jfksajfjkjf", name: "Jamie", password: "jamie1" });

@@ -1,4 +1,6 @@
 const db = require("../models");
+const sheltersController = require("./sheltersController");
+const activitiesController = require("./activitiesController");
 
 // Defining methods for the booksController
 module.exports = {
@@ -28,5 +30,30 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  addShelter: function(req, res) {
+    if (db.Shelter.find({ hotelId: req.body.hotelId })) {
+      db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    } else {
+      db.Shelter.create(req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }
+  },
+  addActivity: function(req, res) {
+    if (db.Activity.find({ activityId: req.body.activityId })) {
+      db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    } else {
+      db.Activity.create(req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+      db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }
   }
 };

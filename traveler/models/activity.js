@@ -6,13 +6,7 @@ var ActivitiesSchema = new Schema({
   name: {
     type: String,
     required: "Activity Name is required"
-  },
-  participants: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ]
+  }
 });
 
 var Activities = mongoose.model("Activites", ActivitiesSchema);
