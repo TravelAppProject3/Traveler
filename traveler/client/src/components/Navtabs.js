@@ -53,14 +53,7 @@ const Navtabs = () => (
         </li>
         <li className="nav-item dropdown">
           <Link to="/Trips" style={styles.color}>
-            <span
-              className="nav-link dropdown-toggle"
-              style={styles.color}
-              // id="navbarDropdownMenuLink"
-              // data-toggle="dropdown"
-              // aria-haspopup="true"
-              // aria-expanded="false"
-            >
+            <span className="nav-link dropdown-toggle" style={styles.color}>
               My Trips
             </span>
           </Link>

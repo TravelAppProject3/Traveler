@@ -9,7 +9,7 @@ const styles = {
       "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
     backgroundSize: "cover",
     overflow: "hidden",
-    height: "730px",
+    height: "750px",
     marginTop: "-75px",
     textAlign: "center",
     width: "100%"
@@ -30,53 +30,53 @@ class SignIn extends Component {
     return (
       <div>
         <Navtabs />
-      <div style={styles.body}>
-        <div className="container">
-          <form action="/action_page.php" style={styles.margin}>
-            <div className="row">
-              <div className="vl">
-                <span className="vl-innertext">or</span>
-              </div>
-
-              <div className="col">
-                <a style={styles.textSize} href="#" className="fb btn">
-                  <i className="fa fa-facebook fa-fw" /> Login with Facebook
-                </a>
-                <a style={styles.textSize} href="#" className="twitter btn">
-                  <i className="fa fa-twitter fa-fw" /> Login with Twitter
-                </a>
-                <a
-                  style={styles.textSize}
-                  href="/auth/google"
-                  className="google btn"
-                >
-                  <i className="fa fa-google fa-fw" /> Login with Google+
-                </a>
-              </div>
-
-              <div className="col">
-                <div className="hide-md-lg">
-                  <p>Or sign in manually:</p>
+        <div style={styles.body}>
+          <div className="container">
+            <form action="/action_page.php" style={styles.margin}>
+              <div className="row">
+                <div className="vl">
+                  <span className="vl-innertext">or</span>
                 </div>
 
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  required
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                />
-                <input style={styles.textSize} type="submit" value="Login" />
+                <div className="col">
+                  <a style={styles.textSize} href="#" className="fb btn">
+                    <i className="fa fa-facebook fa-fw" /> Login with Facebook
+                  </a>
+                  <a style={styles.textSize} href="#" className="twitter btn">
+                    <i className="fa fa-twitter fa-fw" /> Login with Twitter
+                  </a>
+                  <a
+                    style={styles.textSize}
+                    href="/auth/google"
+                    className="google btn"
+                  >
+                    <i className="fa fa-google fa-fw" /> Login with Google+
+                  </a>
+                </div>
+
+                <div className="col">
+                  <div className="hide-md-lg">
+                    <p>Or sign in manually:</p>
+                  </div>
+
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required
+                  />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                  />
+                  <input style={styles.textSize} type="submit" value="Login" />
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
       </div>
     );
   }
