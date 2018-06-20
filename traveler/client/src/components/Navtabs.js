@@ -51,6 +51,13 @@ const Navtabs = () => (
             </span>
           </Link>
         </li>
+        <li className="nav-item active" style={styles.color}>
+          <Link to="/CreateTrip" style={styles.color}>
+            <span className="nav-link" style={styles.color}>
+              Create Trip <span className="sr-only">(current)</span>
+            </span>
+          </Link>
+        </li>
         <li className="nav-item dropdown">
           <Link to="/Trips" style={styles.color}>
             <span className="nav-link dropdown-toggle" style={styles.color}>

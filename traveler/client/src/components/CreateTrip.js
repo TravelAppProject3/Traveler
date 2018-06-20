@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Navtabs from "./NavtabsHome.js";
+import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
 
-class NewUser extends Component {
+class CreateTrip extends Component {
   state = {};
 
   styles = {
@@ -41,35 +41,26 @@ class NewUser extends Component {
         <div style={this.styles.body}>
           <form style={this.styles.form}>
             <div style={this.styles.text} class="form-group">
-              <label for="exampleInputEmail1">User Name</label>
-              <input
-                className="form-control"
-                aria-describedby="emailHelp"
-                placeholder="User Name"
-              />
+              <label for="exampleInputEmail1">Trip Name</label>
+              <input className="form-control" placeholder="Trip name" />
             </div>
             <div style={this.styles.text} class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="exampleInputEmail1">Trip Location</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Enter your destination city"
               />
-              <small className="form-text">
-                Don't worry, you're in good hands. Chances are we get hacked or
-                we sell your email to the highest bidder.
-              </small>
             </div>
             <div style={this.styles.text} className="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="exampleInputPassword1">Start and End Dates</label>
               <input
-                type="password"
+                type="date"
                 className="form-control"
-                placeholder="Password"
+                placeholder="dd/mm/yyyy to dd/mm/yyyy"
               />
             </div>
-            <Link to="/CreateTrip">
+            <Link to="/Cities">
               <button
                 style={this.styles.textSize}
                 type="submit"
@@ -85,4 +76,4 @@ class NewUser extends Component {
   }
 }
 
-export default NewUser;
+export default CreateTrip;

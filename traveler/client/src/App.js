@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn/SignIn";
 import NewUser from "./components/NewUser";
 import Trips from "./components/Trips/Trips";
+import CreateTrip from "./components/CreateTrip";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/SignIn" component={SignIn} />
           <Route exact path="/NewUser" component={NewUser} />
           <Route exact path="/Trips" component={Trips} />
+          <Route exact path="/CreateTrip" component={CreateTrip} />
         </div>
       </Router>
     );
