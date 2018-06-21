@@ -9,10 +9,17 @@ import Hotels from "./Hotels";
 import Row from "./Row";
 import Col from "./col";
 import Restaurant from "./Restaurants";
+// import Trip from "../../../../controllers/tripsController";
 
 class Trips extends Component {
-  state = {};
+  state = {
+    trips:[]
+  };
 
+  componentDidMount() {
+    // Trip
+  }
+  
   trip = {
     destination: 'New York',
     arrival: '8/15/18',
