@@ -9,6 +9,7 @@ import Hotels from "./Hotels";
 import Row from "./Row";
 import Col from "./col";
 import Restaurant from "./Restaurants";
+import axios from "axios";
 // import Trip from "../../../../controllers/tripsController";
 
 class Trips extends Component {
@@ -17,7 +18,13 @@ class Trips extends Component {
   };
 
   componentDidMount() {
-    // Trip
+    axios.get('/api/trips/')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   
   trip = {
