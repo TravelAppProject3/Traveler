@@ -20,7 +20,7 @@ var TripLegSchema = new Schema({
       ref: "Shelter"
     }
   ],
-  activities: [
+  activity: [
     {
       type: Schema.Types.ObjectId,
       ref: "Activity"
