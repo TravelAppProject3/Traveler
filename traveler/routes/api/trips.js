@@ -18,6 +18,7 @@ router.route("/getUserTrips/:userId").get(tripsController.findByUser);
 
 router.route("/addTripLeg/:tripId").post(tripsController.addTripLeg);
 
-router.route("/addShelter/:tripId").post(tripsController.addShelter);
+router.route("/addShelter/:tripLegId").post(tripsController.addShelter);
+router.route("/addActivity/:tripLegId").post(tripsController.addActivity);
 
 module.exports = router;

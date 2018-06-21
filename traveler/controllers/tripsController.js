@@ -46,40 +46,51 @@ module.exports = {
       )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-    // db.Trip.findOneAndUpdate({_id: req.parmas.tripId}, )
   },
   addShelter: function(req, res) {
-    if (db.Shelter.find({ hotelId: req.body.hotelId })) {
-      db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    } else {
-      db.Shelter.create(req.body)
-        .then(dbModel =>
-          db.TripLeg.findOneAndUpdate(
+    db.Shelter.findOne({ hotelId: req.body.hotelId })
+      .then(shelter => {
+        if (shelter !== null) {
+          console.log("Shelter in DB");
+          console.log(shelter);
+          return db.TripLeg.findOneAndUpdate(
             { _id: req.params.tripLegId },
-            { $push: { shelter: dbModel._id } }
-          )
-        )
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }
+            { $push: { shelter: shelter._id } }
+          );
+        } else {
+          console.log("Shelter Not in DB");
+          return db.Shelter.create(req.body).then(dbModel => {
+            return db.TripLeg.findOneAndUpdate(
+              { _id: req.params.tripLegId },
+              { $push: { shelter: dbModel._id } }
+            );
+          });
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   addActivity: function(req, res) {
-    if (db.Activity.find({ activityId: req.body.activityId })) {
-      db.Trip.findOneAndUpdate({ _id: req.params.id }, req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    } else {
-      db.Activity.create(req.body)
-        .then(dbModel =>
-          db.TripLeg.findOneAndUpdate(
+    db.Activity.findOne({ activityId: req.body.activityId })
+      .then(activity => {
+        if (activity !== null) {
+          console.log("Activity in DB");
+          console.log(activity);
+          return db.TripLeg.findOneAndUpdate(
             { _id: req.params.tripLegId },
-            { $push: { activities: dbModel._id } }
-          )
-        )
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }
+            { $push: { activities: activity._id } }
+          );
+        } else {
+          console.log("Activity Not in DB");
+          return db.Activity.create(req.body).then(dbModel => {
+            return db.TripLeg.findOneAndUpdate(
+              { _id: req.params.tripLegId },
+              { $push: { activities: dbModel._id } }
+            );
+          });
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

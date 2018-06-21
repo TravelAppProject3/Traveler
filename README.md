@@ -47,9 +47,8 @@ The project details were of the following:
   - GET - Returns all trips for a user based on userId
 - api/trips/addTripLeg/:tripId
   - POST - Adds the Tripleg to the array in the Trip collection
-
-Not Yet Added
-
+- api/trips/addShelter/:tripLegId
+  - POST - Add a shelter item to the trip leg
 - api/trips/addShelter/:tripLegId
   - POST - Add a shelter item to the trip leg
 - api/trips/addActivity/:tripLegId
