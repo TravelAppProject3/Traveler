@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-var ActivitiesSchema = new Schema({
+var ActivitySchema = new Schema({
   name: {
     type: String,
     required: "Activity Name is required"
@@ -12,6 +12,6 @@ var ActivitiesSchema = new Schema({
   }
 });
 
-var Activities = mongoose.model("Activites", ActivitiesSchema);
+var Activity = mongoose.model("Activity", ActivitySchema);
 
-module.exports = Activities;
+module.exports = Activity;

@@ -78,15 +78,19 @@ module.exports = {
           console.log(activity);
           return db.TripLeg.findOneAndUpdate(
             { _id: req.params.tripLegId },
-            { $push: { activities: activity._id } }
-          );
+            { $push: { activity: activity._id } }
+          )
+            .populate("shelter")
+            .populate("activity");
         } else {
           console.log("Activity Not in DB");
           return db.Activity.create(req.body).then(dbModel => {
             return db.TripLeg.findOneAndUpdate(
               { _id: req.params.tripLegId },
-              { $push: { activities: dbModel._id } }
-            );
+              { $push: { activity: dbModel._id } }
+            )
+              .populate("shelter")
+              .populate("activity");
           });
         }
       })
