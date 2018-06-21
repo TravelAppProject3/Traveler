@@ -6,6 +6,9 @@ var ActivitiesSchema = new Schema({
   name: {
     type: String,
     required: "Activity Name is required"
+  },
+  activityId: {
+    type: String
   }
 });
 
