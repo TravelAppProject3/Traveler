@@ -1,7 +1,6 @@
 {
   "name": "mern",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -38,5 +37,6 @@
     "/auth/google": {
       "target": "http://localhost:3001"
     }
-  }
+  },
+  "description": ""
 }
