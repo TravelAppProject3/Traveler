@@ -11,6 +11,7 @@ const db = require("./models");
 const authRoutes = require("./routes/auth-routes");
 const profileRoutes = require("./routes/profile-routes");
 const routes = require("./routes");
+const session = require("express-session");
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,10 @@ app.use(
 );
 
 //initialize passport
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 

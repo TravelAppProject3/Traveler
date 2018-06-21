@@ -3,8 +3,21 @@ const router = require("express").Router();
 const passport = require("passport");
 
 //Auth login
-router.get("/login", (req, res) => {
-  res.render("login", { user: req.user });
+// router.get("/login", (req, res) => {
+//   res.render("login", { user: req.user });
+// });
+
+// this route is just used to get the user basic info
+router.get("/user", (req, res, next) => {
+  console.log("===== user!!======");
+  console.log(req.body);
+  console.log(req.user);
+  if (req.user) {
+    return res.json({ user: req.user });
+  } else {
+    console.log("no user");
+    return res.json({ user: null });
+  }
 });
 
 //auth logout
