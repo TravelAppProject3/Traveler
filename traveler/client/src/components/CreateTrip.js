@@ -53,7 +53,7 @@ class CreateTrip extends Component {
               />
             </div>
             <div style={this.styles.text} className="form-group">
-              <label for="exampleInputPassword1">Start and End Dates</label>
+              <label for="exampleInputPassword1">Enter Your Arrival Date</label>
               <input
                 type="date"
                 className="form-control"

@@ -42,7 +42,7 @@ router.get(
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   //access the user on this req object
   // res.send(req.user);
-  res.redirect("/Navtabs");
+  res.redirect("/CreateTrip");
 });
 
 //attached all the routes to the instance of the router --> exports with all the handlers attached to it.
