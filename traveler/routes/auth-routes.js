@@ -2,7 +2,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-//Auth login
+// Auth login
 // router.get("/login", (req, res) => {
 //   res.render("login", { user: req.user });
 // });
