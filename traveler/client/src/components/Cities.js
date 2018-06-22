@@ -12,6 +12,7 @@ import CityJumbo from "./CityJumbo";
 import Hotels from "./Hotels";
 import Navtabs from "./Navtabs";
 import Sights from "./Sights";
+import Nightlife from "./Nightlife";
 
 class Cities extends Component {
   state = {
@@ -23,6 +24,8 @@ class Cities extends Component {
     museumObj: [],
     landmarkObj: [],
     activeObj: [],
+    restaurantObj: [],
+    eventObj: [],
     hotelClick: false,
     sightsClick: false,
     drinksClick: false
@@ -65,7 +68,27 @@ class Cities extends Component {
       )
       .then(console.log(this.state))
       .catch(err => console.log("error:  " + err));
+    this.setState({
+      sightsClick: false,
+      drinksClick: false,
+      hotelClick: false
+    });
   }
+
+  getDrinks = (lat, lon) => {
+    this.setState({ sightsClick: false, hotelClick: false, drinksClick: true });
+
+    restaurant(lat, lon)
+      .then(data => {
+        this.setState({ restaurantObj: data.data.results });
+        getEvents(lat, lon)
+          .then(data => {
+            this.setState({ eventObj: data.data.events.event });
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  };
 
   getSights = () => {
     console.log("click seen");
@@ -75,13 +98,6 @@ class Cities extends Component {
     const lat = this.state.lat;
     const lon = this.state.lon;
     this.setState({ sightsClick: true, hotelClick: false, drinksClick: false });
-
-    console.log(
-      "Hotels click:  " +
-        this.state.hotelClick +
-        "\nSights Click:  " +
-        this.state.sightsClick
-    );
 
     museum(lat, lon)
       .then(data => {
@@ -118,17 +134,11 @@ class Cities extends Component {
     );
 
     getHotels(lat, lon)
-
-      .then(data =>
-        console.log(data)
-        // this.setState({ hotelObj: data.data.results })
-        )
-      .then(console.log(this.state.hotelObj))
+      .then(data => this.setState({ hotelObj: data.data.results }))
       .catch(err => console.log(err));
   };
 
   renderSights = (museumObj, landmarkObj, activeObj) => {
-    // console.log("Museum Obj:  " + JSON.stringify(museumObj));
     return (
       <Sights museum={museumObj} landmark={landmarkObj} active={activeObj} />
     );
@@ -204,6 +214,7 @@ class Cities extends Component {
           <div
             className="card text-white bg-dark mb-3 col-md-3 col-lg-3 col-sm-12 drinkCard"
             style={this.styles.card}
+            onClick={() => this.getDrinks(this.state.lat, this.state.lon)}
           >
             <div className="card-body">
               <h3 className="card-title text-center">Eat, Drink, Do</h3>
@@ -212,9 +223,13 @@ class Cities extends Component {
             </div>
           </div>
         </div>
+
+        {/* Where Hotels gets rendered */}
         <div className="hotelsDiv">
           {this.state.hotelClick ? this.renderHotels(this.state.hotelObj) : " "}
         </div>
+
+        {/* Where Sights gets rendered */}
         <div className="sightsDiv">
           {this.state.sightsClick ? (
             <Sights
@@ -225,8 +240,18 @@ class Cities extends Component {
           ) : (
             " "
           )}
+          {/* Where Drinks gets rendered */}
         </div>
-        {/* <div className="drinksDiv">{this.renderDrinks}</div> */}
+        <div className="drinksDiv">
+          {this.state.drinksClick ? (
+            <Nightlife
+              restaurant={this.state.restaurantObj}
+              events={this.state.eventObj}
+            />
+          ) : (
+            " "
+          )}
+        </div>
       </div>
     );
   }

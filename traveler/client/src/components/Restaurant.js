@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 
 const styles = {
   card: {
@@ -21,48 +20,54 @@ const styles = {
   }
 };
 
-const Active = props => (
+const Restaurant = props => (
   <div className="container">
     <div className="row">
       <div
         className="card border-dark col-md-12 col-sm-12 col-xs-12"
         style={styles.card}
       >
-        <div className="row justify-content-center">
+        <div className="row">
+          <img
+            src={props.icon}
+            alt="restaurantIcon"
+            style={styles.icon}
+            className="col-md-1 col-sm-2 col-xs-2"
+          />
           <div className="card-header col-md-11 col-sm-10 col-xs-10">
             <h2>{props.name}</h2>
             <h4>{props.address}</h4>
-            <h4>
-              {props.city}, {props.state} {props.zip}
-            </h4>
           </div>
         </div>
         <div className="card-body text-dark">
           <h3 className="card-title" style={styles.rating}>
-            Start Date: {moment(props.startDate).format("MMMM Do YYYY, h:mm a")}.
-            End Date: {moment(props.endDate).format("MMMM Do YYYY, h:mm a")}
+            Rating: {props.rating ? props.rating : "None Provided"}
           </h3>
-          <h3 className="card-text text-left" style={styles.rating}>
-            Tickets Remaining: {props.tktsRemain}. Capacity: {props.capacity}.
-            Sales Status:{" "}
-            {props.saleStatus == "registration-open"
-              ? "Registration Open"
-              : props.saleStatus == "registration-closed"
-                ? "Registration Closed"
-                : "Nothing to Report"}
-          </h3>
+          <p className="card-text text-left" style={styles.rating}>
+            This is where we'll display those in our DB who have stayed here/are
+            staying here
+          </p>
         </div>
         <button type="button" className="btn btn-dark addBtn">
           Add to My Path
         </button>
-        {props.description !== "No Description Provided" ? (
-          <div dangerouslySetInnerHTML={{ __html: props.description }} />
+        {props.photo ? (
+          <a href={props.photo} target="_blank" alt="hotelMap">
+            <button
+              type="button"
+              href={props.photo}
+              target="_blank"
+              className="btn btn-dark mapBtn"
+            >
+              View on Google Maps
+            </button>
+          </a>
         ) : (
-          ""
+          " "
         )}
       </div>
     </div>
   </div>
 );
 
-export default Active;
+export default Restaurant;
