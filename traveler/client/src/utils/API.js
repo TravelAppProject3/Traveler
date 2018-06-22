@@ -2,6 +2,13 @@ import axios from "axios";
 import moment from "moment";
 
 const getEvents = (lat, lon) => {
+  console.log(
+    "https://cors-anywhere.herokuapp.com/http://api.eventful.com/json/events/search?app_key=RWkdz5Vnd4DH3VfW&keywords=music&date=2018061400-2018080100'&where=" +
+      lat +
+      "," +
+      lon +
+      "&within=5"
+  );
   return axios.get(
     "https://cors-anywhere.herokuapp.com/http://api.eventful.com/json/events/search?app_key=RWkdz5Vnd4DH3VfW&keywords=music&date=2018061400-2018080100'&where=" +
       lat +
@@ -12,6 +19,13 @@ const getEvents = (lat, lon) => {
 };
 
 const restaurant = (lat, lon) => {
+  console.log(
+    "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+      lat +
+      "," +
+      lon +
+      "&radius=1500&type=restaurant&key=AIzaSyCHRamGa2MG859CJqoVNeXCJCZ4iKapiZs"
+  );
   return axios.get(
     "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
       lat +
@@ -52,15 +66,6 @@ const landmarks = (lat, lon) => {
 };
 
 const active = (lat, lon) => {
-  console.log(
-    "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?start_date=" +
-      moment().format("YYYY-MM-DD") +
-      "&lat_lon=" +
-      lat +
-      "," +
-      lon +
-      "&api_key=femervwexgb28gepuw67s3x4"
-  );
   return axios.get(
     "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?start_date=" +
       moment().format("YYYY-MM-DD") +

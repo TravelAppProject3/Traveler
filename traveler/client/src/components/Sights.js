@@ -4,6 +4,7 @@ import Landmarks from "./Landmarks";
 import Active from "./Active";
 
 const Sights = props => {
+  console.log(props);
   const styles = {
     tabs: {
       fontSize: 20,
@@ -63,7 +64,6 @@ const Sights = props => {
         {props.active.map(act => {
           //   console.log(act.assetDescriptions[0]);
           //   console.log(act.assetDescriptions[0]);
-
           let href;
           act.assetDescriptions[0]
             ? (href = act.assetDescriptions[0].description)
