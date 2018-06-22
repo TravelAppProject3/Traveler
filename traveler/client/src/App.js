@@ -43,11 +43,13 @@ class App extends Component {
   }
   componentDidMount() {
     axios.get("/auth/user").then(response => {
-      console.log(response.data.user._id);
-      const userId = response.data.user._id;
-      console.log(userId);
       if (!!response.data.user) {
         console.log("THERE IS A USER");
+        console.log(response.data.user._id);
+        const userId = response.data.user._id;
+        console.log(userId);
+        //This sets the user's mongo id to local storage
+        localStorage.setItem("userId", response.data.user._id);
         this.setState({
           loggedIn: true,
           user: response.data.user
