@@ -18,7 +18,7 @@ class Trips extends Component {
   };
 
   componentDidMount() {
-    axios.get('/api/trips/')
+    axios.get('/api/trips/getUserTrips/5b29831eeadbef2f48cd583b')
     .then(function (response) {
       console.log(response);
     })
