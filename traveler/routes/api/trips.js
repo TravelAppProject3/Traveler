@@ -13,11 +13,8 @@ router
   .delete(tripsController.remove);
 
 router.route("/new").post(tripsController.create);
-
 router.route("/getUserTrips/:userId").get(tripsController.findByUser);
-
 router.route("/addTripLeg/:tripId").post(tripsController.addTripLeg);
-
 router.route("/addShelter/:tripLegId").post(tripsController.addShelter);
 router.route("/addActivity/:tripLegId").post(tripsController.addActivity);
 

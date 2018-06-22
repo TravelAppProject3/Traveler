@@ -7,6 +7,12 @@ var ActivitySchema = new Schema({
     type: String,
     required: "Activity Name is required"
   },
+  address: {
+    type: String
+  },
+  restaurantBoolean: {
+    type: Boolean
+  },
   activityId: {
     type: String
   }

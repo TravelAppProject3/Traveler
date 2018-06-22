@@ -10,54 +10,76 @@ import Row from "./Row";
 import Col from "./col";
 import Restaurant from "./Restaurants";
 import axios from "axios";
+let userId = localStorage.getItem("userId");
+
 // import Trip from "../../../../controllers/tripsController";
 
 class Trips extends Component {
   state = {
-    trips:[]
+    trips: []
   };
 
   componentDidMount() {
-    axios.get('/api/trips/getUserTrips/5b29831eeadbef2f48cd583b')
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    // axios.get("/auth/user").then(response => {
+    //   console.log(response.data.user._id);
+    //   userId = response.data.user._id;
+    //   console.log(userId);
+    //   if (!!response.data.user) {
+    //     console.log("THERE IS A USER");
+    //     this.setState({
+    //       loggedIn: true,
+    //       user: response.data.user
+    //     });
+    //   } else {
+    //     this.setState({
+    //       loggedIn: false,
+    //       user: null
+    //     });
+    //   }
+    // });
+    console.log("User Id: " + userId);
+    axios
+      .get("/api/trips/getUserTrips/" + userId)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
   }
-  
+
   trip = {
-    destination: 'New York',
-    arrival: '8/15/18',
-    img: 'http://www.camp-campbell.com/wp-content/uploads/2014/09/o-NEW-YORK.jpg',
+    destination: "New York",
+    arrival: "8/15/18",
+    img:
+      "http://www.camp-campbell.com/wp-content/uploads/2014/09/o-NEW-YORK.jpg",
     events: [
       {
-        name: 'Central Park',
-        date: '8/18/18 6pm',
-        location: 'Central Park, New York, NY',
+        name: "Central Park",
+        date: "8/18/18 6pm",
+        location: "Central Park, New York, NY"
       },
       {
-        name: 'Central Park',
-        date: '8/18/18 6pm',
-        location: 'Central Park, New York, NY',
+        name: "Central Park",
+        date: "8/18/18 6pm",
+        location: "Central Park, New York, NY"
       },
       {
-        name: 'Central Park',
-        date: '8/18/18 6pm',
-        location: 'Central Park, New York, NY',
+        name: "Central Park",
+        date: "8/18/18 6pm",
+        location: "Central Park, New York, NY"
       }
     ],
     hotels: [
       {
-        name: 'Park Central Hotel',
-        date: '08/15/18 6pm',
-        location: '870 7th Ave, New York, NY 10019'
+        name: "Park Central Hotel",
+        date: "08/15/18 6pm",
+        location: "870 7th Ave, New York, NY 10019"
       },
       {
-        name: 'Park Central Hotel',
-        date: '08/15/18 6pm',
-        location: '870 7th Ave, New York, NY 10019'
+        name: "Park Central Hotel",
+        date: "08/15/18 6pm",
+        location: "870 7th Ave, New York, NY 10019"
       }
     ],
     restaurants: [
@@ -72,7 +94,7 @@ class Trips extends Component {
         location: "200 W 44th St, New York, NY 10036"
       }
     ]
-  }
+  };
 
   styles = {
     border: {
@@ -90,45 +112,43 @@ class Trips extends Component {
         <div className="container">
           <div style={this.styles.border}>
             <Destination
-            name={this.trip.destination}
-            arrival={this.trip.arrival}
+              name={this.trip.destination}
+              arrival={this.trip.arrival}
             />
-            <Img
-            href={this.trip.img}
-            />
+            <Img href={this.trip.img} />
             <Headers />
             <Row>
               <Col>
-              {this.trip.events.map(event => {
-                return(
-                <Events 
-                  name={event.name}
-                  date={event.date}
-                  location={event.location}
-
-                />)
+                {this.trip.events.map(event => {
+                  return (
+                    <Events
+                      name={event.name}
+                      date={event.date}
+                      location={event.location}
+                    />
+                  );
                 })}
               </Col>
               <Col>
-              {this.trip.hotels.map(hotel => {
-                return(
-                <Hotels 
-                  name={hotel.name}
-                  date={hotel.date}
-                  location={hotel.location}
-
-                />)
+                {this.trip.hotels.map(hotel => {
+                  return (
+                    <Hotels
+                      name={hotel.name}
+                      date={hotel.date}
+                      location={hotel.location}
+                    />
+                  );
                 })}
               </Col>
               <Col>
-              {this.trip.restaurants.map(restaurant => {
-                return(
-                <Restaurant 
-                  name={restaurant.name}
-                  date={restaurant.date}
-                  location={restaurant.location}
-
-                />)
+                {this.trip.restaurants.map(restaurant => {
+                  return (
+                    <Restaurant
+                      name={restaurant.name}
+                      date={restaurant.date}
+                      location={restaurant.location}
+                    />
+                  );
                 })}
               </Col>
             </Row>
