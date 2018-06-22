@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Cities from "./components/Cities";
 import Home from "./components/Home";
@@ -11,10 +11,26 @@ import Navtabs from "./components/Navtabs";
 import Header from "./components/Header";
 import "./App.css";
 
+const DisplayLinks = props => {
+  if (props.loggedIn) {
+    return (
+      <nav className="navbar">
+        <ul className="nav">
+          <li>
+            <Link to="#" className="nav-link" onClick={props._logout}>
+              Logout
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+};
+
 class App extends Component {
-  state = {
-    cities: ["Raleigh", "Paris", "Amsterdam"]
-  };
+  // state = {
+  //   cities: ["Raleigh", "Paris", "Amsterdam"]
+  // };
 
   constructor() {
     super();
@@ -27,7 +43,9 @@ class App extends Component {
   }
   componentDidMount() {
     axios.get("/auth/user").then(response => {
-      console.log(response.data);
+      console.log(response.data.user._id);
+      const userId = response.data.user._id;
+      console.log(userId);
       if (!!response.data.user) {
         console.log("THERE IS A USER");
         this.setState({
