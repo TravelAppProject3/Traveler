@@ -29,7 +29,7 @@ class Headers extends Component {
             <div className="row">
                 <ul style={styles.ul} className="col-md-4">
                     <li style={styles.liTitle}>
-                    <span style={styles.span} className="fa fa-ticket" />Events
+                    <span style={styles.span} className="fa fa-ticket" />Activities
                     </li>
                 </ul>
                 <ul style={styles.ul} className="col-md-4">
