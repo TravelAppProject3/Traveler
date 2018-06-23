@@ -72,7 +72,7 @@ class SignIn extends Component {
                     placeholder="Password"
                     required
                   />
-                  <Link to="/CreateTrip">
+                  <Link to="/Profile">
                     {" "}
                     <input
                       style={styles.textSize}

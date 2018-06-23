@@ -9,6 +9,7 @@ import Trips from "./components/Trips/Trips";
 import CreateTrip from "./components/CreateTrip";
 import Navtabs from "./components/Navtabs";
 import Header from "./components/Header";
+import Profile from "./components/Profile";
 import "./App.css";
 
 const DisplayLinks = props => {
@@ -108,6 +109,7 @@ class App extends Component {
           <Route exact path="/Trips" component={Trips} />
           <Route exact path="/CreateTrip" component={CreateTrip} />
           <Route exact path="/Navtabs" component={Navtabs} />
+          <Route exact path="/Profile" component={Profile} />
         </div>
       </Router>
     );
