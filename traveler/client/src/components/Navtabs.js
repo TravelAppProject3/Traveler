@@ -24,6 +24,13 @@ const styles = {
   },
   logo: {
     fontSize: "30px"
+  },
+  dropDown: {
+    fontSize: "20px",
+    fontWeight: "bold"
+  },
+  dropNav: {
+    marginTop: "5px"
   }
 };
 
@@ -61,19 +68,21 @@ const Navtabs = () => (
             </span>
           </Link>
         </li>
-        <li className="nav-item active" style={styles.color}>
-          <Link to="/CreateTrip" style={styles.color}>
-            <span className="nav-link" style={styles.color}>
-              Create Trip <span className="sr-only">(current)</span>
-            </span>
-          </Link>
+
+        <li style={styles.dropNav} class="nav-item dropdown">
+          <a style={styles.color} class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Trips
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <Link to="/Trips"><a style={styles.dropDown} class="dropdown-item" href="#">Trip 1</a></Link>
+            <Link to="/Trips"><a style={styles.dropDown} class="dropdown-item" href="#">Trip 2</a></Link>
+            <div class="dropdown-divider"></div>
+            <Link to="/CreateTrip"><a style={styles.dropDown} class="dropdown-item" href="#">Create A Trip</a></Link>
+          </div>
         </li>
+
         <li className="nav-item dropdown">
-          <Link to="/Trips" style={styles.color}>
-            <span className="nav-link dropdown-toggle" style={styles.color}>
-              My Trips
-            </span>
-          </Link>
+          
           <div
             className="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink"
