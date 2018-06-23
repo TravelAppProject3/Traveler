@@ -102,7 +102,7 @@ class App extends Component {
           <Header user={this.state.user} />
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
-          <Route exact path="/Cities" component={Cities} />
+          <Route exact path="/Cities/:city" component={Cities} />
           <Route exact path="/SignIn" component={SignIn} />
           <Route exact path="/NewUser" component={NewUser} />
           <Route exact path="/Trips" component={Trips} />
