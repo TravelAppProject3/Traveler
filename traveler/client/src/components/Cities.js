@@ -17,7 +17,7 @@ import Weather from "./Weather";
 
 class Cities extends Component {
   state = {
-    city: "Boston",
+    city: "",
     cityPic: "",
     lat: "",
     lon: "",
@@ -63,18 +63,22 @@ class Cities extends Component {
   };
 
   componentDidMount() {
-    const city = this.state.city;
+    const city = this.props.match.params.city;
     weather(city)
-      .then(data => this.getWeather(data.data))
       .then(data =>
         this.setState({ lat: data.data.coord.lat, lon: data.data.coord.lon })
       )
+      // .then(data => this.getWeather(data.data))
       .catch(err => console.log("error:  " + err));
     this.setState({
+      city: city,
       sightsClick: false,
       drinksClick: false,
       hotelClick: false
     });
+    weather(city)
+      .then(data => this.getWeather(data.data))
+      .catch(err => console.log("Weather error:  " + err));
   }
 
   getWeather = weatherData => {
@@ -148,6 +152,7 @@ class Cities extends Component {
     console.log("click worked");
     const lat = this.state.lat;
     const lon = this.state.lon;
+    console.log("Lat:  " + lat + "  Lon:  " + lon);
     this.setState({ hotelClick: true, sightsClick: false, drinksClick: false });
     console.log(
       "Hotels click:  " +
@@ -197,7 +202,7 @@ class Cities extends Component {
     return (
       <div>
         <Navtabs />
-        <CityJumbo city={this.state.city} />
+        <CityJumbo city={this.props.match.params.city} />
         {this.state.weather !== [] ? (
           <Weather weather={this.state.weather} />
         ) : (
