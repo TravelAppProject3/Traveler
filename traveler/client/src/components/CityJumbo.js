@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import cityPicApi from "../utils/cityPicApi";
+import Weather from "./Weather";
 
 class CityJumbo extends Component {
   state = {
