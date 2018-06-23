@@ -13,10 +13,11 @@ import Hotels from "./Hotels";
 import Navtabs from "./Navtabs";
 import Sights from "./Sights";
 import Nightlife from "./Nightlife";
+import Weather from "./Weather";
 
 class Cities extends Component {
   state = {
-    city: "Raleigh",
+    city: "",
     cityPic: "",
     lat: "",
     lon: "",
@@ -28,7 +29,8 @@ class Cities extends Component {
     eventObj: [],
     hotelClick: false,
     sightsClick: false,
-    drinksClick: false
+    drinksClick: false,
+    weather: []
   };
 
   styles = {
@@ -61,19 +63,44 @@ class Cities extends Component {
   };
 
   componentDidMount() {
-    const city = this.state.city;
+    const city = this.props.match.params.city;
     weather(city)
       .then(data =>
         this.setState({ lat: data.data.coord.lat, lon: data.data.coord.lon })
       )
-      .then(console.log(this.state))
+      // .then(data => this.getWeather(data.data))
       .catch(err => console.log("error:  " + err));
     this.setState({
+      city: city,
       sightsClick: false,
       drinksClick: false,
       hotelClick: false
     });
+    weather(city)
+      .then(data => this.getWeather(data.data))
+      .catch(err => console.log("Weather error:  " + err));
   }
+
+  getWeather = weatherData => {
+    console.log(
+      "Weather:  " +
+        JSON.stringify(weatherData.weather[0].main) +
+        "  Temperatue:  " +
+        JSON.stringify(weatherData.main.temp)
+    );
+
+    const conditions = weatherData.weather[0].main;
+    const kelvin = weatherData.main.temp;
+    const icon = weatherData.weather[0].icon;
+    const wxIcon = "http://openweathermap.org/img/w/" + icon + ".png";
+
+    const temp = Math.floor(kelvin * 1.8 - 459.67);
+    console.log(wxIcon);
+
+    this.setState({
+      weather: { conditions: conditions, temp: temp, icon: wxIcon }
+    });
+  };
 
   getDrinks = (lat, lon) => {
     this.setState({ sightsClick: false, hotelClick: false, drinksClick: true });
@@ -125,6 +152,7 @@ class Cities extends Component {
     console.log("click worked");
     const lat = this.state.lat;
     const lon = this.state.lon;
+    console.log("Lat:  " + lat + "  Lon:  " + lon);
     this.setState({ hotelClick: true, sightsClick: false, drinksClick: false });
     console.log(
       "Hotels click:  " +
@@ -174,7 +202,12 @@ class Cities extends Component {
     return (
       <div>
         <Navtabs />
-        <CityJumbo city={this.state.city} />
+        <CityJumbo city={this.props.match.params.city} />
+        {this.state.weather !== [] ? (
+          <Weather weather={this.state.weather} />
+        ) : (
+          ""
+        )}
         <h2 style={this.styles.center}> Click a card below to get started! </h2>
         <div className="row justify-content-center">
           {/* Hotel Card */}
