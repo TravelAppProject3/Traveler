@@ -43,13 +43,19 @@ class Profile extends Component {
         float: "left"
     },
     container: {
-        paddingTop: "100px",
+        paddingTop: "150px",
         // border: "solid 1px black"
         paddingLeft: "200px"
         // textAlign: "center"
     },
     span: {
-        marginRight: "40px"
+        marginRight: "20px"
+    },
+    arrow: {
+      fontSize: "25px"
+    },
+    ul: {
+      listStyleType: "none"
     }
   };
 
@@ -64,12 +70,19 @@ class Profile extends Component {
                     <img style={this.styles.img} src="https://www.communities.bendigobank.com.au/__data/assets/image/0018/12726/Default-Profile.png"></img>
                 </div>
                 <div style={this.styles.text} className="col-md-8">
-                
+                  <div>
                     <span style={this.styles.span}>User:</span> Richard Holme
-                
-                </div>
-                <div style={this.styles.text} className="col-md-8">
-                    <span style={this.styles.span}>Email:</span> rchrd@email.com
+                  </div>
+                  <div style={this.styles.text}>
+                      <span style={this.styles.span}>Email:</span> rchrd@email.com
+                  </div>
+                  <div style={this.styles.text}>
+                      <span>Your Trips</span> 
+                      <ul style={this.styles.ul}>
+                        <li><span style={this.styles.arrow} className="fa fa-angle-right"></span> Trip 1</li>
+                        <li><span style={this.styles.arrow} className="fa fa-angle-right"></span> Trip 1</li>
+                      </ul>
+                  </div>
                 </div>
             </div>
           </div>
