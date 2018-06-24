@@ -22,7 +22,6 @@ const styles = {
     // top: "130px",
     right: "50px",
     bottom: "53px"
-    // marginBottom: "50px"
   }
 };
 

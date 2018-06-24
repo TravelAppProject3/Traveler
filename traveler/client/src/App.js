@@ -29,10 +29,6 @@ const DisplayLinks = props => {
 };
 
 class App extends Component {
-  // state = {
-  //   cities: ["Raleigh", "Paris", "Amsterdam"]
-  // };
-
   constructor() {
     super();
     this.state = {
@@ -49,7 +45,7 @@ class App extends Component {
         console.log(response.data.user._id);
         const userId = response.data.user._id;
         console.log(userId);
-        //This sets the user's mongo id to local storage
+        // This sets the user's mongo id to local storage
         localStorage.setItem("userId", response.data.user._id);
         this.setState({
           loggedIn: true,
