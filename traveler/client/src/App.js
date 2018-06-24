@@ -9,6 +9,7 @@ import Trips from "./components/Trips/Trips";
 import CreateTrip from "./components/CreateTrip";
 import Navtabs from "./components/Navtabs";
 import Header from "./components/Header";
+import Profile from "./components/Profile";
 import "./App.css";
 
 const DisplayLinks = props => {
@@ -98,12 +99,13 @@ class App extends Component {
           <Header user={this.state.user} />
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
-          <Route exact path="/Cities" component={Cities} />
+          <Route exact path="/Cities/:city" component={Cities} />
           <Route exact path="/SignIn" component={SignIn} />
           <Route exact path="/NewUser" component={NewUser} />
           <Route exact path="/Trips" component={Trips} />
           <Route exact path="/CreateTrip" component={CreateTrip} />
           <Route exact path="/Navtabs" component={Navtabs} />
+          <Route exact path="/Profile" component={Profile} />
         </div>
       </Router>
     );
