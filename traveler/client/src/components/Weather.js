@@ -2,6 +2,7 @@ import React from "react";
 
 const Weather = props => {
   const styles = {
+
     weather: {
       position: "relative",
       left: 1250,

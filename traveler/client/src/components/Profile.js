@@ -60,7 +60,7 @@ class Profile extends Component {
         <div style={this.styles.body}>
           <div style={this.styles.container} className="container">
             <div id="row">
-                <div class="col-md-4">
+                <div className="col-md-4">
                     <img style={this.styles.img} src="https://www.communities.bendigobank.com.au/__data/assets/image/0018/12726/Default-Profile.png"></img>
                 </div>
                 <div style={this.styles.text} className="col-md-8">
