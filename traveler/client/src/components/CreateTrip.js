@@ -57,7 +57,7 @@ class CreateTrip extends Component {
               <input
                 type="date"
                 className="form-control"
-                placeholder="dd/mm/yyyy to dd/mm/yyyy"
+                placeholder="dd/mm/yyyy"
               />
             </div>
             <Link to="/Cities">

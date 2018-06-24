@@ -1,8 +1,22 @@
 import React from "react";
-// TODO - add proptypes
 
 const Header = props => {
   let Greeting;
+  let styles;
+
+  styles = {
+    formatLogin: {
+      color: "white",
+      backgroundColor: "black",
+      paddingRight: "70px",
+      lineHeight: "20px",
+      margin: "0px",
+      height: "20px",
+      textAlign: "right",
+      width: "auto"
+    }
+  };
+
   if (props.user === null) {
     Greeting = <p>Hello guest</p>;
   } else if (props.user.username) {
@@ -18,7 +32,11 @@ const Header = props => {
       </p>
     );
   }
-  return <div className="Header">{Greeting}</div>;
+  return (
+    <div style={styles.formatLogin} className="Header">
+      {Greeting}
+    </div>
+  );
 };
 
 export default Header;
