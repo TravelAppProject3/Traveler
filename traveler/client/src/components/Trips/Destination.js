@@ -17,10 +17,12 @@ const styles = {
     color: "white",
     background: "black",
     borderRadius: "5px",
-    float: "left",
-    position: "absolute",
-    top: "70px",
-    right: "50px"
+    float: "right",
+    position: "relative",
+    // top: "130px",
+    right: "50px",
+    bottom: "53px"
+    // marginBottom: "50px"
   }
 };
 
@@ -32,7 +34,7 @@ const Destination = props => {
       </p>
       <Link to={"/Cities/" + props.name}>
         <button style={styles.profileBtn}>
-          <span className="fa fa-user" />
+          <span className="fa fa-pencil" /> Customize Your Trip
         </button>
       </Link>
     </div>
