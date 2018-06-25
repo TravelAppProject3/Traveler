@@ -10,7 +10,7 @@ const Header = props => {
       backgroundColor: "black",
       paddingRight: "70px",
       lineHeight: "20px",
-      margin: "0px",
+      marginTop: "0px",
       height: "20px",
       textAlign: "right",
       width: "auto"

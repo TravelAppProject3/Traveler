@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
 
-
 const styles = {
   root: {
     backgroundImage:
@@ -44,17 +43,13 @@ const styles = {
     marginLeft: "15px",
     cursor: "pointer"
   }
-  
 };
 
 class Navtabs extends Component {
+  componentDidMount() {}
 
-  componentDidMount () {
-    
-  }
-
-  render(){
-    return(
+  render() {
+    return (
       <nav
         style={styles.height}
         className="navbar navbar-expand-lg navbar-dark bg-dark"
@@ -90,19 +85,41 @@ class Navtabs extends Component {
             </li>
 
             <li style={styles.dropNav} className="nav-item dropdown">
-              <a style={styles.color} className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a
+                style={styles.color}
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 My Trips
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link to="/Trips"><a style={styles.dropDown} className="dropdown-item" href="#">Trip 1</a></Link>
-                <Link to="/Trips"><a style={styles.dropDown} className="dropdown-item" href="#">Trip 2</a></Link>
-                <div className="dropdown-divider"></div>
-                <a a style={styles.popover} data-container="body" data-toggle="popover" data-placement="left" 
-                id="createTrip"
-                data-html="true"
-                // data-trigger="focus"
-                // style={styles.button}
-                data-content="
+                <Link to="/Trips">
+                  <a style={styles.dropDown} className="dropdown-item" href="#">
+                    Trip 1
+                  </a>
+                </Link>
+                <Link to="/Trips">
+                  <a style={styles.dropDown} className="dropdown-item" href="#">
+                    Trip 2
+                  </a>
+                </Link>
+                <div className="dropdown-divider" />
+                <a
+                  a
+                  style={styles.popover}
+                  data-container="body"
+                  data-toggle="popover"
+                  data-placement="left"
+                  id="createTrip"
+                  data-html="true"
+                  // data-trigger="focus"
+                  // style={styles.button}
+                  data-content="
                 <form>
                   <div className='form-group'>
                     <label for='exampleInputEmail1'>Trip Name</label>
@@ -113,11 +130,11 @@ class Navtabs extends Component {
                       <input className='form-control' id='date' placeholder='Start Date'></input>
                   </div>
                   <button style='opacity: 12; color: white;' type='submit' class='btn btn-dark'>Submit</button>   
-                </form>">
-                Create A Trip
+                </form>"
+                >
+                  Create A Trip
                 </a>
               </div>
-              
             </li>
 
             {/* <li className="nav-item dropdown">
@@ -139,8 +156,8 @@ class Navtabs extends Component {
           </ul>
         </div>
       </nav>
-    )
+    );
   }
-};
+}
 
 export default Navtabs;
