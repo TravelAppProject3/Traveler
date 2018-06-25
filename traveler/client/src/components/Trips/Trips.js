@@ -10,6 +10,7 @@ import Row from "./Row";
 import Col from "./col";
 import Restaurant from "./Restaurants";
 import axios from "axios";
+import TripHeader from "./TripHeader"
 let userId = localStorage.getItem("userId");
 
 // import Trip from "../../../../controllers/tripsController";
@@ -49,6 +50,7 @@ class Trips extends Component {
   }
 
   trip = {
+    trip: "U.S. 2019",
     destination: "New York",
     arrival: "8/15/18",
     img:
@@ -110,6 +112,9 @@ class Trips extends Component {
         <Navtabs />
 
         <div className="container">
+          <TripHeader
+            name={this.trip.trip}
+          />
           <div style={this.styles.border}>
             <Destination
               name={this.trip.destination}
