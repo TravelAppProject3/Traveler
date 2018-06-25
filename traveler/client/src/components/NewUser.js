@@ -69,7 +69,7 @@ class NewUser extends Component {
                 placeholder="Password"
               />
             </div>
-            <Link to="/CreateTrip">
+            <Link to="/Profile">
               <button
                 style={this.styles.textSize}
                 type="submit"

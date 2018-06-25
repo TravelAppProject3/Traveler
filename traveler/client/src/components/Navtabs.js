@@ -62,7 +62,7 @@ const Navtabs = () => (
     >
       <ul className="navbar-nav" style={styles.color}>
         <li className="nav-item active" style={styles.color}>
-          <Link to="/Cities" style={styles.color}>
+          <Link to="/Profile" style={styles.color}>
             <span className="nav-link" style={styles.color}>
               My Profile <span className="sr-only">(current)</span>
             </span>
@@ -87,7 +87,7 @@ const Navtabs = () => (
             className="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink"
           >
-            <Link to="/Cities" style={styles.color}>
+            <Link to="/Profile" style={styles.color}>
               <a className="dropdown-item" href="#">
                 My Profile
               </a>
