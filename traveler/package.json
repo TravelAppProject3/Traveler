@@ -39,6 +39,10 @@
     "react-simple-popover": "^0.2.4",
     "react-scripts": "1.1.1"
   },
+  "engines": {
+    "npm": "5.7.1",
+    "node": "9.5.0"
+  },
   "proxy": {
     "/auth": {
       "target": "http://localhost:3001"
