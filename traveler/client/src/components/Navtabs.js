@@ -1,6 +1,11 @@
 // import React from "react";
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
+import axios from "axios";
+import {OverlayTrigger, Popover} from "react-bootstrap";
+import { InputTrip, FormBtn } from "./Form";
+let userId = localStorage.getItem("userId");
+
 
 const styles = {
   root: {
@@ -17,7 +22,7 @@ const styles = {
     color: "white",
     textDecoration: "none",
     float: "right",
-    marginRight: "10px"
+    // marginRight: "10px"
   },
   height: {
     padding: "15px",
@@ -35,18 +40,69 @@ const styles = {
   dropNav: {
     marginTop: "5px"
   },
-  popover: {
-    fontSize: "20px",
-    fontWeight: "bold",
-    textDecoration: "none",
-    color: "black",
-    marginLeft: "15px",
+  newTrip: {
+    marginTop: "8px",
+    // marginLeft: "-8px"
+    marginRight: "10px",
+    marginLeft: "10px",
     cursor: "pointer"
   }
 };
 
+const popoverClick = (
+  <Popover id="popover-trigger-click" title="">
+    <form>
+              <InputTrip
+                // value={this.state.title}
+                // onChange={this.handleInputChange}
+                // name="title"
+                // placeholder="Title (required)"
+              />
+              <FormBtn
+                // disabled={!(this.state.author && this.state.title)}
+                // onClick={this.handleFormSubmit}
+              >
+              </FormBtn>
+            </form>
+  </Popover>
+);
+
 class Navtabs extends Component {
-  componentDidMount() {}
+
+  state = {
+    trips: [],
+    newTrip: ""
+  };
+
+  componentDidMount() {
+    axios
+      .get("/api/trips/getUserTrips/" + userId)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  newTrip = event => {
+    event.preventDefault();
+    axios
+      .post("api/trips/new/" + this.tripNew + "/" + userId)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+  }
 
   render() {
     return (
@@ -84,6 +140,16 @@ class Navtabs extends Component {
               </Link>
             </li>
 
+            <li className="nav-item active" style={styles.color}>
+              {/* <Link to="/Profile" style={styles.color}> */}
+              <OverlayTrigger trigger="click" placement="bottom" overlay={popoverClick}>
+                <span className="nav-link" style={styles.newTrip}>
+                  New Trip <span className="sr-only">(current)</span>
+                </span>
+              {/* </Link> */}
+              </OverlayTrigger>
+            </li>
+
             <li style={styles.dropNav} className="nav-item dropdown">
               <a
                 style={styles.color}
@@ -108,32 +174,6 @@ class Navtabs extends Component {
                     Trip 2
                   </a>
                 </Link>
-                <div className="dropdown-divider" />
-                <a
-                  a
-                  style={styles.popover}
-                  data-container="body"
-                  data-toggle="popover"
-                  data-placement="left"
-                  id="createTrip"
-                  data-html="true"
-                  // data-trigger="focus"
-                  // style={styles.button}
-                  data-content="
-                <form>
-                  <div className='form-group'>
-                    <label for='exampleInputEmail1'>Trip Name</label>
-                    <input className='form-control' id='name'  placeholder='Enter Name'></input>
-                  </div>
-                  <div className='form-group'>
-                      <label>Start Date</label>
-                      <input className='form-control' id='date' placeholder='Start Date'></input>
-                  </div>
-                  <button style='opacity: 12; color: white;' type='submit' class='btn btn-dark'>Submit</button>   
-                </form>"
-                >
-                  Create A Trip
-                </a>
               </div>
             </li>
 

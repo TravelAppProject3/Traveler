@@ -10,7 +10,7 @@ const Header = props => {
       backgroundColor: "black",
       paddingRight: "70px",
       lineHeight: "20px",
-      marginTop: "0px",
+      margin: "0px",
       height: "20px",
       textAlign: "right",
       width: "auto"
@@ -23,6 +23,7 @@ const Header = props => {
     Greeting = (
       <p>
         Welcome back, <strong>{props.user.username}</strong>
+        props.user.thumbnail
       </p>
     );
   } else if (props.user.local.username) {
