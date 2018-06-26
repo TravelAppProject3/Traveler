@@ -1,56 +1,175 @@
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20");
 const keys = require("./keys");
-const User = require("../models/user-model");
+const LocalStrategy = require("passport-local").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
+const TwitterStrategy = require("passport-twitter").Strategy;
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+var User = require("../models/user-model");
 
-passport.serializeUser((user, done) => {
-  //unique id created by mongo --> when its passed off we're going to put the id into a cookie
-  //null represents if there is an error
-  done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
+module.exports = function(passport) {
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
   });
-});
 
-//telling the app to use google passport strategy - takes two parameters
-//1st - new google strategy takes in an object
-//2nd - callback function.
-passport.use(
-  new GoogleStrategy(
-    {
-      //options for the strategy - options go over in video #6
-      //redirect also set in console.developers.google
-      callbackURL: "/auth/google/redirect",
-      clientID: keys.google.clientID,
-      clientSecret: keys.google.clientSecret
-    },
-    //accessToken comes from google, refresh - refreshes because access will expire, profile is google profile, done is a function need to call when done with the cb function
-    (accessToken, refreshToken, profile, done) => {
-      // check is user already exists in database
-      User.findOne({ googleId: profile.id }).then(currentUser => {
-        if (currentUser) {
-          //already have the user
-          console.log("user is", currentUser);
-          done(null, currentUser);
-        } else {
-          //if not, create user in database
-          //create new user in mongo database
-          //.save() is async --> .then takes a callback function and will fire when saving to the database is complete
-          new User({
-            username: profile.displayName,
-            googleId: profile.id,
-            thumbnail: profile._json.image.url
-          })
-            .save()
-            .then(newUser => {
-              console.log("new user created" + newUser);
-              done(null, newUser);
-            });
-        }
-      });
-    }
-  )
-);
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
+  passport.use(
+    "local-signup",
+    new LocalStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true
+      },
+      function(req, email, password, done) {
+        process.nextTick(function() {
+          User.findOne({ "local.email": email }, function(err, user) {
+            if (err) return done(err);
+            if (user) {
+              return done(
+                null,
+                false,
+                req.flash("signupMessage", "That email is already taken.")
+              );
+            } else {
+              var newUser = new User();
+              newUser.local.email = email;
+              newUser.local.password = newUser.generateHash(password);
+              newUser.save(function(err) {
+                if (err) throw err;
+                return done(null, newUser);
+              });
+            }
+          });
+        });
+      }
+    )
+  );
+
+  passport.use(
+    "local-login",
+    new LocalStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true
+      },
+      function(req, email, password, done) {
+        User.findOne({ "local.email": email }, function(err, user) {
+          if (err) return done(err);
+          if (!user)
+            return done(
+              null,
+              false,
+              req.flash("loginMessage", "No user found.")
+            );
+          if (!user.validPassword(password))
+            return done(
+              null,
+              false,
+              req.flash("loginMessage", "Oops! Wrong password.")
+            );
+          return done(null, user);
+        });
+      }
+    )
+  );
+
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: keys.facebookAuth.clientID,
+        clientSecret: keys.facebookAuth.clientSecret,
+        callbackURL: keys.facebookAuth.callbackURL,
+        profileFields: ["id", "email", "first_name", "last_name"]
+      },
+      function(token, refreshToken, profile, done) {
+        process.nextTick(function() {
+          User.findOne({ "facebook.id": profile.id }, function(err, user) {
+            if (err) return done(err);
+            if (user) {
+              return done(null, user);
+            } else {
+              var newUser = new User();
+              newUser.facebook.id = profile.id;
+              newUser.facebook.token = token;
+              newUser.facebook.name =
+                profile.name.givenName + " " + profile.name.familyName;
+              newUser.facebook.email = (
+                profile.emails[0].value || ""
+              ).toLowerCase();
+
+              newUser.save(function(err) {
+                if (err) throw err;
+                return done(null, newUser);
+              });
+            }
+          });
+        });
+      }
+    )
+  );
+
+  passport.use(
+    new TwitterStrategy(
+      {
+        consumerKey: keys.twitterAuth.consumerKey,
+        consumerSecret: keys.twitterAuth.consumerSecret,
+        callbackURL: keys.twitterAuth.callbackURL
+      },
+      function(token, tokenSecret, profile, done) {
+        process.nextTick(function() {
+          User.findOne({ "twitter.id": profile.id }, function(err, user) {
+            if (err) return done(err);
+            if (user) {
+              return done(null, user);
+            } else {
+              var newUser = new User();
+              newUser.twitter.id = profile.id;
+              newUser.twitter.token = token;
+              newUser.twitter.username = profile.username;
+              newUser.twitter.displayName = profile.displayName;
+              newUser.save(function(err) {
+                if (err) throw err;
+                return done(null, newUser);
+              });
+            }
+          });
+        });
+      }
+    )
+  );
+
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: keys.googleAuth.clientID,
+        clientSecret: keys.googleAuth.clientSecret,
+        callbackURL: keys.googleAuth.callbackURL
+      },
+      function(token, refreshToken, profile, done) {
+        process.nextTick(function() {
+          User.findOne({ "google.id": profile.id }, function(err, user) {
+            if (err) return done(err);
+            if (user) {
+              return done(null, user);
+            } else {
+              var newUser = new User();
+              newUser.google.id = profile.id;
+              newUser.google.token = token;
+              newUser.google.name = profile.displayName;
+              newUser.google.email = profile.emails[0].value;
+              newUser.save(function(err) {
+                if (err) throw err;
+                return done(null, newUser);
+              });
+            }
+          });
+        });
+      }
+    )
+  );
+};
