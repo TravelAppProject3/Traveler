@@ -11,7 +11,13 @@ var ShelterSchema = new Schema({
   },
   hotelId: {
     type: String
-  }
+  },
+  guests: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ]
 });
 
 var Shelter = mongoose.model("Shelter", ShelterSchema);
