@@ -151,6 +151,7 @@ function isLoggedIn(req, res, next) {
   res.redirect("/Profile");
 }
 
+/* LOGOUT ROUTER */
 router.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
