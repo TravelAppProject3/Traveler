@@ -190,6 +190,7 @@ class Cities extends Component {
               address={hotel.vicinity}
               rating={hotel.rating}
               key={hotel.id}
+              hotelId={hotel.id}
               photo={thisHref}
             />
           );
