@@ -19,7 +19,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Activity.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Activity.findOneAndUpdate(
+      { _id: req.params.activityId },
+      { $push: { guests: req.params.userId } }
+    )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

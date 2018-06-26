@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const activitiesController = require("../../controllers/activities");
+const activitiesController = require("../../controllers/activitiesController");
 
 // Matches with "/api/books"
 router
@@ -13,5 +13,9 @@ router
   .get(activitiesController.findById)
   .put(activitiesController.update)
   .delete(activitiesController.remove);
+
+router
+  .route("/addParticipant/:userId/:activityId")
+  .put(activitiesController.update);
 
 module.exports = router;
