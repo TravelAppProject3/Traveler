@@ -42,7 +42,7 @@ The project details were of the following:
   - PUT - Update the trip by passing in object in req.body
   - DELETE - Delete the trip from database
 - api/trips/new
-  - POST - create a new trip - tripUser required in req.body
+  - POST - create a new trip - tripUser and tripName required in req.body
 - api/trips/getUserTrips/:userId
   - GET - Returns all trips for a user based on userId
 - api/trips/addTripLeg/:tripId
@@ -53,3 +53,17 @@ The project details were of the following:
   - POST - Add a shelter item to the trip leg
 - api/trips/addActivity/:tripLegId
   - POST - Add an activity item to the trip leg
+
+### Shelter Data
+
+- api/shelter/:id
+  - GET Get information about the shelter including the guests
+- api/shelter/addGuest/:userId/:shelterId
+  - PUT - add user to hotel list
+
+### Activity Data
+
+- api/activity/:id
+  - GET - get information about the activity including the participants
+- api/activity/addParticipant/:userId/:activityId
+  - PUT - add participant to activity list

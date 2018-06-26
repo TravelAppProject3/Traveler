@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
+let username = localStorage.getItem("userName");
+let thumbnail = localStorage.getItem("thumbnail");
+thumbnail = thumbnail.slice(0, -2);
+thumbnail = thumbnail + '200';
+console.log(thumbnail);
 
 class Profile extends Component {
   state = {};
@@ -26,9 +31,7 @@ class Profile extends Component {
     },
     text: {
       textAlign: "left",
-    //   paddingLeft: "150px",
       fontSize: "30px",
-    //   borderBottom: "solid 1px black",
       lineHeight: "65px"
     },
     textSize: {
@@ -37,19 +40,19 @@ class Profile extends Component {
       color: "white"
     },
     img: {
-        height: "200px",
-        width: "200px",
-        borderRadius: "50%",
-        float: "left"
+      height: "200px",
+      width: "200px",
+      borderRadius: "50%",
+      float: "left"
     },
     container: {
-        paddingTop: "150px",
-        // border: "solid 1px black"
-        paddingLeft: "200px"
-        // textAlign: "center"
+      marginTop: "80px",
+      paddingTop: "150px",
+      paddingLeft: "200px",
+      backgroundColor: "rgba(128, 128, 128, 0.35)"
     },
     span: {
-        marginRight: "20px"
+      marginRight: "20px"
     },
     arrow: {
       fontSize: "25px"
@@ -66,28 +69,43 @@ class Profile extends Component {
         <div style={this.styles.body}>
           <div style={this.styles.container} className="container">
             <div id="row">
-                <div className="col-md-4">
-                    <img style={this.styles.img} src="https://www.communities.bendigobank.com.au/__data/assets/image/0018/12726/Default-Profile.png"></img>
+              <div className="col-md-4">
+                <img
+                  style={this.styles.img}
+                  src={thumbnail}
+                />
+              </div>
+              <div style={this.styles.text} className="col-md-8">
+                <div>
+                  <span style={this.styles.span}>User:</span> {username}
                 </div>
-                <div style={this.styles.text} className="col-md-8">
-                  <div>
-                    <span style={this.styles.span}>User:</span> Richard Holme
-                  </div>
-                  <div style={this.styles.text}>
-                      <span style={this.styles.span}>Email:</span> rchrd@email.com
-                  </div>
-                  <div style={this.styles.text}>
-                      <span>Your Trips</span> 
-                      <ul style={this.styles.ul}>
-                        <li><span style={this.styles.arrow} className="fa fa-angle-right"></span> Trip 1</li>
-                        <li><span style={this.styles.arrow} className="fa fa-angle-right"></span> Trip 1</li>
-                      </ul>
-                  </div>
+                <div style={this.styles.text}>
+                  <span style={this.styles.span}>Email:</span> youremail@email.com
                 </div>
+                <div style={this.styles.text}>
+                  <span>Your Trips</span>
+                  <ul style={this.styles.ul}>
+                    <li>
+                      <span
+                        // style={this.styles.arrow}
+                        // className="fa fa-angle-right"
+                      />{" "}
+                      - Trip 1
+                    </li>
+                    <li>
+                      <span
+                        // style={this.styles.arrow}
+                        // className="fa fa-angle-right"
+                      />{" "}
+                      - Trip 1
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-    </div>
+      </div>
     );
   }
 }

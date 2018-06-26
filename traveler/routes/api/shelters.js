@@ -14,4 +14,6 @@ router
   .put(sheltersController.update)
   .delete(sheltersController.remove);
 
+router.route("/addGuest/:userId/:shelterId").put(sheltersController.update);
+
 module.exports = router;
