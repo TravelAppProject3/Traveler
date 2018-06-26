@@ -19,22 +19,10 @@ const Header = props => {
 
   if (props.user === null) {
     Greeting = <p>Hello guest</p>;
-  } else if (props.user.google) {
+  } else if (props.user.name) {
     Greeting = (
       <p>
-        Welcome back, <strong>{props.user.google.name}</strong>
-      </p>
-    );
-  } else if (props.user.twitter) {
-    Greeting = (
-      <p>
-        Welcome back, <strong>{props.user.twitter.displayName}</strong>
-      </p>
-    );
-  } else if (props.user.facebook) {
-    Greeting = (
-      <p>
-        username Welcome back, <strong>{props.user.facebook.name} </strong>
+        Welcome back, <strong>{props.user.name}</strong>
       </p>
     );
   }

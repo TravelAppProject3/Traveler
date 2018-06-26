@@ -96,7 +96,7 @@ module.exports = function(passport) {
               var newUser = new User();
               newUser.facebook.id = profile.id;
               newUser.facebook.token = token;
-              newUser.facebook.name =
+              newUser.name =
                 profile.name.givenName + " " + profile.name.familyName;
               newUser.facebook.email = (
                 profile.emails[0].value || ""
@@ -131,7 +131,7 @@ module.exports = function(passport) {
               newUser.twitter.id = profile.id;
               newUser.twitter.token = token;
               newUser.twitter.username = profile.username;
-              newUser.twitter.displayName = profile.displayName;
+              newUser.name = profile.displayName;
               newUser.twitter.email = profile.email;
               newUser.save(function(err) {
                 if (err) throw err;
@@ -161,7 +161,7 @@ module.exports = function(passport) {
               var newUser = new User();
               newUser.google.id = profile.id;
               newUser.google.token = token;
-              newUser.google.name = profile.displayName;
+              newUser.name = profile.displayName;
               newUser.google.email = profile.emails[0].value;
               newUser.save(function(err) {
                 if (err) throw err;
