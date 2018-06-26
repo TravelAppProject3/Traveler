@@ -1,6 +1,9 @@
 // import React from "react";
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
+import axios from "axios";
+let userId = localStorage.getItem("userId");
+
 
 const styles = {
   root: {
@@ -46,7 +49,21 @@ const styles = {
 };
 
 class Navtabs extends Component {
-  componentDidMount() {}
+
+  state = {
+    trips: []
+  };
+
+  componentDidMount() {
+    axios
+      .get("/api/trips/getUserTrips/" + userId)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+  }
 
   render() {
     return (
@@ -124,10 +141,6 @@ class Navtabs extends Component {
                   <div className='form-group'>
                     <label for='exampleInputEmail1'>Trip Name</label>
                     <input className='form-control' id='name'  placeholder='Enter Name'></input>
-                  </div>
-                  <div className='form-group'>
-                      <label>Start Date</label>
-                      <input className='form-control' id='date' placeholder='Start Date'></input>
                   </div>
                   <button style='opacity: 12; color: white;' type='submit' class='btn btn-dark'>Submit</button>   
                 </form>"
