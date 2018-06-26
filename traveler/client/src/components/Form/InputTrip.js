@@ -1,6 +1,6 @@
 import React from "react";
 
-export const InputTrip = props => (
+export const InputTrip = props => 
   <div className="form-group">
     {console.log(props)}
     <label>Trip Name</label>
@@ -8,4 +8,3 @@ export const InputTrip = props => (
     {/* <label>Arrival</label>
     <input className="form-control" {...props} /> */}
   </div>
-);  

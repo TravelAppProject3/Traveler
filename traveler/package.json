@@ -41,6 +41,7 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
+    "react-onclickoutside": "^6.7.1",
     "react-scripts": "1.1.1",
     "react-simple-popover": "^0.2.4"
   },
