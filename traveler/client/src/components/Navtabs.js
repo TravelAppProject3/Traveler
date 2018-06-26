@@ -50,6 +50,7 @@ const styles = {
 };
 
 class Navtabs extends Component {
+  
 
   state = {
     trips: [],
@@ -90,26 +91,26 @@ class Navtabs extends Component {
       });
   };
 
-  popoverClick = (
-    <Popover id="popover-trigger-click" title="">
+
+  renderPopupForm = () => (
       <form>
-        <InputTrip
-          type="text"
-          value={this.state.newTrip}
-          onChange={this.handleInputChange}
-          name="newTrip"
-          // placeholder="Title (required)"
-        />
-        <FormBtn
-          // disabled={!(this.state.newTrip)}
-          onClick={this.handleFormSubmit}
-        >
-        </FormBtn>
-      </form>
-    </Popover>
+              <InputTrip
+                value={this.state.newTrip}
+                onChange={this.handleInputChange.bind(this)}
+                name="newTrip"
+                // placeholder="Title (required)"
+              />
+              <FormBtn
+                // disabled={!(this.state.newTrip)}
+                onClick={this.handleFormSubmit}
+              >
+              </FormBtn>
+            </form>
+
   )
 
   render() {
+    console.log(this.state)
     return (
       <nav
         style={styles.height}
@@ -147,7 +148,7 @@ class Navtabs extends Component {
 
             <li className="nav-item active" style={styles.color}>
               {/* <Link to="/Profile" style={styles.color}> */}
-              <OverlayTrigger trigger="click" placement="bottom" overlay={this.popoverClick}>
+              <OverlayTrigger trigger="click" placement="bottom" overlay={<Popover id="popover-trigger-click">{this.renderPopupForm()}</Popover>}>
                 <span className="nav-link" style={styles.newTrip}>
                   New Trip <span className="sr-only">(current)</span>
                 </span>
@@ -204,5 +205,6 @@ class Navtabs extends Component {
     );
   }
 }
+
 
 export default Navtabs;
