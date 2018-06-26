@@ -1,31 +1,31 @@
-var mongoose = require("mongoose");
+// var mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-  username: {
-    type: String,
-    trim: true,
-    required: "Username is required",
-    index: { unique: true }
-  },
-  password: {
-    type: String,
-    required: "Password is required"
-  },
+// var UserSchema = new Schema({
+//   username: {
+//     type: String,
+//     trim: true,
+//     required: "Username is required",
+//     index: { unique: true }
+//   },
+//   password: {
+//     type: String,
+//     required: "Password is required"
+//   },
 
-  name: {
-    type: String,
-    trim: true,
-    required: "Name is required"
-  },
+//   name: {
+//     type: String,
+//     trim: true,
+//     required: "Name is required"
+//   },
 
-  userCreated: {
-    type: Date,
-    default: Date.now
-  }
-});
+//   userCreated: {
+//     type: Date,
+//     default: Date.now
+//   }
+// });
 
-var User = mongoose.model("User", UserSchema);
+// var User = mongoose.model("User", UserSchema);
 
-module.exports = User;
+// module.exports = User;

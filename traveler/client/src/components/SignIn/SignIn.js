@@ -40,10 +40,18 @@ class SignIn extends Component {
                 </div>
 
                 <div className="col">
-                  <a style={styles.textSize} href="#" className="fb btn">
+                  <a
+                    style={styles.textSize}
+                    href="/auth/facebook"
+                    className="fb btn"
+                  >
                     <i className="fa fa-facebook fa-fw" /> Login with Facebook
                   </a>
-                  <a style={styles.textSize} href="#" className="twitter btn">
+                  <a
+                    style={styles.textSize}
+                    href="/auth/twitter"
+                    className="twitter btn"
+                  >
                     <i className="fa fa-twitter fa-fw" /> Login with Twitter
                   </a>
                   <a
