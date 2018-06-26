@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { InputTrip, FormBtn } from "./Form";
+import { Button } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
 
 const styles = {
@@ -45,6 +46,10 @@ const styles = {
     marginRight: "10px",
     marginLeft: "10px",
     cursor: "pointer"
+  },
+  logoutBtn: {
+    width: "20%",
+    padding: "15px"
   }
 };
 
@@ -148,7 +153,10 @@ class Navtabs extends Component {
                 trigger="click"
                 placement="bottom"
                 overlay={this.popoverClick}
+<<<<<<< HEAD
                 rootClose={true}
+=======
+>>>>>>> 79a2f6aabc7a33bc1acb80e0019810c6849c6125
               >
                 <span className="nav-link" style={styles.newTrip}>
                   New Trip <span className="sr-only">(current)</span>
@@ -183,6 +191,11 @@ class Navtabs extends Component {
                 </Link>
               </div>
             </li>
+            <div className="logoutBtn">
+              <Button bsStyle="danger" bsSize="small" href="/auth/logout">
+                Logout
+              </Button>
+            </div>
 
             {/* <li className="nav-item dropdown">
               

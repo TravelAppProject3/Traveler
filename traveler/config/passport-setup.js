@@ -3,7 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const TwitterStrategy = require("passport-twitter").Strategy;
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-var User = require("../models/user-model");
+var User = require("../models/User");
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
@@ -96,7 +96,7 @@ module.exports = function(passport) {
               var newUser = new User();
               newUser.facebook.id = profile.id;
               newUser.facebook.token = token;
-              newUser.facebook.name =
+              newUser.name =
                 profile.name.givenName + " " + profile.name.familyName;
               newUser.facebook.email = (
                 profile.emails[0].value || ""
@@ -131,7 +131,8 @@ module.exports = function(passport) {
               newUser.twitter.id = profile.id;
               newUser.twitter.token = token;
               newUser.twitter.username = profile.username;
-              newUser.twitter.displayName = profile.displayName;
+              newUser.name = profile.displayName;
+              newUser.twitter.email = profile.email;
               newUser.save(function(err) {
                 if (err) throw err;
                 return done(null, newUser);
@@ -160,7 +161,7 @@ module.exports = function(passport) {
               var newUser = new User();
               newUser.google.id = profile.id;
               newUser.google.token = token;
-              newUser.google.name = profile.displayName;
+              newUser.name = profile.displayName;
               newUser.google.email = profile.emails[0].value;
               newUser.save(function(err) {
                 if (err) throw err;
