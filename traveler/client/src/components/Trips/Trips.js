@@ -21,23 +21,6 @@ class Trips extends Component {
   };
 
   componentDidMount() {
-    // axios.get("/auth/user").then(response => {
-    //   console.log(response.data.user._id);
-    //   userId = response.data.user._id;
-    //   console.log(userId);
-    //   if (!!response.data.user) {
-    //     console.log("THERE IS A USER");
-    //     this.setState({
-    //       loggedIn: true,
-    //       user: response.data.user
-    //     });
-    //   } else {
-    //     this.setState({
-    //       loggedIn: false,
-    //       user: null
-    //     });
-    //   }
-    // });
     console.log("User Id: " + userId);
     axios
       .get("/api/trips/getUserTrips/" + userId)
@@ -120,7 +103,7 @@ class Trips extends Component {
               name={this.trip.destination}
               arrival={this.trip.arrival}
             />
-            <Img href={this.trip.img} />
+            <Img city={this.trip.destination} />
             <Headers />
             <Row>
               <Col>

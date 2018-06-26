@@ -48,7 +48,7 @@ class App extends Component {
         // This sets the user's mongo id to local storage
         localStorage.setItem("userId", response.data.user._id);
         localStorage.setItem("userName", response.data.user.username);
-        localStorage.setItem("thumbnail", response.data.user.thumbnail);
+        // localStorage.setItem("thumbnail", response.data.user.thumbnail);
         this.setState({
           loggedIn: true,
           user: response.data.user
