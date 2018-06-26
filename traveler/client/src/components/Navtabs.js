@@ -153,6 +153,10 @@ class Navtabs extends Component {
                 trigger="click"
                 placement="bottom"
                 overlay={this.popoverClick}
+<<<<<<< HEAD
+                rootClose={true}
+=======
+>>>>>>> 79a2f6aabc7a33bc1acb80e0019810c6849c6125
               >
                 <span className="nav-link" style={styles.newTrip}>
                   New Trip <span className="sr-only">(current)</span>
