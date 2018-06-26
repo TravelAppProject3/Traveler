@@ -3,7 +3,11 @@ import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
 let username = localStorage.getItem("userName");
 let thumbnail = localStorage.getItem("thumbnail");
+<<<<<<< HEAD
+thumbnail = thumbnail.slice(0, -2);
+=======
 // thumbnail = thumbnail.slice(0, -2);
+>>>>>>> 79a2f6aabc7a33bc1acb80e0019810c6849c6125
 thumbnail = thumbnail + "200";
 console.log(thumbnail);
 
