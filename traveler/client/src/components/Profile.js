@@ -80,24 +80,24 @@ class Profile extends Component {
                   <span style={this.styles.span}>User:</span> {username}
                 </div>
                 <div style={this.styles.text}>
-                  <span style={this.styles.span}>Email:</span> rchrd@email.com
+                  <span style={this.styles.span}>Email:</span> youremail@email.com
                 </div>
                 <div style={this.styles.text}>
                   <span>Your Trips</span>
                   <ul style={this.styles.ul}>
                     <li>
                       <span
-                        style={this.styles.arrow}
-                        className="fa fa-angle-right"
+                        // style={this.styles.arrow}
+                        // className="fa fa-angle-right"
                       />{" "}
-                      Trip 1
+                      - Trip 1
                     </li>
                     <li>
                       <span
-                        style={this.styles.arrow}
-                        className="fa fa-angle-right"
+                        // style={this.styles.arrow}
+                        // className="fa fa-angle-right"
                       />{" "}
-                      Trip 1
+                      - Trip 1
                     </li>
                   </ul>
                 </div>
