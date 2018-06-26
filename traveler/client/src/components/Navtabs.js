@@ -49,29 +49,11 @@ const styles = {
   }
 };
 
-const popoverClick = (
-  <Popover id="popover-trigger-click" title="">
-    <form>
-              <InputTrip
-                // value={this.state.title}
-                // onChange={this.handleInputChange}
-                // name="title"
-                // placeholder="Title (required)"
-              />
-              <FormBtn
-                // disabled={!(this.state.author && this.state.title)}
-                // onClick={this.handleFormSubmit}
-              >
-              </FormBtn>
-            </form>
-  </Popover>
-);
-
 class Navtabs extends Component {
 
   state = {
     trips: [],
-    newTrip: ""
+    newTrip: "",
   };
 
   componentDidMount() {
@@ -90,19 +72,42 @@ class Navtabs extends Component {
     this.setState({
       [name]: value
     });
-  }
+  };
 
-  newTrip = event => {
+  handleFormSubmit = event => {
     event.preventDefault();
-    axios
-      .post("api/trips/new/" + this.tripNew + "/" + userId)
+    // if (this.state.title && this.state.author) {
+      axios
+      .post("api/trips/new/", {
+        tripUser: userId,
+        tripName: this.state.newTrip
+      })
       .then(function(response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function(error) {
         console.log("Error: " + error);
       });
-  }
+  };
+
+  popoverClick = (
+    <Popover id="popover-trigger-click" title="">
+      <form>
+        <InputTrip
+          type="text"
+          value={this.state.newTrip}
+          onChange={this.handleInputChange}
+          name="newTrip"
+          // placeholder="Title (required)"
+        />
+        <FormBtn
+          // disabled={!(this.state.newTrip)}
+          onClick={this.handleFormSubmit}
+        >
+        </FormBtn>
+      </form>
+    </Popover>
+  )
 
   render() {
     return (
@@ -142,7 +147,7 @@ class Navtabs extends Component {
 
             <li className="nav-item active" style={styles.color}>
               {/* <Link to="/Profile" style={styles.color}> */}
-              <OverlayTrigger trigger="click" placement="bottom" overlay={popoverClick}>
+              <OverlayTrigger trigger="click" placement="bottom" overlay={this.popoverClick}>
                 <span className="nav-link" style={styles.newTrip}>
                   New Trip <span className="sr-only">(current)</span>
                 </span>
