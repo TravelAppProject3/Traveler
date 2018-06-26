@@ -9,13 +9,20 @@ class CityJumbo extends Component {
   };
 
   styles = {
-    background: {
-      backgroundImage: `url(${this.state.cityPic})`
+    img: {
+      height: "300px",
+      width: "100%",
+      img: "1px solid black",
+      boxShadow: "1px 3px 8px 1px #888888",
+      marginTop: "10px",
+      marginBottom: "10px"
     },
     cityText: {
       color: "white",
       fontSize: 100,
-      textShadow: "4px 4px black"
+      textShadow: "4px 4px black",
+      position: "relative",
+      bottom: "275px"
     }
   };
 
@@ -42,16 +49,28 @@ class CityJumbo extends Component {
   };
 
   render() {
-    const imgStyle = { backgroundImage: `url(${this.state.cityPic})` };
-    return (
-      <div className="jumbotron jumbotron-fluid" style={imgStyle}>
-        <div className="container">
+    // const imgStyle = { backgroundImage: `url(${this.state.cityPic})` };
+    // return (
+    //   <div className="jumbotron jumbotron-fluid" style={imgStyle}>
+    //     <div className="container">
+    //       <h1 className="display-4 text-center" style={this.styles.cityText}>
+    //         {this.props.city}
+    //       </h1>
+    //     </div>
+    //   </div>
+    // );
+    return(
+      <div>
+          <img
+              style={this.styles.img}
+              src={this.state.cityPic}
+              
+          />
           <h1 className="display-4 text-center" style={this.styles.cityText}>
-            {this.props.city}
-          </h1>
-        </div>
+             {this.props.city}
+           </h1>
       </div>
-    );
+  )
   }
 }
 
