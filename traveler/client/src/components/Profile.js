@@ -88,15 +88,15 @@ class Profile extends Component {
                   <ul style={this.styles.ul}>
                     <li>
                       <span
-                        // style={this.styles.arrow}
-                        // className="fa fa-angle-right"
+                      // style={this.styles.arrow}
+                      // className="fa fa-angle-right"
                       />{" "}
                       - Trip 1
                     </li>
                     <li>
                       <span
-                        // style={this.styles.arrow}
-                        // className="fa fa-angle-right"
+                      // style={this.styles.arrow}
+                      // className="fa fa-angle-right"
                       />{" "}
                       - Trip 1
                     </li>

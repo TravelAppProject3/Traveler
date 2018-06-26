@@ -2,10 +2,10 @@
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import axios from "axios";
-import {OverlayTrigger, Popover} from "react-bootstrap";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 import { InputTrip, FormBtn } from "./Form";
+import { Button } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
-
 
 const styles = {
   root: {
@@ -21,7 +21,7 @@ const styles = {
   color: {
     color: "white",
     textDecoration: "none",
-    float: "right",
+    float: "right"
     // marginRight: "10px"
   },
   height: {
@@ -46,6 +46,10 @@ const styles = {
     marginRight: "10px",
     marginLeft: "10px",
     cursor: "pointer"
+  },
+  logoutBtn: {
+    width: "20%",
+    padding: "15px"
   }
 };
 
@@ -54,7 +58,7 @@ class Navtabs extends Component {
 
   state = {
     trips: [],
-    newTrip: "",
+    newTrip: ""
   };
 
   componentDidMount() {
@@ -78,7 +82,7 @@ class Navtabs extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     // if (this.state.title && this.state.author) {
-      axios
+    axios
       .post("api/trips/new/", {
         tripUser: userId,
         tripName: this.state.newTrip
@@ -152,7 +156,7 @@ class Navtabs extends Component {
                 <span className="nav-link" style={styles.newTrip}>
                   New Trip <span className="sr-only">(current)</span>
                 </span>
-              {/* </Link> */}
+                {/* </Link> */}
               </OverlayTrigger>
             </li>
 
@@ -182,6 +186,11 @@ class Navtabs extends Component {
                 </Link>
               </div>
             </li>
+            <div className="logoutBtn">
+              <Button bsStyle="danger" bsSize="small" href="/auth/logout">
+                Logout
+              </Button>
+            </div>
 
             {/* <li className="nav-item dropdown">
               
