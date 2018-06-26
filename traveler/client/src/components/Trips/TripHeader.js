@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import {OverlayTrigger, Popover} from "react-bootstrap";
+import { Input, TextArea, FormBtn } from "../Form";
 
 const styles = {
   p: {
@@ -29,28 +31,52 @@ const styles = {
   }
 };
 
+const popoverClick = (
+  <Popover id="popover-trigger-click" title="">
+    <form>
+              <Input
+                // value={this.state.title}
+                // onChange={this.handleInputChange}
+                // name="title"
+                // placeholder="Title (required)"
+              />
+              <FormBtn
+                // disabled={!(this.state.author && this.state.title)}
+                // onClick={this.handleFormSubmit}
+              >
+              </FormBtn>
+            </form>
+  </Popover>
+);
+
 const TripHeader = props => {
   return (
     <div>
       <p style={styles.p}>
         {props.name}
       </p>
+      <OverlayTrigger trigger="click" placement="left" overlay={popoverClick}>
+      
+
         <a style={styles.profileBtn} data-container="body" data-toggle="popover" data-placement="left" 
-                data-html="true"
-                data-content="
-                <form>
-                  <div className='form-group'>
-                    <label for='exampleInputEmail1'>City Name</label>
-                    <input className='form-control' id='name'  placeholder='Enter Name'></input>
-                  </div>
-                  <div className='form-group'>
-                      <label>Start Date</label>
-                      <input className='form-control' id='date' placeholder='Start Date'></input>
-                  </div>
-                  <button style='opacity: 12; color: white;' type='submit' class='btn btn-dark'>Submit</button>   
-                </form>">
+                // data-html="true"
+                // data-content="
+                // <form>
+                //   <div className='form-group'>
+                //     <label for='exampleInputEmail1'>City Name</label>
+                //     <input className='form-control' id='name'  placeholder='Enter Name'></input>
+                //   </div>
+                //   <div className='form-group'>
+                //       <label>Start Date</label>
+                //       <input className='form-control' id='date' placeholder='Start Date'></input>
+                //   </div>
+                //   <button style='opacity: 12; color: white;' type='submit' class='btn btn-dark'>Submit</button>   
+                // </form>"
+                >
                 <span className="fa fa-pencil" /> Add A City
+        
         </a>
+      </OverlayTrigger>
     </div>
   );
 };
