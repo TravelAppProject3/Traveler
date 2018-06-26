@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const styles = {
   card: {
@@ -19,6 +20,25 @@ const styles = {
     paddingLeft: 80
   }
 };
+
+const sendHotel = (name, address, key) => {
+  console.log("click seen on Hotel");
+  console.log(name, address, key);
+
+  axios
+    .post("/api/shelter", {
+      name: name,
+      address: address,
+      hotelId: key
+    })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log("Err - " + error);
+    });
+};
+
 const Hotels = props => (
   <div className="container">
     <div className="row">
@@ -34,8 +54,8 @@ const Hotels = props => (
             className="col-md-1 col-sm-2 col-xs-2"
           />
           <div className="card-header col-md-11 col-sm-10 col-xs-10">
-            <h2>{props.name}</h2>
-            <h4>{props.address}</h4>
+            <h2 id={props.name}>{props.name}</h2>
+            <h4 id={props.address}>{props.address}</h4>
           </div>
         </div>
         <div className="card-body text-dark">
@@ -47,11 +67,19 @@ const Hotels = props => (
             staying here
           </p>
         </div>
-        <button type="button" className="btn btn-dark addBtn">
+        <button
+          type="submit"
+          data-id={props.hotelId}
+          className="btn btn-dark addBtn"
+          dataname={props.name}
+          dataaddress={props.address}
+          onClick={() => sendHotel(props.name, props.address, props.hotelId)}
+          // {((e) => this.handleClick(e, data))}
+        >
           Add to My Path
         </button>
         {props.photo ? (
-          <a href={props.photo} alt="hotelMap">
+          <a href={props.photo} target="_blank" alt="hotelMap">
             <button
               type="button"
               href={props.photo}
