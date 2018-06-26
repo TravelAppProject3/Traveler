@@ -3,8 +3,8 @@ import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
 let username = localStorage.getItem("userName");
 let thumbnail = localStorage.getItem("thumbnail");
-thumbnail = thumbnail.slice(0, -2);
-thumbnail = thumbnail + '200';
+// thumbnail = thumbnail.slice(0, -2);
+thumbnail = thumbnail + "200";
 console.log(thumbnail);
 
 class Profile extends Component {
@@ -70,32 +70,30 @@ class Profile extends Component {
           <div style={this.styles.container} className="container">
             <div id="row">
               <div className="col-md-4">
-                <img
-                  style={this.styles.img}
-                  src={thumbnail}
-                />
+                <img style={this.styles.img} src={thumbnail} />
               </div>
               <div style={this.styles.text} className="col-md-8">
                 <div>
                   <span style={this.styles.span}>User:</span> {username}
                 </div>
                 <div style={this.styles.text}>
-                  <span style={this.styles.span}>Email:</span> youremail@email.com
+                  <span style={this.styles.span}>Email:</span>{" "}
+                  youremail@email.com
                 </div>
                 <div style={this.styles.text}>
                   <span>Your Trips</span>
                   <ul style={this.styles.ul}>
                     <li>
                       <span
-                        // style={this.styles.arrow}
-                        // className="fa fa-angle-right"
+                      // style={this.styles.arrow}
+                      // className="fa fa-angle-right"
                       />{" "}
                       - Trip 1
                     </li>
                     <li>
                       <span
-                        // style={this.styles.arrow}
-                        // className="fa fa-angle-right"
+                      // style={this.styles.arrow}
+                      // className="fa fa-angle-right"
                       />{" "}
                       - Trip 1
                     </li>
