@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passportSetup = require("./config/passport-setup");
 const app = express();
 const keys = require("./config/keys");
+const database = require("./config/database");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const PORT = process.env.PORT || 3001;
@@ -46,11 +47,13 @@ app.set("view engine", "ejs");
 
 //connect to mongodb --> pass connection string and then a second parameter to console log message
 mongoose.connect(
-  keys.mongodb.dbURI,
+  database.mongodb.dbURI,
   () => {
     console.log("connected to mongoDB");
   }
 );
+
+require("./config/passport-setup")(passport);
 
 //create home route
 app.get("/", (req, res) => {

@@ -1,45 +1,39 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
-mongoose.promise = Promise;
+const bcrypt = require("bcrypt-nodejs");
 
-//two properties to use in each user record
-const userSchema = new Schema({
-  username: String,
-  googleId: String,
-  thumbnail: String,
-  name: String,
+var userSchema = mongoose.Schema({
   local: {
-    username: { type: String, unique: false, required: false },
-    password: { type: String, unique: false, required: false }
+    name: String,
+    email: String,
+    password: String
+  },
+  facebook: {
+    id: String,
+    token: String,
+    email: String,
+    name: String,
+    username: String
+  },
+  twitter: {
+    id: String,
+    token: String,
+    displayName: String,
+    username: String
+  },
+  google: {
+    id: String,
+    token: String,
+    email: String,
+    name: String
   }
 });
 
-// Define schema methods
-userSchema.methods = {
-  checkPassword: function(inputPassword) {
-    return bcrypt.compareSync(inputPassword, this.local.password);
-  },
-  hashPassword: plainTextPassword => {
-    return bcrypt.hashSync(plainTextPassword, 10);
-  }
+userSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-// Define hooks for pre-saving
-userSchema.pre("save", function(next) {
-  if (!this.local.password) {
-    console.log("=======NO PASSWORD PROVIDED=======");
-    next();
-  } else {
-    this.local.password = this.hashPassword(this.local.password);
-    next();
-  }
-  // this.password = this.hashPassword(this.password)
-  // next()
-});
+userSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+};
 
-//creating the model or collection --> for every record define the structure of the records according to the userSchema
-//exported at the bottom of the file.
-const User = mongoose.model("user", userSchema);
-
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);
