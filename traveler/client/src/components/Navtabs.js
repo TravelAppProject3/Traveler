@@ -22,7 +22,6 @@ const styles = {
     color: "white",
     textDecoration: "none",
     float: "right"
-    // marginRight: "10px"
   },
   height: {
     padding: "15px",
@@ -42,7 +41,6 @@ const styles = {
   },
   newTrip: {
     marginTop: "8px",
-    // marginLeft: "-8px"
     marginRight: "10px",
     marginLeft: "10px",
     cursor: "pointer"
@@ -50,7 +48,29 @@ const styles = {
   logoutBtn: {
     width: "20%",
     padding: "15px"
+  },
+  logout: {
+    color: "white",
+    backgroundColor: "black",
+    textDecoration: "none",
+    float: "right",
+    marginLeft: "15px",
+    lineHeight: "25px",
+    fontSize: "20px",
+    fontWeight: "bold"
+  },
+  Navbar: {
+    borderRadius: "0px"
+  },
+  lineHeight: {
+    lineHeight: "50px"
   }
+  // buttonStuff: {
+  //   backgroundColor: "black",
+  //   color: "white",
+  //   borderRadius: "0px",
+  //   borderColor:"black"
+  // }
 };
 
 class Navtabs extends Component {
@@ -62,8 +82,11 @@ class Navtabs extends Component {
   componentDidMount() {
     axios
       .get("/api/trips/getUserTrips/" + userId)
-      .then(function(response) {
-        console.log(response);
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          trips: response.data
+        })
       })
       .catch(function(error) {
         console.log("Error: " + error);
@@ -99,7 +122,6 @@ class Navtabs extends Component {
         value={this.state.newTrip}
         onChange={this.handleInputChange.bind(this)}
         name="newTrip"
-        // placeholder="Title (required)"
       />
       <FormBtn
         // disabled={!(this.state.newTrip)}
@@ -114,6 +136,7 @@ class Navtabs extends Component {
       <nav
         style={styles.height}
         className="navbar navbar-expand-lg navbar-dark bg-dark"
+        style={styles.Navbar}
       >
         <Link to="/Home">
           <span style={styles.logo} className="navbar-brand">
@@ -150,15 +173,16 @@ class Navtabs extends Component {
               <OverlayTrigger
                 trigger="click"
                 placement="bottom"
+
                 overlay={
                   <Popover id="popover-trigger-click">
                     {this.renderPopupForm()}
                   </Popover>
                 }
               >
-                <span className="nav-link" style={styles.newTrip}>
                   New Trip <span className="sr-only">(current)</span>
                 </span>
+                {/* </button> */}
                 {/* </Link> */}
               </OverlayTrigger>
             </li>
@@ -177,7 +201,7 @@ class Navtabs extends Component {
                 My Trips
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link to="/Trips">
+                {/* <Link to="/Trips">
                   <a style={styles.dropDown} className="dropdown-item" href="#">
                     Trip 1
                   </a>
@@ -186,31 +210,30 @@ class Navtabs extends Component {
                   <a style={styles.dropDown} className="dropdown-item" href="#">
                     Trip 2
                   </a>
-                </Link>
+                </Link> */}
+                {this.state.trips.map(trip => {
+                  return (
+                    // console.log(trip);
+                    <Link to="/Trips">
+                    {/* {console.log(trip)} */}
+                      <a style={styles.dropDown} className="dropdown-item" href="#">
+                        {trip.tripName}
+                      </a>
+                    </Link>
+                  );
+                })}
               </div>
             </li>
             <div className="logoutBtn">
-              <Button bsStyle="danger" bsSize="small" href="/auth/logout">
+              <Button
+                bsStyle="danger"
+                style={styles.logout}
+                bsSize="small"
+                href="/auth/logout"
+              >
                 Logout
               </Button>
             </div>
-
-            {/* <li className="nav-item dropdown">
-              
-              <div
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <Link to="/Profile" style={styles.color}>
-                  <a className="dropdown-item" href="#">
-                    My Profile
-                  </a>
-                </Link>
-                <Link to="/Trips" style={styles.color}>
-                  <a className="dropdown-item">My Trips</a>
-                </Link>
-              </div>
-            </li> */}
           </ul>
         </div>
       </nav>

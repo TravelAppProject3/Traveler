@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const styles = {
   card: {
@@ -18,6 +19,25 @@ const styles = {
   rating: {
     paddingLeft: 80
   }
+};
+
+const sendRestaurant = (name, address, id) => {
+  console.log("click works on Restaurants");
+  console.log(name, address, id);
+
+  axios
+    .post("/api/activity", {
+      name: name,
+      address: address,
+      restaurantBoolean: true,
+      activityId: id
+    })
+    .then(function(res) {
+      console.log(res);
+    })
+    .catch(function(err) {
+      console.log("error found:  " + err);
+    });
 };
 
 const Restaurant = props => (
@@ -48,7 +68,13 @@ const Restaurant = props => (
             staying here
           </p>
         </div>
-        <button type="button" className="btn btn-dark addBtn">
+        <button
+          type="button"
+          className="btn btn-dark addBtn"
+          onClick={() =>
+            sendRestaurant(props.name, props.address, props.restaurantId)
+          }
+        >
           Add to My Path
         </button>
         {props.photo ? (
