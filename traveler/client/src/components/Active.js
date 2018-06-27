@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import axios from "axios";
 
 const styles = {
   card: {
@@ -19,6 +20,27 @@ const styles = {
   rating: {
     paddingLeft: 80
   }
+};
+
+const sendActive = (name, street, city, state, id) => {
+  const address = street + " " + city + ", " + state;
+
+  console.log("click seen on Active");
+  console.log(name, address, id);
+
+  axios
+    .post("/api/activity", {
+      name: name,
+      address: address,
+      restaurantBoolean: false,
+      activityId: id
+    })
+    .then(function(res) {
+      console.log(res);
+    })
+    .then(function(err) {
+      console.log("error found:  " + err);
+    });
 };
 
 const Active = props => (
@@ -52,7 +74,22 @@ const Active = props => (
                 : "Nothing to Report"}
           </h3>
         </div>
-        <button type="button" className="btn btn-dark addBtn">
+        <button
+          type="button"
+          className="btn btn-dark addBtn"
+          data-id={props.activeId}
+          dataname={props.name}
+          dataaddress={props.address}
+          onClick={() =>
+            sendActive(
+              props.name,
+              props.address,
+              props.city,
+              props.state,
+              props.activeId
+            )
+          }
+        >
           Add to My Path
         </button>
         {props.description !== "No Description Provided" ? (
