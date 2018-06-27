@@ -67,10 +67,14 @@ class Profile extends Component {
       float: "left"
     },
     container: {
-      marginTop: "80px",
-      paddingTop: "150px",
+      marginTop: "110px",
+      paddingTop: "50px",
+      paddingBottom: "50px",
       paddingLeft: "200px",
-      backgroundColor: "rgba(128, 128, 128, 0.35)"
+      backgroundColor: "rgba(255, 255, 255, .8)",
+      border: "1px black solid",
+      borderRadius: "10px"
+      // backgroundColor: "rgba(255, 255, 255, .7)";
     },
     span: {
       marginRight: "20px"
@@ -80,7 +84,14 @@ class Profile extends Component {
     },
     ul: {
       listStyleType: "none"
-    }
+    },
+    links: {
+      // fontSize: "20px",
+      // fontWeight: "bold",
+      // textDecoration: "none",
+      color: "black",
+      // textDecoration: "none"
+    },
   };
 
   render() {
@@ -101,7 +112,7 @@ class Profile extends Component {
                   <span style={this.styles.span}>Email:</span> {email}
                 </div>
                 <div style={this.styles.text}>
-                  <span>Your Trips</span>
+                  <span>Your Trips:</span>
                   <ul style={this.styles.ul}>
                     
                   {this.state.trips.map(trip => {
@@ -109,7 +120,7 @@ class Profile extends Component {
                       // console.log(trip);
                       <Link to="/Trips">
                       {/* {console.log(trip)} */}
-                        <li>
+                        <li style={this.styles.links}>
                           {trip.tripName}
                         </li>
                       </Link>
