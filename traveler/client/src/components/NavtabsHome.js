@@ -14,6 +14,9 @@ const styles = {
   },
   logo: {
     fontSize: "30px"
+  },
+  Navbar: {
+    borderRadius: "0px"
   }
 };
 
@@ -21,6 +24,7 @@ const Navtabs = () => (
   <nav
     style={styles.height}
     className="navbar navbar-expand-lg navbar-dark bg-dark"
+    style={styles.Navbar}
   >
     <Link to="/Home">
       <span style={styles.logo} className="navbar-brand">
