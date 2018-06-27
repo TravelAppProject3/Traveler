@@ -2,21 +2,21 @@ import React from "react";
 
 const Weather = props => {
   const styles = {
-
     weather: {
       position: "relative",
       left: 1250,
-      bottom: 170,
+      bottom: 300,
       fontSize: 24,
       width: 10
     },
     img: { height: 100 },
     text: {
       position: "relative",
-      top: 30,
-      right: 50,
+      bottom: 20,
+      left: 15,
       color: "white",
-      textShadow: "2px 2px black"
+      textShadow: "2px 2px black",
+      textAlign: "center"
     }
   };
   return (
@@ -27,7 +27,7 @@ const Weather = props => {
         </div>
         <div className="row" style={styles.text}>
           <div className="conditions">
-            {props.weather.conditions}, {props.weather.temp}{" "}
+            {props.weather.conditions}, {props.weather.temp}°{" "}
           </div>
         </div>
       </div>
