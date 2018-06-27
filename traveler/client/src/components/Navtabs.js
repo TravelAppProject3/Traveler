@@ -58,7 +58,19 @@ const styles = {
     lineHeight: "25px",
     fontSize: "20px",
     fontWeight: "bold"
+  },
+  Navbar: {
+    borderRadius: "0px"
+  },
+  lineHeight: {
+    lineHeight: "50px"
   }
+  // buttonStuff: {
+  //   backgroundColor: "black",
+  //   color: "white",
+  //   borderRadius: "0px",
+  //   borderColor:"black"
+  // }
 };
 
 class Navtabs extends Component {
@@ -107,7 +119,6 @@ class Navtabs extends Component {
         value={this.state.newTrip}
         onChange={this.handleInputChange.bind(this)}
         name="newTrip"
-        // placeholder="Title (required)"
       />
       <FormBtn
         // disabled={!(this.state.newTrip)}
@@ -122,6 +133,7 @@ class Navtabs extends Component {
       <nav
         style={styles.height}
         className="navbar navbar-expand-lg navbar-dark bg-dark"
+        style={styles.Navbar}
       >
         <Link to="/Home">
           <span style={styles.logo} className="navbar-brand">
@@ -165,9 +177,15 @@ class Navtabs extends Component {
                   </Popover>
                 }
               >
-                <span className="nav-link" style={styles.newTrip}>
+                {/* <button style={styles.buttonStuff}> */}
+                <span
+                  className="nav-link"
+                  style={styles.newTrip}
+                  style={styles.lineHeight}
+                >
                   New Trip <span className="sr-only">(current)</span>
                 </span>
+                {/* </button> */}
                 {/* </Link> */}
               </OverlayTrigger>
             </li>
