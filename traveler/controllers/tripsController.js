@@ -11,7 +11,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.Trip.findById(req.params.id)
+    db.Trip.findById(req.params.tripId)
+      .populate("tripLegs")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
