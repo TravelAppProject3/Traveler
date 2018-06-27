@@ -4,16 +4,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
-// let thumbnail = localStorage.getItem("thumbnail");
-// thumbnail = thumbnail.slice(0, -2);
-// thumbnail = thumbnail + '200';
+
 let email = localStorage.getItem("email");
-// console.log(thumbnail);
-// let thumbnail = localStorage.getItem("thumbnail");
-// thumbnail = thumbnail.slice(0, -2);
-// thumbnail = thumbnail.slice(0, -2);
-// thumbnail = thumbnail + "200";
-// console.log(thumbnail);
+console.log(thumbnail);
+let thumbnail = localStorage.getItem("thumbnail");
+thumbnail = thumbnail.slice(0, -2);
+thumbnail = thumbnail + "200";
+
 
 class Profile extends Component {
   state = {
@@ -74,10 +71,14 @@ class Profile extends Component {
       float: "left"
     },
     container: {
-      marginTop: "80px",
-      paddingTop: "150px",
+      marginTop: "110px",
+      paddingTop: "50px",
+      paddingBottom: "50px",
       paddingLeft: "200px",
-      backgroundColor: "rgba(128, 128, 128, 0.35)"
+      backgroundColor: "rgba(255, 255, 255, .8)",
+      border: "1px black solid",
+      borderRadius: "10px"
+      // backgroundColor: "rgba(255, 255, 255, .7)";
     },
     span: {
       marginRight: "20px"
@@ -87,7 +88,14 @@ class Profile extends Component {
     },
     ul: {
       listStyleType: "none"
-    }
+    },
+    links: {
+      // fontSize: "20px",
+      // fontWeight: "bold",
+      // textDecoration: "none",
+      color: "black",
+      // textDecoration: "none"
+    },
   };
 
   render() {
@@ -98,10 +106,7 @@ class Profile extends Component {
           <div style={this.styles.container} className="container">
             <div id="row">
               <div className="col-md-4">
-                <img
-                  style={this.styles.img}
-                  src="https://www.communities.bendigobank.com.au/__data/assets/image/0018/12726/Default-Profile.png"
-                />
+                <img style={this.styles.img} src={thumbnail} />
               </div>
               <div style={this.styles.text} className="col-md-8">
                 <div>
@@ -111,7 +116,7 @@ class Profile extends Component {
                   <span style={this.styles.span}>Email:</span> {email}
                 </div>
                 <div style={this.styles.text}>
-                  <span>Your Trips</span>
+                  <span>Your Trips:</span>
                   <ul style={this.styles.ul}>
                     {this.state.trips.map((trip, idx) => {
                       return (
@@ -122,6 +127,14 @@ class Profile extends Component {
                           <button onClick={() => this.deleteRows(idx)}>
                             X
                           </button>;
+                    
+                  {this.state.trips.map(trip => {
+                    return (
+                      // console.log(trip);
+                      <Link to="/Trips">
+                      {/* {console.log(trip)} */}
+                        <li style={this.styles.links}>
+                          {trip.tripName}
                         </li>
                       );
                     })}
