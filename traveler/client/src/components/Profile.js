@@ -17,14 +17,20 @@ class Profile extends Component {
     trips: []
   };
 
+  deleteRows(idx) {
+    this.setState({
+      trips: this.state.trips.filter((e, i) => i !== idx)
+    });
+  }
+
   componentDidMount() {
     axios
       .get("/api/trips/getUserTrips/" + userId)
-      .then((response) => {
+      .then(response => {
         console.log(response.data);
         this.setState({
           trips: response.data
-        })
+        });
       })
       .catch(function(error) {
         console.log("Error: " + error);
@@ -35,16 +41,14 @@ class Profile extends Component {
     form: {
       marginTop: "80px",
       width: "500px",
-      height: "200px",
+      height: "auto",
       display: "inline-block"
     },
     body: {
       textAlign: "center",
-      backgroundImage:
-        "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
       backgroundSize: "cover",
       overflow: "hidden",
-      height: "750px",
+      height: "auto",
       marginTop: "-75px",
       textAlign: "center",
       width: "100%",
@@ -114,6 +118,15 @@ class Profile extends Component {
                 <div style={this.styles.text}>
                   <span>Your Trips:</span>
                   <ul style={this.styles.ul}>
+                    {this.state.trips.map((trip, idx) => {
+                      return (
+                        <li>
+                          <Link to="/Trips">
+                            <li>{trip.tripName}</li>
+                          </Link>
+                          <button onClick={() => this.deleteRows(idx)}>
+                            X
+                          </button>;
                     
                   {this.state.trips.map(trip => {
                     return (
@@ -123,24 +136,8 @@ class Profile extends Component {
                         <li style={this.styles.links}>
                           {trip.tripName}
                         </li>
-                      </Link>
-                    );
-                  })}                    
-                    {/* <li>
-                      <span
-                      // style={this.styles.arrow}
-                      // className="fa fa-angle-right"
-                      />{" "}
-                      - Trip 1
-                    </li>
-                    <li>
-                      <span
-                      // style={this.styles.arrow}
-                      // className="fa fa-angle-right"
-                      />{" "}
-                      - Trip 1
-                    </li> */}
-
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
