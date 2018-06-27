@@ -2,21 +2,11 @@ import React, { Component } from "react";
 import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
 let username = localStorage.getItem("userName");
-// let thumbnail = localStorage.getItem("thumbnail");
-// thumbnail = thumbnail.slice(0, -2);
-// thumbnail = thumbnail + '200';
-let email = localStorage.getItem("email")
-// console.log(thumbnail);
-// =======
-// let thumbnail = localStorage.getItem("thumbnail");
-// <<<<<<< HEAD
-// thumbnail = thumbnail.slice(0, -2);
-// =======
-// thumbnail = thumbnail.slice(0, -2);
-// >>>>>>> 79a2f6aabc7a33bc1acb80e0019810c6849c6125
-// thumbnail = thumbnail + "200";
-// console.log(thumbnail);
-// >>>>>>> 1cc759ac5bb5109b972641f3ec3d195e3d7a9577
+let email = localStorage.getItem("email");
+console.log(thumbnail);
+let thumbnail = localStorage.getItem("thumbnail");
+thumbnail = thumbnail.slice(0, -2);
+thumbnail = thumbnail + "200";
 
 class Profile extends Component {
   state = {};
@@ -81,10 +71,7 @@ class Profile extends Component {
           <div style={this.styles.container} className="container">
             <div id="row">
               <div className="col-md-4">
-                <img
-                  style={this.styles.img}
-                  src="https://www.communities.bendigobank.com.au/__data/assets/image/0018/12726/Default-Profile.png"
-                />
+                <img style={this.styles.img} src={thumbnail} />
               </div>
               <div style={this.styles.text} className="col-md-8">
                 <div>
