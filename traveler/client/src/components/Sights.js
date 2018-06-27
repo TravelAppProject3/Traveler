@@ -51,7 +51,8 @@ const Sights = props => {
               type={landmark.Location.LocationType}
               lat={landmark.Location.DisplayPosition.Latitude}
               lon={landmark.Location.DisplayPosition.Longitude}
-              key={landmark.Location.Name}
+              key={landmark.Location.LocationId}
+              landmarkId={landmark.Location.LocationId}
             />
           );
         })}
@@ -91,7 +92,8 @@ const Sights = props => {
               org={act.organization.organizationName}
               name={act.assetName}
               saleStatus={act.salesStatus}
-              key={act.assetName}
+              key={act.assetGuid}
+              activeId={act.assetGuid}
             />
           );
         })}
