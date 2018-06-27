@@ -82,8 +82,11 @@ class Navtabs extends Component {
   componentDidMount() {
     axios
       .get("/api/trips/getUserTrips/" + userId)
-      .then(function(response) {
-        console.log(response);
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          trips: response.data
+        })
       })
       .catch(function(error) {
         console.log("Error: " + error);
@@ -204,7 +207,7 @@ class Navtabs extends Component {
                 My Trips
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link to="/Trips">
+                {/* <Link to="/Trips">
                   <a style={styles.dropDown} className="dropdown-item" href="#">
                     Trip 1
                   </a>
@@ -213,7 +216,18 @@ class Navtabs extends Component {
                   <a style={styles.dropDown} className="dropdown-item" href="#">
                     Trip 2
                   </a>
-                </Link>
+                </Link> */}
+                {this.state.trips.map(trip => {
+                  return (
+                    // console.log(trip);
+                    <Link to="/Trips">
+                    {/* {console.log(trip)} */}
+                      <a style={styles.dropDown} className="dropdown-item" href="#">
+                        {trip.tripName}
+                      </a>
+                    </Link>
+                  );
+                })}
               </div>
             </li>
             <div className="logoutBtn">

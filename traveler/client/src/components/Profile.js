@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
+import axios from "axios";
+let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
 // let thumbnail = localStorage.getItem("thumbnail");
 // thumbnail = thumbnail.slice(0, -2);
@@ -14,7 +16,23 @@ let email = localStorage.getItem("email");
 // console.log(thumbnail);
 
 class Profile extends Component {
-  state = {};
+  state = {
+    trips: []
+  };
+
+  componentDidMount() {
+    axios
+      .get("/api/trips/getUserTrips/" + userId)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          trips: response.data
+        })
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+  }
 
   styles = {
     form: {
@@ -91,12 +109,33 @@ class Profile extends Component {
                 <div style={this.styles.text}>
                   <span>Your Trips</span>
                   <ul style={this.styles.ul}>
-                    <li>
-                      <span /> - Trip 1
+                    
+                  {this.state.trips.map(trip => {
+                    return (
+                      // console.log(trip);
+                      <Link to="/Trips">
+                      {/* {console.log(trip)} */}
+                        <li>
+                          {trip.tripName}
+                        </li>
+                      </Link>
+                    );
+                  })}                    
+                    {/* <li>
+                      <span
+                      // style={this.styles.arrow}
+                      // className="fa fa-angle-right"
+                      />{" "}
+                      - Trip 1
                     </li>
                     <li>
-                      <span /> - Trip 1
-                    </li>
+                      <span
+                      // style={this.styles.arrow}
+                      // className="fa fa-angle-right"
+                      />{" "}
+                      - Trip 1
+                    </li> */}
+
                   </ul>
                 </div>
               </div>
