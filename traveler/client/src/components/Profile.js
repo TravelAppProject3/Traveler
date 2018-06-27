@@ -7,16 +7,11 @@ let username = localStorage.getItem("userName");
 // thumbnail = thumbnail + '200';
 let email = localStorage.getItem("email");
 // console.log(thumbnail);
-// =======
 // let thumbnail = localStorage.getItem("thumbnail");
-// <<<<<<< HEAD
 // thumbnail = thumbnail.slice(0, -2);
-// =======
 // thumbnail = thumbnail.slice(0, -2);
-// >>>>>>> 79a2f6aabc7a33bc1acb80e0019810c6849c6125
 // thumbnail = thumbnail + "200";
 // console.log(thumbnail);
-// >>>>>>> 1cc759ac5bb5109b972641f3ec3d195e3d7a9577
 
 class Profile extends Component {
   state = {};
@@ -97,18 +92,10 @@ class Profile extends Component {
                   <span>Your Trips</span>
                   <ul style={this.styles.ul}>
                     <li>
-                      <span
-                      // style={this.styles.arrow}
-                      // className="fa fa-angle-right"
-                      />{" "}
-                      - Trip 1
+                      <span /> - Trip 1
                     </li>
                     <li>
-                      <span
-                      // style={this.styles.arrow}
-                      // className="fa fa-angle-right"
-                      />{" "}
-                      - Trip 1
+                      <span /> - Trip 1
                     </li>
                   </ul>
                 </div>
