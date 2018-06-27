@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom"; 
 import {OverlayTrigger, Popover} from "react-bootstrap";
 import { Input, TextArea, FormBtn } from "../Form";
+import axios from "axios";
+let tripId = localStorage.getItem("tripId");
 
 const styles = {
   p: {
@@ -31,32 +33,94 @@ const styles = {
   }
 };
 
-const popoverClick = (
-  <Popover id="popover-trigger-click" title="">
+// const popoverClick = (
+//   <Popover id="popover-trigger-click" title="">
+//     <form>
+//       <Input
+//         // value={this.state.title}
+//         // onChange={this.handleInputChange}
+//         // name="title"
+//         // placeholder="Title (required)"
+//       />
+//       <FormBtn
+//         // disabled={!(this.state.author && this.state.title)}
+//         // onClick={this.han dleFormSubmit}
+//       >
+//       </FormBtn>
+//     </form>
+//   </Popover>
+// );
+
+class TripHeader extends Component {
+  state = {
+    city: "",
+    arrival: "",
+    departure: ""
+  };
+
+  renderPopupForm = () => (
     <form>
+      <label>City</label>
       <Input
-        // value={this.state.title}
-        // onChange={this.handleInputChange}
-        // name="title"
-        // placeholder="Title (required)"
+        value={this.state.city}
+        onChange={this.handleInputChange.bind(this)}
+        name="city"
+      />
+      <label>Arrival</label>
+      <Input
+        value={this.state.arrival}
+        onChange={this.handleInputChange.bind(this)}
+        name="arrival"
+      />
+      <label>Departure</label>
+      <Input
+        value={this.state.departure}
+        onChange={this.handleInputChange.bind(this)}
+        name="departure"
       />
       <FormBtn
-        // disabled={!(this.state.author && this.state.title)}
-        // onClick={this.handleFormSubmit}
-      >
-      </FormBtn>
+        // disabled={!(this.state.newTrip)}
+        onClick={this.handleFormSubmit}
+      />
     </form>
-  </Popover>
-);
+  );
 
-const TripHeader = props => {
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
+  handleFormSubmit = event => {
+    // event.preventDefault();
+    // if (this.state.title && this.state.author) {
+    axios
+      .post("api/trips/addTripLeg/" + tripId, {
+        city: this.state.city,
+        arrivalDate: this.state.arrival,
+        departureDate: this.state.departure
+      })
+      .then(function(response) {
+        // console.log(response);
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+  };
+
+  render(){
   return (
     <div>
       <p style={styles.p}>
-        {props.name}
+        {this.props.name}
       </p>
-      <OverlayTrigger trigger="click" placement="left" overlay={popoverClick}>
+      <OverlayTrigger trigger="click" placement="left" 
+      overlay={
+        <Popover id="popover-trigger-click">
+          {this.renderPopupForm()}
+        </Popover>
+      }>
       
 
         <a style={styles.profileBtn} data-container="body" data-toggle="popover" data-placement="left">
@@ -66,7 +130,8 @@ const TripHeader = props => {
         </a>
       </OverlayTrigger>
     </div>
-  );
+  )
+}
 };
 
 export default TripHeader;
