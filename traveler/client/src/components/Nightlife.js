@@ -12,7 +12,6 @@ const Nightlife = props => {
   };
 
   const renderRestaurant = () => {
-    console.log(props.restaurant);
     return (
       <div>
         {props.restaurant.map(food => {
@@ -23,6 +22,7 @@ const Nightlife = props => {
           const thisHref = href
             ? href.match(/\".*\"/)[0].replace(/\"/g, "")
             : null;
+
           return (
             <Restaurant
               name={food.name}
@@ -33,7 +33,8 @@ const Nightlife = props => {
               rating={food.rating}
               types={food.types}
               address={food.vicinity}
-              key={food.name}
+              key={food.id}
+              restaurantId={food.id}
             />
           );
         })}
@@ -70,7 +71,6 @@ const Nightlife = props => {
                 ? (allDay = "All Day Event")
                 : (allDay = "No Time Specified");
 
-          console.log(event.stop_time);
           return (
             <Event
               address={address}
@@ -79,7 +79,8 @@ const Nightlife = props => {
               name={event.title}
               description={event.description}
               venueName={event.venue_name}
-              key={event.title}
+              key={event.id}
+              eventId={event.id}
             />
           );
         })}
