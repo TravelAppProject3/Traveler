@@ -84,7 +84,7 @@ module.exports = function(passport) {
         clientID: keys.facebookAuth.clientID,
         clientSecret: keys.facebookAuth.clientSecret,
         callbackURL: keys.facebookAuth.callbackURL,
-        profileFields: ["id", "email", "first_name", "last_name"]
+        profileFields: ["id", "email", "first_name", "last_name", "photos"]
       },
       function(token, refreshToken, profile, done) {
         process.nextTick(function() {
@@ -98,10 +98,9 @@ module.exports = function(passport) {
               newUser.facebook.token = token;
               newUser.name =
                 profile.name.givenName + " " + profile.name.familyName;
-              newUser.facebook.email = (
-                profile.emails[0].value || ""
-              ).toLowerCase();
-
+              newUser.email = (profile.emails[0].value || "").toLowerCase();
+              newUser.thumbnail = profile.photos[0].value;
+              // newUser.thumbnail = profile.photos[0];
               newUser.save(function(err) {
                 if (err) throw err;
                 return done(null, newUser);
@@ -162,7 +161,8 @@ module.exports = function(passport) {
               newUser.google.id = profile.id;
               newUser.google.token = token;
               newUser.name = profile.displayName;
-              newUser.google.email = profile.emails[0].value;
+              newUser.email = profile.emails[0].value;
+              newUser.thumbnail = profile._json.image.url;
               newUser.save(function(err) {
                 if (err) throw err;
                 return done(null, newUser);

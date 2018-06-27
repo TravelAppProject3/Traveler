@@ -65,12 +65,6 @@ const styles = {
   lineHeight: {
     lineHeight: "50px"
   }
-  // buttonStuff: {
-  //   backgroundColor: "black",
-  //   color: "white",
-  //   borderRadius: "0px",
-  //   borderColor:"black"
-  // }
 };
 
 class Navtabs extends Component {
@@ -82,11 +76,11 @@ class Navtabs extends Component {
   componentDidMount() {
     axios
       .get("/api/trips/getUserTrips/" + userId)
-      .then((response) => {
+      .then(response => {
         console.log(response.data);
         this.setState({
           trips: response.data
-        })
+        });
       })
       .catch(function(error) {
         console.log("Error: " + error);
@@ -101,7 +95,7 @@ class Navtabs extends Component {
   };
 
   handleFormSubmit = event => {
-    event.preventDefault();
+    // event.preventDefault();
     // if (this.state.title && this.state.author) {
     axios
       .post("api/trips/new/", {
@@ -173,19 +167,13 @@ class Navtabs extends Component {
               <OverlayTrigger
                 trigger="click"
                 placement="bottom"
-                rootClose="true"
+
                 overlay={
                   <Popover id="popover-trigger-click">
                     {this.renderPopupForm()}
                   </Popover>
                 }
               >
-                {/* <button style={styles.buttonStuff}> */}
-                <span
-                  className="nav-link"
-                  style={styles.newTrip}
-                  style={styles.lineHeight}
-                >
                   New Trip <span className="sr-only">(current)</span>
                 </span>
                 {/* </button> */}
@@ -221,8 +209,12 @@ class Navtabs extends Component {
                   return (
                     // console.log(trip);
                     <Link to="/Trips">
-                    {/* {console.log(trip)} */}
-                      <a style={styles.dropDown} className="dropdown-item" href="#">
+                      {/* {console.log(trip)} */}
+                      <a
+                        style={styles.dropDown}
+                        className="dropdown-item"
+                        href="#"
+                      >
                         {trip.tripName}
                       </a>
                     </Link>
