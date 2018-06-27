@@ -173,19 +173,13 @@ class Navtabs extends Component {
               <OverlayTrigger
                 trigger="click"
                 placement="bottom"
-                rootClose="true"
+
                 overlay={
                   <Popover id="popover-trigger-click">
                     {this.renderPopupForm()}
                   </Popover>
                 }
               >
-                {/* <button style={styles.buttonStuff}> */}
-                <span
-                  className="nav-link"
-                  style={styles.newTrip}
-                  style={styles.lineHeight}
-                >
                   New Trip <span className="sr-only">(current)</span>
                 </span>
                 {/* </button> */}
