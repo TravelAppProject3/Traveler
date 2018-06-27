@@ -5,7 +5,7 @@ let username = localStorage.getItem("userName");
 // let thumbnail = localStorage.getItem("thumbnail");
 // thumbnail = thumbnail.slice(0, -2);
 // thumbnail = thumbnail + '200';
-let email = localStorage.getItem("email")
+let email = localStorage.getItem("email");
 // console.log(thumbnail);
 // =======
 // let thumbnail = localStorage.getItem("thumbnail");
