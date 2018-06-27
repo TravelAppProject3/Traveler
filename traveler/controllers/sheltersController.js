@@ -10,6 +10,7 @@ module.exports = {
   },
   findById: function(req, res) {
     db.Shelter.findById(req.params.id)
+      .populate("guests")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
