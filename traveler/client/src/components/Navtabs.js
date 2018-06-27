@@ -6,6 +6,7 @@ import { OverlayTrigger, Popover } from "react-bootstrap";
 import { InputTrip, FormBtn } from "./Form";
 import { Button } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
+let tripId= '';
 
 const styles = {
   root: {
@@ -124,6 +125,15 @@ class Navtabs extends Component {
     </form>
   );
 
+  setTrip = tripId => (
+    // console.log(tripId)
+    localStorage.setItem("tripId", tripId)
+  )
+
+  refreshPage = () => (
+    window.location.reload()
+  )
+
   render() {
     console.log(this.state);
     return (
@@ -208,9 +218,15 @@ class Navtabs extends Component {
                 {this.state.trips.map(trip => {
                   return (
                     // console.log(trip);
-                    <Link to="/Trips">
+                    
+                    <Link to="/Trips" onClick={this.refreshPage}>
                       {/* {console.log(trip)} */}
+                      
                       <a
+                        // onClick={this.setTrip}
+                        
+                        tripId = {trip._id}
+                        onClick={() => this.setTrip(trip._id)}
                         style={styles.dropDown}
                         className="dropdown-item"
                         href="#"
