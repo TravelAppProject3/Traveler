@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const styles = {
   card: {
@@ -18,6 +19,25 @@ const styles = {
   rating: {
     paddingLeft: 80
   }
+};
+
+const sendMuseum = (name, address, id) => {
+  console.log("click seen on Museum");
+  console.log(name, address, id);
+
+  axios
+    .post("/api/activity", {
+      name: name,
+      address: address,
+      restaurantBoolean: false,
+      activityId: id
+    })
+    .then(function(res) {
+      console.log(res);
+    })
+    .catch(function(err) {
+      console.log("Error Found:  " + err);
+    });
 };
 
 const Museums = props => (
@@ -48,7 +68,14 @@ const Museums = props => (
             staying here
           </p>
         </div>
-        <button type="button" className="btn btn-dark addBtn">
+        <button
+          type="button"
+          className="btn btn-dark addBtn"
+          data-id={props.museumId}
+          dataname={props.name}
+          dataaddress={props.address}
+          onClick={() => sendMuseum(props.name, props.address, props.museumId)}
+        >
           Add to My Path
         </button>
         {props.photo ? (

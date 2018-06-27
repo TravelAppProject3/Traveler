@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import axios from "axios";
 
 const styles = {
   card: {
@@ -9,6 +10,25 @@ const styles = {
     boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
     transition: "0.3s"
   }
+};
+
+const sendEvent = (name, address, id) => {
+  console.log("click works on Event");
+  console.log(name, address, id);
+
+  axios
+    .post("/api/activity", {
+      name: name,
+      address: address,
+      restaurantBoolean: false,
+      activityId: id
+    })
+    .then(function(res) {
+      console.log(res);
+    })
+    .then(function(err) {
+      console.log("error found:  " + err);
+    });
 };
 
 const Event = props => (
@@ -32,7 +52,11 @@ const Event = props => (
       )}
     </div>
 
-    <button type="button" className="btn btn-dark addBtn">
+    <button
+      type="button"
+      className="btn btn-dark addBtn"
+      onClick={() => sendEvent(props.name, props.address, props.eventId)}
+    >
       Add to My Path
     </button>
     <a href={props.link} target="_blank" alt="eventLink">
