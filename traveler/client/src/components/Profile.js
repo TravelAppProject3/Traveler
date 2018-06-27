@@ -11,7 +11,6 @@ let thumbnail = localStorage.getItem("thumbnail");
 thumbnail = thumbnail.slice(0, -2);
 thumbnail = thumbnail + "200";
 
-
 class Profile extends Component {
   state = {
     trips: []
@@ -93,9 +92,9 @@ class Profile extends Component {
       // fontSize: "20px",
       // fontWeight: "bold",
       // textDecoration: "none",
-      color: "black",
+      color: "black"
       // textDecoration: "none"
-    },
+    }
   };
 
   render() {
@@ -127,17 +126,9 @@ class Profile extends Component {
                           <button onClick={() => this.deleteRows(idx)}>
                             X
                           </button>;
-                    
-                  {this.state.trips.map(trip => {
-                    return (
-                      // console.log(trip);
-                      <Link to="/Trips">
-                      {/* {console.log(trip)} */}
-                        <li style={this.styles.links}>
-                          {trip.tripName}
                         </li>
                       );
-                    })}
+                    })};
                   </ul>
                 </div>
               </div>
