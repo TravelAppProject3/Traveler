@@ -30,6 +30,7 @@ const Sights = props => {
               address={museum.vicinity}
               rating={museum.rating}
               key={museum.id}
+              museumId={museum.id}
               photo={thisHref}
             />
           );
