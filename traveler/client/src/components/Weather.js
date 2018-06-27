@@ -3,16 +3,16 @@ import React from "react";
 const Weather = props => {
   const styles = {
     weather: {
-      position: "relative",
-      left: 1250,
-      bottom: 300,
+      position: "absolute",
       fontSize: 24,
-      width: 10
+      width: 10,
+      right: 200,
+      top: 200
     },
     img: { height: 100 },
     text: {
-      position: "relative",
-      bottom: 20,
+      position: "absolute",
+      top: 60,
       left: 15,
       color: "white",
       textShadow: "2px 2px black",
@@ -20,15 +20,13 @@ const Weather = props => {
     }
   };
   return (
-    <div>
-      <div className="row" style={styles.weather}>
-        <div className="row">
-          <img src={props.weather.icon} alt="weatherIcon" style={styles.img} />
-        </div>
-        <div className="row" style={styles.text}>
-          <div className="conditions">
-            {props.weather.conditions}, {props.weather.temp}°{" "}
-          </div>
+    <div className="row" style={styles.weather}>
+      <div className="row">
+        <img src={props.weather.icon} alt="weatherIcon" style={styles.img} />
+      </div>
+      <div className="row" style={styles.text}>
+        <div className="conditions">
+          {props.weather.conditions}, {props.weather.temp}°{" "}
         </div>
       </div>
     </div>
