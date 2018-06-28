@@ -6,7 +6,7 @@ import { OverlayTrigger, Popover } from "react-bootstrap";
 import { InputTrip, FormBtn } from "./Form";
 import { Button } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
-let tripId= '';
+let tripId = "";
 
 const styles = {
   root: {
@@ -96,8 +96,6 @@ class Navtabs extends Component {
   };
 
   handleFormSubmit = event => {
-    // event.preventDefault();
-    // if (this.state.title && this.state.author) {
     axios
       .post("api/trips/new/", {
         tripUser: userId,
@@ -125,14 +123,11 @@ class Navtabs extends Component {
     </form>
   );
 
-  setTrip = tripId => (
+  setTrip = tripId =>
     // console.log(tripId)
-    localStorage.setItem("tripId", tripId)
-  )
+    localStorage.setItem("tripId", tripId);
 
-  refreshPage = () => (
-    window.location.reload()
-  )
+  refreshPage = () => window.location.reload();
 
   render() {
     // console.log(this.state);
@@ -171,24 +166,22 @@ class Navtabs extends Component {
                 </span>
               </Link>
             </li>
-
+            <li className="nav-item active" style={styles.color}>
             <li className="nav-item active" style={styles.newTrip}>
               {/* <Link to="/Profile" style={styles.color}> */}
               <OverlayTrigger
-                
                 trigger="click"
                 placement="bottom"
+                rootClose="true"
                 overlay={
                   <Popover id="popover-trigger-click">
                     {this.renderPopupForm()}
                   </Popover>
                 }
               >
-                <span >
+                <span>
                   New Trip <span className="sr-only">(current)</span>
                 </span>
-                {/* </button> */}
-                {/* </Link> */}
               </OverlayTrigger>
             </li>
 
@@ -206,31 +199,14 @@ class Navtabs extends Component {
                 My Trips
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {/* <Link to="/Trips">
-                  <a style={styles.dropDown} className="dropdown-item" href="#">
-                    Trip 1
-                  </a>
-                </Link>
-                <Link to="/Trips">
-                  <a style={styles.dropDown} className="dropdown-item" href="#">
-                    Trip 2
-                  </a>
-                </Link> */}
                 {this.state.trips.map(trip => {
                   return (
-                    // console.log(trip);
-                    
                     <Link to="/Trips" onClick={this.refreshPage}>
-                      {/* {console.log(trip)} */}
-                      
                       <a
-                        // onClick={this.setTrip}
-                        
-                        tripId = {trip._id}
+                        tripId={trip._id}
                         onClick={() => this.setTrip(trip._id)}
                         style={styles.dropDown}
                         className="dropdown-item"
-                        href="#"
                       >
                         {trip.tripName}
                       </a>

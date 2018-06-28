@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
-
 let email = localStorage.getItem("email");
-// console.log(thumbnail);
 let thumbnail = localStorage.getItem("thumbnail");
 thumbnail = thumbnail.slice(0, -2);
 thumbnail = thumbnail + "200";
@@ -16,9 +14,11 @@ class Profile extends Component {
     trips: []
   };
 
-  deleteRows(idx) {
-    this.setState({
-      trips: this.state.trips.filter((e, i) => i !== idx)
+  deleteRows(tripId) {
+    axios.delete("/api/trips/" + tripId).then(response => {
+      this.setState({
+        trips: this.state.trips.filter((e, i) => e._id !== tripId)
+      });
     });
   }
 
@@ -89,11 +89,23 @@ class Profile extends Component {
       listStyleType: "none"
     },
     links: {
-      // fontSize: "20px",
-      // fontWeight: "bold",
-      // textDecoration: "none",
       color: "black"
-      // textDecoration: "none"
+    },
+    tripBox: {
+      height: "40px",
+      width: "auto",
+      fontWeight: "bold",
+      fontSize: "18px",
+      color: "black",
+      textDecoration: "none",
+      backgroundColor: "lightGrey"
+    },
+    deleteButton: {
+      height: "auto",
+      width: "auto",
+      backgroundColor: "red",
+      color: "white",
+      fontSize: "18px"
     }
   };
 
@@ -121,14 +133,17 @@ class Profile extends Component {
                       return (
                         <li>
                           <Link to="/Trips">
-                            <li>{trip.tripName}</li>
+                            <li style={this.styles.tripBox}>{trip.tripName}</li>
                           </Link>
-                          <button onClick={() => this.deleteRows(idx)}>
+                          <button
+                            style={this.styles.deleteButton}
+                            onClick={() => this.deleteRows(trip._id)}
+                          >
                             X
-                          </button>;
+                          </button>
                         </li>
                       );
-                    })};
+                    })}
                   </ul>
                 </div>
               </div>
