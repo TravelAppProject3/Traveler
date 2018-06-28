@@ -13,7 +13,7 @@ import axios from "axios";
 import TripHeader from "./TripHeader"
 let userId = localStorage.getItem("userId");
 let tripId = localStorage.getItem("tripId");
-console.log("tripid ", tripId);
+// console.log("tripid ", tripId);
 
 // import Trip from "../../../../controllers/tripsController";
 
@@ -28,7 +28,7 @@ class Trips extends Component {
     axios
       .get("/api/trips/" + tripId)
       .then(response => {
-        console.log(response.data.tripLegs[0]);
+        console.log(response.data);
         this.setState({
           trip: response.data,
           tripLegs: response.data.tripLegs
@@ -111,6 +111,7 @@ class Trips extends Component {
             <Destination
               name={trip.city}
               arrival={trip.arrival}
+              legId={trip._id}
             />
             <Img city={trip.city} />
             <Headers />

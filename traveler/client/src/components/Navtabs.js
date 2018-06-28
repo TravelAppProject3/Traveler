@@ -41,7 +41,7 @@ const styles = {
     marginTop: "5px"
   },
   newTrip: {
-    marginTop: "8px",
+    marginTop: "18px",
     marginRight: "10px",
     marginLeft: "10px",
     cursor: "pointer"
@@ -78,7 +78,7 @@ class Navtabs extends Component {
     axios
       .get("/api/trips/getUserTrips/" + userId)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           trips: response.data
         });
@@ -130,7 +130,7 @@ class Navtabs extends Component {
   refreshPage = () => window.location.reload();
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <nav
         style={styles.height}
@@ -166,9 +166,11 @@ class Navtabs extends Component {
                 </span>
               </Link>
             </li>
-
             <li className="nav-item active" style={styles.color}>
+            <li className="nav-item active" style={styles.newTrip}>
+              {/* <Link to="/Profile" style={styles.color}> */}
               <OverlayTrigger
+                
                 trigger="click"
                 placement="bottom"
                 rootClose="true"
@@ -178,7 +180,7 @@ class Navtabs extends Component {
                   </Popover>
                 }
               >
-                <span>
+                <span >
                   New Trip <span className="sr-only">(current)</span>
                 </span>
               </OverlayTrigger>

@@ -14,7 +14,7 @@ const Nightlife = props => {
   const renderRestaurant = () => {
     return (
       <div>
-        {props.restaurant.map(food => {
+        {props.restaurant.slice(0, 8).map(food => {
           let href;
           food.photos
             ? (href = food.photos[0].html_attributions[0])
