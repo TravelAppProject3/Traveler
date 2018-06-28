@@ -20,7 +20,7 @@ let tripId = localStorage.getItem("tripId");
 class Trips extends Component {
   state = {
     trip: {},
-    tripLegs: []
+    tripLegs: [],
   };
 
   componentDidMount() {
@@ -119,41 +119,45 @@ class Trips extends Component {
 
 
 
-            {/* <Row>
+            <Row>
               <Col>
-                {this.state.trips.events.map(event => {
-                  return (
-                    <Events
-                      name={event.name}
-                      date={event.date}
-                      location={event.location}
-                    />
-                  );
+                {trip.activity.map(event => {
+                  if(!event.restaurantBoolean){
+                    return (
+                      <Events
+                        name={event.name}
+                        // date={event.date}
+                        location={event.address}
+                      />
+                    );
+                  }
                 })}
               </Col>
               <Col>
-                {this.state.trips.hotels.map(hotel => {
+                {trip.shelter.map(hotel => {
                   return (
                     <Hotels
                       name={hotel.name}
-                      date={hotel.date}
-                      location={hotel.location}
+                      // date={hotel.date}
+                      location={hotel.address}
                     />
                   );
                 })}
               </Col>
               <Col>
-                {this.state.trips.restaurants.map(restaurant => {
-                  return (
-                    <Restaurant
-                      name={restaurant.name}
-                      date={restaurant.date}
-                      location={restaurant.location}
-                    />
-                  );
+                {trip.activity.map(restaurant => {
+                  if(restaurant.restaurantBoolean){
+                    return (
+                      <Restaurant
+                        name={restaurant.name}
+                        // date={restaurant.date}
+                        location={restaurant.address}
+                      />
+                    );
+                  }
                 })}
               </Col>
-            </Row> */}
+            </Row>
           
 
 

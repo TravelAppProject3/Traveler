@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId"); 
 console.log("legId " + legId);
 
@@ -34,10 +35,22 @@ class Hotels extends Component {
       .post("/api/trips/addShelter/" + legId, {
         name: name,
         address: address,
-        hotelId: key
+        hotelId: key,
       })
       .then(function(response) {
         console.log(response);
+        axios
+          .post("api/shelter/addGuest/" + userId +"/"+ key, {
+            name: name,
+            address: address,
+            hotelId: key,
+          })
+          .then(function(response) {
+            console.log(response);
+          })
+          .catch(function(error) {
+            console.log("Err - " + error);
+          });
       })
       .catch(function(error) {
         console.log("Err - " + error);

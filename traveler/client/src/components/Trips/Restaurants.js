@@ -51,12 +51,12 @@ const Restaurants = props => {
                 <ul>
                   <li style={styles.li}>{props.name}</li>
                   <ul style={styles.ulNest}>
-                    <li style={styles.liNest}>
+                    {/* <li style={styles.liNest}>
                       <span
                         style={styles.span}
                         className="fa fa-calendar-check-o"
                       />{props.date}
-                    </li>
+                    </li> */}
                     <li style={styles.liNest}>
                       <span
                         style={styles.span}
