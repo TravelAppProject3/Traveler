@@ -109,8 +109,10 @@ class Trips extends Component {
             return (
           <div style={this.styles.border}>
             <Destination
+              
               name={trip.city}
-              arrival={trip.arrival}
+              arrival={trip.arrivalDate.slice(5,10)}
+              departure={trip.departureDate.slice(5,10)}
               legId={trip._id}
             />
             <Img city={trip.city} />

@@ -8,10 +8,12 @@ const styles = {
   card: {
     width: "18rem",
     margin: 20,
-    borderWidth: 7,
-    borderRadius: 5,
-    boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
-    transition: "0.3s"
+    // border: "2px solid black",
+    // borderWidth: 7,
+    // borderRadius: "5px",
+    // boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
+    boxShadow: "1px 3px 8px 1px #888888",
+    // transition: "0.3s"
   },
   icon: {
     height: 50,
@@ -21,6 +23,16 @@ const styles = {
   },
   rating: {
     paddingLeft: 80
+  },
+  header: {
+    boxShadow: "1px 1px 4px 1px #888888",
+  },
+  button: {
+    marginBottom: "15px",
+    background: "black",
+    color: "white",
+    boxShadow: "1px 1px 4px 1px #888888",
+    opacity: "10"
   }
 };
 
@@ -52,11 +64,11 @@ class Active extends Component{
       <div className="container">
         <div className="row">
           <div
-            className="card border-dark col-md-12 col-sm-12 col-xs-12"
+            className="card col-md-12 col-sm-12 col-xs-12"
             style={styles.card}
           >
             <div className="row justify-content-center">
-              <div className="card-header col-md-11 col-sm-10 col-xs-10">
+              <div className="card-header col-md-11 col-sm-10 col-xs-10" style={styles.header}>
                 <h2>{this.props.name}</h2>
                 <h4>{this.props.address}</h4>
                 <h4>
@@ -81,7 +93,8 @@ class Active extends Component{
             </div>
             <button
               type="button"
-              className="btn btn-dark addBtn"
+              className="btn addBtn"
+              style={styles.button}
               data-id={this.props.activeId}
               dataname={this.props.name}
               dataaddress={this.props.address}

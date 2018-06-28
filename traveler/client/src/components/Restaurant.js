@@ -7,10 +7,12 @@ const styles = {
   card: {
     width: "18rem",
     margin: 20,
-    borderWidth: 7,
-    borderRadius: 5,
-    boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
-    transition: "0.3s"
+    // border: "2px solid black",
+    // borderWidth: 7,
+    // borderRadius: "5px",
+    // boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
+    boxShadow: "1px 3px 8px 1px #888888",
+    // transition: "0.3s"
   },
   icon: {
     height: 50,
@@ -20,6 +22,15 @@ const styles = {
   },
   rating: {
     paddingLeft: 80
+  },
+  header: {
+    boxShadow: "1px 1px 4px 1px #888888",
+  },
+  button: {
+    background: "black",
+    color: "white",
+    boxShadow: "1px 1px 4px 1px #888888",
+    opacity: "10"
   }
 };
 
@@ -80,7 +91,7 @@ class Restaurant extends Component {
       <div className="container">
         <div className="row">
           <div
-            className="card border-dark col-md-12 col-sm-12 col-xs-12"
+            className="card col-md-12 col-sm-12 col-xs-12"
             style={styles.card}
           >
             <div className="row">
@@ -90,7 +101,7 @@ class Restaurant extends Component {
                 style={styles.icon}
                 className="col-md-1 col-sm-2 col-xs-2"
               />
-              <div className="card-header col-md-11 col-sm-10 col-xs-10">
+              <div className="card-header col-md-11 col-sm-10 col-xs-10" style={styles.header}>
                 <h2>{this.props.name}</h2>
                 <h4>{this.props.address}</h4>
               </div>
@@ -106,7 +117,8 @@ class Restaurant extends Component {
             </div>
             <button
               type="button"
-              className="btn btn-dark addBtn"
+              className="btn addBtn"
+              style={styles.button}
               onClick={() =>
                 this.sendRestaurant(this.props.name, this.props.address, this.props.restaurantId)
               }
@@ -116,10 +128,11 @@ class Restaurant extends Component {
             {this.props.photo ? (
               <a href={this.props.photo} target="_blank" alt="hotelMap">
                 <button
+                  style={styles.button}
                   type="button"
                   href={this.props.photo}
                   target="_blank"
-                  className="btn btn-dark mapBtn"
+                  className="btn mapBtn"
                 >
                   View on Google Maps
                 </button>

@@ -6,11 +6,25 @@ let legId = localStorage.getItem("tripLegId");
 
 const styles = {
   card: {
+    // margin: 20,
+    
+    // width: "18rem",
     margin: 20,
-    borderWidth: 7,
-    borderRadius: 5,
-    boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
-    transition: "0.3s"
+    // border: "2px solid black",
+    // borderWidth: 7,
+    // borderRadius: "5px",
+    // boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
+    boxShadow: "1px 3px 8px 1px #888888",
+    // transition: "0.3s"
+  },
+  header: {
+    boxShadow: "1px 1px 4px 1px #888888",
+  },
+  button: {
+    background: "black",
+    color: "white",
+    boxShadow: "1px 1px 4px 1px #888888",
+    opacity: "10"
   }
 };
 
@@ -38,10 +52,10 @@ class Event extends Component {
   render() {
     return (
       <div
-        className="card border-dark mb-3 col-lg-12 col-md-12 col-sm-12"
+        className="card mb-3 col-lg-12 col-md-12 col-sm-12"
         style={styles.card}
       >
-        <div className="card-header">
+        <div className="card-header" style={styles.header}>
           <h2>{this.props.name}</h2>
           <h5>{this.props.address}</h5>
         </div>
@@ -59,7 +73,8 @@ class Event extends Component {
 
         <button
           type="button"
-          className="btn btn-dark addBtn"
+          style={styles.button}
+          className="btn addBtn"
           onClick={() => this.sendEvent(this.props.name, this.props.address, this.props.eventId)}
         >
           Add to My Path
@@ -67,9 +82,10 @@ class Event extends Component {
         <a href={this.props.link} target="_blank" alt="eventLink">
           <button
             type="button"
+            style={styles.button}
             href={this.props.link}
             target="_blank"
-            className="btn btn-dark mapBtn"
+            className="btn mapBtn"
           >
             More Information
           </button>

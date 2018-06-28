@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   restaurant,
   getEvents,
@@ -37,22 +38,24 @@ class Cities extends Component {
     card: {
       width: "maxWidth: 18rem",
       height: "200px",
-      margin: 30
+      margin: "30px",
+      boxShadow: "1px 3px 8px 1px #888888",
+      borderRadius: "5px"
     },
     hotelIcon: {
       position: "absolute",
       marginTop: "10px",
-      left: 145
+      left: 165
     },
     cameraIcon: {
       position: "absolute",
       marginTop: "10px",
-      left: 130
+      left: 150
     },
     beerIcon: {
       position: "absolute",
       marginTop: "10px",
-      left: 155
+      left: 175
     },
     city: {
       backgroundImage: `url(${this.state.cityPic})`
@@ -60,6 +63,24 @@ class Cities extends Component {
     center: {
       textAlign: "center",
       marginTop: "-30px"
+    },
+    span: {
+      position: "relative",
+      float: "right",
+      // bottom: 10,
+      right: 200,
+      padding: "10px",
+      borderRadius: "50%",
+      border: "1px solid black",
+      // boxShadow: "0px 1px 5px 1px #888888",
+      // marginRight: "250px",
+      color: "black",
+      fontSize: "18px"
+    },
+    h2: {
+      textAlign: "center",
+      marginTop: "-30px",
+      marginRight: "-30px"
     }
   };
 
@@ -210,7 +231,12 @@ class Cities extends Component {
         ) : (
           ""
         )}
-        <h2 style={this.styles.center}> Click a card below to get started! </h2>
+        <h2 style={this.styles.h2}> Click a card below to get started! 
+          <Link to="/Trips">
+            <span style={this.styles.span} className="fa fa-arrow-right" /> 
+          </Link>
+        </h2>
+  
         <div className="row justify-content-center">
           {/* Hotel Card */}
           <div
