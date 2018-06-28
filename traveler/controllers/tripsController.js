@@ -27,8 +27,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Trip.findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+    db.Trip.findOneAndRemove({ _id: req.params.tripId })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
