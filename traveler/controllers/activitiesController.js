@@ -13,6 +13,11 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByActivityId: function(req, res) {
+    db.Activity.find(req.params.activityId)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Activity.create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -20,8 +25,8 @@ module.exports = {
   },
   update: function(req, res) {
     db.Activity.findOneAndUpdate(
-      { _id: req.params.activityId },
-      { $push: { guests: req.params.userId } }
+      { activityId: req.params.activityId },
+      { $push: { participants: req.params.userId } }
     )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

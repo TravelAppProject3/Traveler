@@ -11,7 +11,7 @@ const styles = {
     // borderWidth: 7,
     // borderRadius: "5px",
     // boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
-    boxShadow: "1px 3px 8px 1px #888888",
+    boxShadow: "1px 3px 8px 1px #888888"
     // transition: "0.3s"
   },
   icon: {
@@ -28,7 +28,7 @@ const styles = {
   // },
   header: {
     textAlign: "center",
-    boxShadow: "1px 1px 4px 1px #888888",
+    boxShadow: "1px 1px 4px 1px #888888"
   },
   button: {
     marginTop: "25px",
@@ -41,17 +41,27 @@ const styles = {
 };
 
 class Landmarks extends Component {
-
   sendLandmark = (name, address, id) => {
     console.log("Click works on Landmark");
     console.log(name, address, id);
-  
+
     axios
       .post("/api/trips/addActivity/" + legId, {
         name: name,
         address: address,
         restaurantBoolean: false,
         activityId: id
+      })
+      .then(function(response) {
+        console.log(response);
+        axios
+          .put("/api/activity/addParticipant/" + userId + "/" + id)
+          .then(function(response) {
+            console.log(response);
+          })
+          .catch(function(error) {
+            console.log("Err - " + error);
+          });
       })
       .then(function(res) {
         console.log(res);
@@ -97,7 +107,11 @@ class Landmarks extends Component {
               dataname={this.props.name}
               dataaddress={this.props.address}
               onClick={() =>
-                this.sendLandmark(this.props.name, this.props.address, this.props.landmarkId)
+                this.sendLandmark(
+                  this.props.name,
+                  this.props.address,
+                  this.props.landmarkId
+                )
               }
             >
               Add to My Path
@@ -105,7 +119,8 @@ class Landmarks extends Component {
           </div>
         </div>
       </div>
-  )};
-};
+    );
+  }
+}
 
 export default Landmarks;

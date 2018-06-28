@@ -12,7 +12,7 @@ const styles = {
     // borderWidth: 7,
     // borderRadius: "5px",
     // boxShadow: "0 7px 8px 0 rgba(0,0,0,0.2)",
-    boxShadow: "1px 3px 8px 1px #888888",
+    boxShadow: "1px 3px 8px 1px #888888"
     // transition: "0.3s"
   },
   icon: {
@@ -25,7 +25,7 @@ const styles = {
     paddingLeft: 80
   },
   header: {
-    boxShadow: "1px 1px 4px 1px #888888",
+    boxShadow: "1px 1px 4px 1px #888888"
   },
   button: {
     marginBottom: "15px",
@@ -36,20 +36,30 @@ const styles = {
   }
 };
 
-class Active extends Component{
-
+class Active extends Component {
   sendActive = (name, street, city, state, id) => {
     const address = street + " " + city + ", " + state;
-  
+
     console.log("click seen on Active");
     console.log(name, address, id);
-  
+
     axios
       .post("/api/trips/addActivity/" + legId, {
         name: name,
         address: address,
         restaurantBoolean: false,
         activityId: id
+      })
+      .then(function(response) {
+        console.log(response);
+        axios
+          .put("/api/activity/addParticipant/" + userId + "/" + id)
+          .then(function(response) {
+            console.log(response);
+          })
+          .catch(function(error) {
+            console.log("Err - " + error);
+          });
       })
       .then(function(res) {
         console.log(res);
@@ -68,7 +78,10 @@ class Active extends Component{
             style={styles.card}
           >
             <div className="row justify-content-center">
-              <div className="card-header col-md-11 col-sm-10 col-xs-10" style={styles.header}>
+              <div
+                className="card-header col-md-11 col-sm-10 col-xs-10"
+                style={styles.header}
+              >
                 <h2>{this.props.name}</h2>
                 <h4>{this.props.address}</h4>
                 <h4>
@@ -78,12 +91,14 @@ class Active extends Component{
             </div>
             <div className="card-body text-dark">
               <h3 className="card-title" style={styles.rating}>
-                Start Date: {moment(this.props.startDate).format("MMMM Do YYYY, h:mm a")}.
-                End Date: {moment(this.props.endDate).format("MMMM Do YYYY, h:mm a")}
+                Start Date:{" "}
+                {moment(this.props.startDate).format("MMMM Do YYYY, h:mm a")}.
+                End Date:{" "}
+                {moment(this.props.endDate).format("MMMM Do YYYY, h:mm a")}
               </h3>
               <h3 className="card-text text-left" style={styles.rating}>
-                Tickets Remaining: {this.props.tktsRemain}. Capacity: {this.props.capacity}.
-                Sales Status:{" "}
+                Tickets Remaining: {this.props.tktsRemain}. Capacity:{" "}
+                {this.props.capacity}. Sales Status:{" "}
                 {this.props.saleStatus == "registration-open"
                   ? "Registration Open"
                   : this.props.saleStatus == "registration-closed"
@@ -111,14 +126,17 @@ class Active extends Component{
               Add to My Path
             </button>
             {this.props.description !== "No Description Provided" ? (
-              <div dangerouslySetInnerHTML={{ __html: this.props.description }} />
+              <div
+                dangerouslySetInnerHTML={{ __html: this.props.description }}
+              />
             ) : (
               ""
             )}
           </div>
         </div>
       </div>
-  )};
-};
+    );
+  }
+}
 
 export default Active;
