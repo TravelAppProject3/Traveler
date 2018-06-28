@@ -8,13 +8,15 @@ const Weather = props => {
       width: 10,
       right: 300,
       top: 135,
-      background: "rgba(255, 255, 255, .9)",
+      // background: "rgba(255, 255, 255, .10)",
+      background: "white",
       // display: "inline-block"
       paddingRight: "120px",
       paddingLeft: "10px",
       paddingTop: "0px",
       paddingBottom: "10px",
-      borderRadius: "50%"
+      borderRadius: "50%",
+      boxShadow: "1px 3px 8px 1px #888888"
     },
     img: { height: 100,
     marginLeft: "4px",
