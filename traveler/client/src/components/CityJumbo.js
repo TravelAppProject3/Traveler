@@ -14,8 +14,8 @@ class CityJumbo extends Component {
       width: "100%",
       img: "1px solid black",
       boxShadow: "1px 3px 8px 1px #888888",
-      marginTop: "10px",
-      marginBottom: "10px"
+      marginTop: "-19px",
+      // marginBottom: "10px"
     },
     cityText: {
       color: "white",
@@ -28,7 +28,7 @@ class CityJumbo extends Component {
 
   componentDidMount() {
     const city = this.props.city;
-    console.log(city);
+    // console.log(city);
     let cityLower = city.toLowerCase();
     if (cityLower === "san francisco") {
       cityLower = "san francisco bay area";
@@ -44,7 +44,7 @@ class CityJumbo extends Component {
     cityPicApi
       .cityPic(city)
       .then(data => this.setState({ cityPic: data.data.photos[0].image.web }))
-      .then(console.log(this.state.cityPic))
+      // .then(console.log(this.state.cityPic))
       .catch(err => console.log(err));
   };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from ".";
 
 export const InputTrip = props => 
   <div className="form-group">
@@ -6,5 +7,3 @@ export const InputTrip = props =>
     <label>Trip Name</label>
     <input className="form-control" type="text" value={props.value} name={props.name} onChange={props.onChange}/>
   </div>
-
-export default InputTrip;

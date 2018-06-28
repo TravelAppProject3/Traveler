@@ -82,12 +82,12 @@ class Cities extends Component {
   }
 
   getWeather = weatherData => {
-    console.log(
-      "Weather:  " +
-        JSON.stringify(weatherData.weather[0].main) +
-        "  Temperatue:  " +
-        JSON.stringify(weatherData.main.temp)
-    );
+    // console.log(
+    //   "Weather:  " +
+    //     JSON.stringify(weatherData.weather[0].main) +
+    //     "  Temperatue:  " +
+    //     JSON.stringify(weatherData.main.temp)
+    // );
 
     const conditions = weatherData.weather[0].main;
     const kelvin = weatherData.main.temp;
@@ -95,7 +95,7 @@ class Cities extends Component {
     const wxIcon = "http://openweathermap.org/img/w/" + icon + ".png";
 
     const temp = Math.floor(kelvin * 1.8 - 459.67);
-    console.log(wxIcon);
+    // console.log(wxIcon);
 
     this.setState({
       weather: { conditions: conditions, temp: temp, icon: wxIcon }

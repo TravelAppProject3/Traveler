@@ -78,7 +78,7 @@ class Navtabs extends Component {
     axios
       .get("/api/trips/getUserTrips/" + userId)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           trips: response.data
         });
@@ -135,7 +135,7 @@ class Navtabs extends Component {
   )
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <nav
         style={styles.height}

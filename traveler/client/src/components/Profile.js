@@ -6,7 +6,7 @@ let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
 
 let email = localStorage.getItem("email");
-console.log(thumbnail);
+// console.log(thumbnail);
 let thumbnail = localStorage.getItem("thumbnail");
 thumbnail = thumbnail.slice(0, -2);
 thumbnail = thumbnail + "200";
