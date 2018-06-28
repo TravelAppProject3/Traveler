@@ -58,7 +58,8 @@ class Cities extends Component {
       backgroundImage: `url(${this.state.cityPic})`
     },
     center: {
-      textAlign: "center"
+      textAlign: "center",
+      marginTop: "-30px"
     }
   };
 
@@ -82,12 +83,12 @@ class Cities extends Component {
   }
 
   getWeather = weatherData => {
-    console.log(
-      "Weather:  " +
-        JSON.stringify(weatherData.weather[0].main) +
-        "  Temperatue:  " +
-        JSON.stringify(weatherData.main.temp)
-    );
+    // console.log(
+    //   "Weather:  " +
+    //     JSON.stringify(weatherData.weather[0].main) +
+    //     "  Temperatue:  " +
+    //     JSON.stringify(weatherData.main.temp)
+    // );
 
     const conditions = weatherData.weather[0].main;
     const kelvin = weatherData.main.temp;
@@ -95,7 +96,7 @@ class Cities extends Component {
     const wxIcon = "http://openweathermap.org/img/w/" + icon + ".png";
 
     const temp = Math.floor(kelvin * 1.8 - 459.67);
-    console.log(wxIcon);
+    // console.log(wxIcon);
 
     this.setState({
       weather: { conditions: conditions, temp: temp, icon: wxIcon }
@@ -175,7 +176,7 @@ class Cities extends Component {
   renderHotels = hotelObj => {
     return (
       <div>
-        {hotelObj.map(hotel => {
+        {hotelObj.slice(0, 8).map(hotel => {
           let href;
           hotel.photos
             ? (href = hotel.photos[0].html_attributions[0])
