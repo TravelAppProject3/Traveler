@@ -27,7 +27,7 @@ module.exports = {
   },
   update: function(req, res) {
     db.Shelter.findOneAndUpdate(
-      { _id: req.params.shelterId },
+      { hotelId: req.params.hotelId },
       { $push: { guests: req.params.userId } }
     )
       .then(dbModel => res.json(dbModel))

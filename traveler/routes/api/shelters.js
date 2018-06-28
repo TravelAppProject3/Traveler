@@ -16,16 +16,6 @@ router
 
 router.route("/getHotelGuests/:hotelId").get(sheltersController.findByHotelId);
 
-router.route("/addGuest/:userId/:shelterId").put(sheltersController.update);
+router.route("/addGuest/:userId/:hotelId").put(sheltersController.update);
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
