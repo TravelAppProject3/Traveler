@@ -214,6 +214,7 @@ class Navtabs extends Component {
                 })}
               </div>
             </li>
+            {/* </li> */}
             <div className="logoutBtn">
               <Button
                 bsStyle="danger"

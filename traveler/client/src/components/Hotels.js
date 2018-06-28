@@ -112,9 +112,10 @@ class Hotels extends Component {
             {this.props.photo ? (
               <a href={this.props.photo} target="_blank" alt="hotelMap">
                 <button
+                  style={styles.button}
                   type="button"
                   href={this.props.photo}
-                  className="btn btn-dark mapBtn"
+                  className="btn mapBtn"
                 >
                   View on Google Maps
                 </button>

@@ -18,9 +18,11 @@ const Weather = props => {
       borderRadius: "50%",
       boxShadow: "1px 3px 8px 1px #888888"
     },
-    img: { height: 100,
-    marginLeft: "4px",
-    paddingTop: "-5px" },
+    img: { 
+      height: 100,
+      marginLeft: "4px",
+      paddingTop: "-5px" 
+    },
     text: {
       position: "absolute",
       top: 60,
@@ -35,7 +37,7 @@ const Weather = props => {
   return (
     <div className="container" style={styles.weather}>
       <div>
-        <img src={props.weather.icon} alt="weatherIcon" style={styles.img} />
+        <img src={props.weather.icon} style={styles.img} />
       </div>
       <div className="row" style={styles.text}>
         <div className="conditions">
