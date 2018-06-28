@@ -25,14 +25,23 @@ const styles = {
   }
 };
 
+const setLeg = legId => (
+  // console.log(tripId)
+  localStorage.setItem("tripLegId", legId)
+)
+
+const refreshPage = () => (
+  window.location.reload()
+)
+
 const Destination = props => {
   return (
     <div>
       <p style={styles.p}>
         {props.name} {props.arrival}
       </p>
-      <Link to={"/Cities/" + props.name}>
-        <button style={styles.profileBtn}>
+      <Link to={"/Cities/" + props.name} onClick={() => setLeg(props.legId)}>
+        <button style={styles.profileBtn} onClick={() => refreshPage()}>
           <span className="fa fa-pencil" /> Customize Your Trip
         </button>
       </Link>
