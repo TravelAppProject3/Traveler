@@ -31,7 +31,7 @@ class Hotels extends Component {
     console.log(name, address, key);
   
     axios
-      .post("api/trips/addShelter/" + legId, {
+      .post("/api/trips/addShelter/" + legId, {
         name: name,
         address: address,
         hotelId: key
