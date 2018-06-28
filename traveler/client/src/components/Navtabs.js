@@ -166,7 +166,7 @@ class Navtabs extends Component {
                 </span>
               </Link>
             </li>
-            <li className="nav-item active" style={styles.color}>
+            {/* <li className="nav-item active" style={styles.color}> */}
             <li className="nav-item active" style={styles.newTrip}>
               {/* <Link to="/Profile" style={styles.color}> */}
               <OverlayTrigger
@@ -215,6 +215,7 @@ class Navtabs extends Component {
                 })}
               </div>
             </li>
+            {/* </li> */}
             <div className="logoutBtn">
               <Button
                 bsStyle="danger"
