@@ -38,7 +38,7 @@ const Destination = props => {
   return (
     <div>
       <p style={styles.p}>
-        {props.name} {props.arrival}
+        {props.name}
       </p>
       <Link to={"/Cities/" + props.name} onClick={() => setLeg(props.legId)}>
         <button style={styles.profileBtn} onClick={() => refreshPage()}>

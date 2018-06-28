@@ -14,7 +14,7 @@ class CityJumbo extends Component {
       width: "100%",
       img: "1px solid black",
       boxShadow: "1px 3px 8px 1px #888888",
-      marginTop: "-19px",
+      marginTop: "-20px",
       marginBottom: "-50px"
     },
     cityText: {

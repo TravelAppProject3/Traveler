@@ -55,9 +55,54 @@ class Trips extends Component {
           {this.state.tripLegs.map(trip => {
             return (
               <div style={this.styles.border}>
-                <Destination name={trip.city} arrival={trip.arrival} />
+                <Destination
+                  name={trip.city}
+                  arrival={trip.arrivalDate.slice(5, 10)}
+                  departure={trip.departureDate.slice(5, 10)}
+                  legId={trip._id}
+                />
                 <Img city={trip.city} />
                 <Headers />
+
+                <Row>
+                  <Col>
+                    {trip.activity.map(event => {
+                      if (!event.restaurantBoolean) {
+                        return (
+                          <Events
+                            name={event.name}
+                            // date={event.date}
+                            location={event.address}
+                          />
+                        );
+                      }
+                    })}
+                  </Col>
+                  <Col>
+                    {trip.shelter.map(hotel => {
+                      return (
+                        <Hotels
+                          name={hotel.name}
+                          // date={hotel.date}
+                          location={hotel.address}
+                        />
+                      );
+                    })}
+                  </Col>
+                  <Col>
+                    {trip.activity.map(restaurant => {
+                      if (restaurant.restaurantBoolean) {
+                        return (
+                          <Restaurant
+                            name={restaurant.name}
+                            // date={restaurant.date}
+                            location={restaurant.address}
+                          />
+                        );
+                      }
+                    })}
+                  </Col>
+                </Row>
               </div>
             );
           })}
