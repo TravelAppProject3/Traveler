@@ -89,11 +89,23 @@ class Profile extends Component {
       listStyleType: "none"
     },
     links: {
-      // fontSize: "20px",
-      // fontWeight: "bold",
-      // textDecoration: "none",
       color: "black"
-      // textDecoration: "none"
+    },
+    tripBox: {
+      height: "40px",
+      width: "auto",
+      fontWeight: "bold",
+      fontSize: "18px",
+      color: "black",
+      textDecoration: "none",
+      backgroundColor: "lightGrey"
+    },
+    deleteButton: {
+      height: "auto",
+      width: "auto",
+      backgroundColor: "red",
+      color: "white",
+      fontSize: "18px"
     }
   };
 
@@ -121,11 +133,14 @@ class Profile extends Component {
                       return (
                         <li>
                           <Link to="/Trips">
-                            <li>{trip.tripName}</li>
+                            <li style={this.styles.tripBox}>{trip.tripName}</li>
                           </Link>
-                          <button onClick={() => this.deleteRows(idx)}>
+                          <button
+                            style={this.styles.deleteButton}
+                            onClick={() => this.deleteRows(idx)}
+                          >
                             X
-                          </button>;
+                          </button>
                         </li>
                       );
                     })};

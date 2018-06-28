@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom"; 
-import {OverlayTrigger, Popover} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 import { Input, TextArea, FormBtn } from "../Form";
 import axios from "axios";
 let tripId = localStorage.getItem("tripId");
@@ -32,24 +32,6 @@ const styles = {
     bottom: "60px"
   }
 };
-
-// const popoverClick = (
-//   <Popover id="popover-trigger-click" title="">
-//     <form>
-//       <Input
-//         // value={this.state.title}
-//         // onChange={this.handleInputChange}
-//         // name="title"
-//         // placeholder="Title (required)"
-//       />
-//       <FormBtn
-//         // disabled={!(this.state.author && this.state.title)}
-//         // onClick={this.han dleFormSubmit}
-//       >
-//       </FormBtn>
-//     </form>
-//   </Popover>
-// );
 
 class TripHeader extends Component {
   state = {
@@ -109,29 +91,32 @@ class TripHeader extends Component {
       });
   };
 
-  render(){
-  return (
-    <div>
-      <p style={styles.p}>
-        {this.props.name}
-      </p>
-      <OverlayTrigger trigger="click" placement="left" 
-      overlay={
-        <Popover id="popover-trigger-click">
-          {this.renderPopupForm()}
-        </Popover>
-      }>
-      
-
-        <a style={styles.profileBtn} data-container="body" data-toggle="popover" data-placement="left">
-
-          <span className="fa fa-pencil" /> Add A City
-        
-        </a>
-      </OverlayTrigger>
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        <p style={styles.p}>{this.props.name}</p>
+        <OverlayTrigger
+          trigger="click"
+          rootClose="true"
+          placement="left"
+          overlay={
+            <Popover id="popover-trigger-click">
+              {this.renderPopupForm()}
+            </Popover>
+          }
+        >
+          <a
+            style={styles.profileBtn}
+            data-container="body"
+            data-toggle="popover"
+            data-placement="left"
+          >
+            <span className="fa fa-pencil" /> Add A City
+          </a>
+        </OverlayTrigger>
+      </div>
+    );
+  }
 }
-};
 
 export default TripHeader;
