@@ -60,6 +60,8 @@ The project details were of the following:
   - GET Get information about the shelter including the guests
 - api/shelter/addGuest/:userId/:shelterId
   - PUT - add user to hotel list
+- api/shelter/getHotelGuests/:hotelId
+  - GET - returns an array of guests staying at the hotel
 
 ### Activity Data
 
