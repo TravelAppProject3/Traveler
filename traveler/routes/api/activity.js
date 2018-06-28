@@ -18,4 +18,12 @@ router
   .route("/addParticipant/:userId/:activityId")
   .put(activitiesController.update);
 
+router
+  .route("/getParticipants/:activityId")
+  .get(activitiesController.findByActivityId);
+
+router
+  .route("/addParticipant/:userId/:activityId")
+  .put(activitiesController.update);
+
 module.exports = router;
