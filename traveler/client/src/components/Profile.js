@@ -77,7 +77,6 @@ class Profile extends Component {
       backgroundColor: "rgba(255, 255, 255, .8)",
       border: "1px black solid",
       borderRadius: "10px"
-      // backgroundColor: "rgba(255, 255, 255, .7)";
     },
     span: {
       marginRight: "20px"
@@ -92,7 +91,7 @@ class Profile extends Component {
       color: "black"
     },
     tripBox: {
-      height: "40px",
+      height: "auto",
       width: "auto",
       fontWeight: "bold",
       fontSize: "18px",
@@ -105,7 +104,10 @@ class Profile extends Component {
       width: "auto",
       backgroundColor: "red",
       color: "white",
-      fontSize: "18px"
+      fontSize: "18px",
+      marginBottom: "20px",
+      marginLeft: "20px",
+      marginRight: "200px"
     }
   };
 
@@ -131,17 +133,19 @@ class Profile extends Component {
                   <ul style={this.styles.ul}>
                     {this.state.trips.map((trip, idx) => {
                       return (
-                        <li>
+                        <a>
                           <Link to="/Trips">
-                            <li style={this.styles.tripBox}>{trip.tripName}</li>
+                            <button style={this.styles.tripBox}>
+                              Trip Name: {trip.tripName}
+                            </button>
                           </Link>
                           <button
                             style={this.styles.deleteButton}
                             onClick={() => this.deleteRows(trip._id)}
                           >
-                            X
+                            Delete Trip
                           </button>
-                        </li>
+                        </a>
                       );
                     })}
                   </ul>
