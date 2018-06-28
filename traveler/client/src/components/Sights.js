@@ -15,7 +15,7 @@ const Sights = props => {
   const renderMuseum = () => {
     return (
       <div>
-        {props.museum.map(museum => {
+        {props.museum.slice(0, 8).map(museum => {
           let href;
           museum.photos
             ? (href = museum.photos[0].html_attributions[0])
@@ -43,7 +43,7 @@ const Sights = props => {
   const renderLandmark = () => {
     return (
       <div>
-        {props.landmark.map(landmark => {
+        {props.landmark.slice(0, 8).map(landmark => {
           return (
             <Landmarks
               name={landmark.Location.Name}
@@ -63,7 +63,7 @@ const Sights = props => {
   const renderActive = () => {
     return (
       <div>
-        {props.active.map(act => {
+        {props.active.slice(0, 8).map(act => {
           //   console.log(act.assetDescriptions[0]);
           //   console.log(act.assetDescriptions[0]);
           let href;

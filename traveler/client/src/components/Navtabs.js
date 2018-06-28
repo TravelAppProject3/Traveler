@@ -41,7 +41,7 @@ const styles = {
     marginTop: "5px"
   },
   newTrip: {
-    marginTop: "8px",
+    marginTop: "18px",
     marginRight: "10px",
     marginLeft: "10px",
     cursor: "pointer"
@@ -172,9 +172,10 @@ class Navtabs extends Component {
               </Link>
             </li>
 
-            <li className="nav-item active" style={styles.color}>
+            <li className="nav-item active" style={styles.newTrip}>
               {/* <Link to="/Profile" style={styles.color}> */}
               <OverlayTrigger
+                
                 trigger="click"
                 placement="bottom"
                 overlay={
@@ -183,7 +184,7 @@ class Navtabs extends Component {
                   </Popover>
                 }
               >
-                <span>
+                <span >
                   New Trip <span className="sr-only">(current)</span>
                 </span>
                 {/* </button> */}
