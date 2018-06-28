@@ -104,7 +104,7 @@ class Navtabs extends Component {
         tripName: this.state.newTrip
       })
       .then(function(response) {
-        // console.log(response);
+        console.log(response);
       })
       .catch(function(error) {
         console.log("Error: " + error);
