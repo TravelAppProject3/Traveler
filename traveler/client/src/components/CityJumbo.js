@@ -15,14 +15,14 @@ class CityJumbo extends Component {
       img: "1px solid black",
       boxShadow: "1px 3px 8px 1px #888888",
       marginTop: "-19px",
-      // marginBottom: "10px"
+      marginBottom: "-50px"
     },
     cityText: {
       color: "white",
       fontSize: 100,
       textShadow: "4px 4px black",
       position: "relative",
-      bottom: "275px"
+      bottom: "225px"
     }
   };
 

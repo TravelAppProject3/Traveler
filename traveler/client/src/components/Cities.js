@@ -58,7 +58,8 @@ class Cities extends Component {
       backgroundImage: `url(${this.state.cityPic})`
     },
     center: {
-      textAlign: "center"
+      textAlign: "center",
+      marginTop: "-30px"
     }
   };
 
@@ -175,7 +176,7 @@ class Cities extends Component {
   renderHotels = hotelObj => {
     return (
       <div>
-        {hotelObj.map(hotel => {
+        {hotelObj.slice(0, 8).map(hotel => {
           let href;
           hotel.photos
             ? (href = hotel.photos[0].html_attributions[0])

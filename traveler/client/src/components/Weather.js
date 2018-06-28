@@ -6,8 +6,8 @@ const Weather = props => {
       position: "absolute",
       fontSize: 24,
       width: 10,
-      right: 200,
-      top: 200
+      right: 570,
+      top: 130
     },
     img: { height: 100 },
     text: {
