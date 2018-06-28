@@ -15,7 +15,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByHotelId: function(req, res) {
-    db.Shelter.findById({ hotelId: req.params.hotelId })
+    db.Shelter.find({ hotelId: req.params.hotelId })
       .populate("guests")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
