@@ -14,6 +14,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByHotelId: function(req, res) {
+    db.Shelter.findById({ hotelId: req.params.hotelId })
+      .populate("guests")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Shelter.create(req.body)
       .then(dbModel => res.json(dbModel))
