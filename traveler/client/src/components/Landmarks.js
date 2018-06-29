@@ -41,6 +41,27 @@ const styles = {
 };
 
 class Landmarks extends Component {
+
+  componentDidMount(){
+    // this.props.hotelId.map( id => {
+      axios
+      .get("/api/activity/" + this.props.landmarkId)
+      .then(response => {
+        console.log(response);
+        // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
+        // this.setState({
+        //   trip: response.data,
+        //   tripLegs: response.data.tripLegs
+        // });
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+
+    // })
+    console.log(this.props);
+  }
+
   sendLandmark = (name, address, id) => {
     console.log("Click works on Landmark");
     console.log(name, address, id);

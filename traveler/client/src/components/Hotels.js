@@ -32,10 +32,40 @@ const styles = {
     color: "white",
     boxShadow: "1px 1px 4px 1px #888888",
     opacity: "10"
+  },
+  img: {
+    height: "25px",
+    width: "25px",
+    borderRadius: "50%"
   }
 };
 
 class Hotels extends Component {
+
+  state= {
+    guests: []
+  }
+
+  componentDidMount(){
+    // this.props.hotelId.map( id => {
+      axios
+      .get("/api/shelter/getHotelGuests/" + this.props.hotelId)
+      .then(response => {
+        console.log(response);
+        this.setState({ guests: response.data[0] ? response.data[0].guests : []})
+        // this.setState({
+        //   trip: response.data,
+        //   tripLegs: response.data.tripLegs
+        // });
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+
+    // })
+    // console.log(this.props);
+  }
+
   sendHotel = (name, address, key) => {
     console.log("click seen on Hotel");
     console.log(name, address, "Key:", key);
@@ -96,8 +126,8 @@ class Hotels extends Component {
                 {this.props.rating ? this.props.rating : "None Provided"}
               </h3>
               <p className="card-text text-left" style={styles.rating}>
-                This is where we'll display those in our DB who have stayed
-                here/are staying here
+                <img style={styles.img} src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"></img>
+                {this.state.guests.map(guest => guest.name)}
               </p>
             </div>
             <button

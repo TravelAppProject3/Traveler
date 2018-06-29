@@ -37,6 +37,27 @@ const styles = {
 };
 
 class Active extends Component {
+
+  componentDidMount(){
+    // this.props.hotelId.map( id => {
+      // axios
+      // .get("/api/activity/" + this.props.activeId)
+      // .then(response => {
+      //   console.log(response);
+      //   // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
+      //   // this.setState({
+      //   //   trip: response.data,
+      //   //   tripLegs: response.data.tripLegs
+      //   // });
+      // })
+      // .catch(function(error) {
+      //   console.log("Error: " + error);
+      // });
+
+    // })
+    console.log(this.props);
+  }
+
   sendActive = (name, street, city, state, id) => {
     const address = street + " " + city + ", " + state;
 
