@@ -1,6 +1,7 @@
 import moment from "moment";
 import React, { Component } from "react";
 import axios from "axios";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
 
@@ -40,6 +41,12 @@ const styles = {
     borderRadius: "50%"
   }
 };
+
+const popoverClick = (
+  <Popover id="popover-trigger-click">
+    Add this to your trip!.
+  </Popover>
+);
 
 class Active extends Component {
  
@@ -188,6 +195,7 @@ class Active extends Component {
                 <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
               </p>
             </div>
+            <OverlayTrigger trigger={['hover', 'click']} placement="bottom" overlay={popoverClick}>
             <button
               type="button"
               className="btn addBtn"
@@ -207,6 +215,7 @@ class Active extends Component {
             >
               Add to My Path
             </button>
+            </OverlayTrigger>
             {this.props.description !== "No Description Provided" ? (
               <div
                 dangerouslySetInnerHTML={{ __html: this.props.description }}

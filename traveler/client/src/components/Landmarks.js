@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
 
@@ -44,6 +45,12 @@ const styles = {
     borderRadius: "50%"
   }
 };
+
+const popoverClick = (
+  <Popover id="popover-trigger-click">
+    Add this to your trip!.
+  </Popover>
+);
 
 class Landmarks extends Component {
 
@@ -183,6 +190,7 @@ class Landmarks extends Component {
                 <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
               </p>
             </div>
+            <OverlayTrigger trigger={['hover', 'click']} placement="bottom" overlay={popoverClick}>
             <button
               type="button"
               className="btn addBtn"
@@ -200,6 +208,7 @@ class Landmarks extends Component {
             >
               Add to My Path
             </button>
+            </OverlayTrigger>
           </div>
         </div>
       </div>
