@@ -196,7 +196,7 @@ class Cities extends Component {
 
   renderHotels = hotelObj => {
     return (
-      <div>
+      <div style={this.styles.scroll}>
         {hotelObj.slice(0, 8).map(hotel => {
           let href;
           hotel.photos

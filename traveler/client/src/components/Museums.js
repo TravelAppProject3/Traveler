@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { museum } from "../utils/API";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
 console.log(userId);
@@ -40,6 +41,12 @@ const styles = {
     borderRadius: "50%"
   }
 };
+
+const popoverClick = (
+  <Popover id="popover-trigger-click">
+    Add this to your trip!.
+  </Popover>
+);
 
 class Museums extends Component {
 
@@ -171,6 +178,7 @@ class Museums extends Component {
                 <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
               </p>
             </div>
+            <OverlayTrigger trigger={['hover', 'click']} placement="bottom" overlay={popoverClick}>
             <button
               type="button"
               className="btn addBtn"
@@ -182,6 +190,7 @@ class Museums extends Component {
             >
               Add to My Path
             </button>
+            </OverlayTrigger>
             {this.props.photo ? (
               <a href={this.props.photo} alt="hotelMap">
                 <button
