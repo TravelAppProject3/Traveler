@@ -49,7 +49,12 @@ class Hotels extends Component {
       .then(function(response) {
         console.log(response);
         axios
-          .put("/api/shelter/addGuest/" + userId + "/" + key)
+          .put("/api/shelter/addGuest/" + userId + "/" + key,{
+            name: name,
+            address: address,
+            hotelId: key,
+          })
+
           .then(function(response) {
             console.log(response);
           })

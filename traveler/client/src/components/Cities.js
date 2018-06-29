@@ -31,7 +31,7 @@ class Cities extends Component {
     hotelClick: false,
     sightsClick: false,
     drinksClick: false,
-    weather: []
+    weather: {}
   };
 
   styles = {

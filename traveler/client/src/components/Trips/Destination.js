@@ -33,6 +33,7 @@ const setLeg = legId => (
 const refreshPage = () => (
   window.location.reload()
 )
+// onClick={() => refreshPage()}
 
 const Destination = props => {
   return (
@@ -41,7 +42,7 @@ const Destination = props => {
         {props.name}
       </p>
       <Link to={"/Cities/" + props.name} onClick={() => setLeg(props.legId)}>
-        <button style={styles.profileBtn} onClick={() => refreshPage()}>
+        <button style={styles.profileBtn}>
           <span className="fa fa-pencil" /> Customize Your Trip
         </button>
       </Link>

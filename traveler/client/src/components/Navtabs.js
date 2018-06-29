@@ -129,6 +129,7 @@ class Navtabs extends Component {
 
   refreshPage = () => window.location.reload();
 
+
   render() {
     // console.log(this.state);
     return (
