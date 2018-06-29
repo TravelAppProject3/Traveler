@@ -63,7 +63,7 @@ class Hotels extends Component {
       });
 
     // })
-    // console.log(this.props);
+    // console.log(this.props.ho);
   }
 
   sendHotel = (name, address, key) => {
@@ -126,8 +126,11 @@ class Hotels extends Component {
                 {this.props.rating ? this.props.rating : "None Provided"}
               </h3>
               <p className="card-text text-left" style={styles.rating}>
-                <img style={styles.img} src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"></img>
-                {this.state.guests.map(guest => guest.name)}
+                {/* <img style={styles.img} src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"></img> */}
+                {this.state.guests.map(guest => {
+                  return ( <span><img style={styles.img} src={guest.thumbnail}></img> {guest.name} </span>)
+                  }
+                )}
               </p>
             </div>
             <button

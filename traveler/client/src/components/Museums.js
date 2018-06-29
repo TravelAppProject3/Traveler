@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { museum } from "../utils/API";
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
+console.log(userId);
 
 const styles = {
   card: {
@@ -31,34 +33,87 @@ const styles = {
     color: "white",
     boxShadow: "1px 1px 4px 1px #888888",
     opacity: "10"
+  },
+  img: {
+    height: "20px",
+    width: "20px",
+    borderRadius: "50%"
   }
 };
 
 class Museums extends Component {
 
   state= {
-    guests: []
+    guests: [],
+    img: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    guest2: [],
+    img2: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    guest3: [],
+    img3: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg"
+
   }
 
-  // componentDidMount(){
+  componentDidMount(){
   //   // this.props.hotelId.map( id => {
-  //     axios
-  //     .get("/api/activity/" + this.props.museumId)
-  //     .then(response => {
-  //       console.log(response);
-  //       // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
-  //       // this.setState({
-  //       //   trip: response.data,
-  //       //   tripLegs: response.data.tripLegs
-  //       // });
-  //     })
-  //     .catch(function(error) {
-  //       console.log("Error: " + error);
-  //     });
+      axios
+      .get("/api/activity/")
+      .then(response => {
+        console.log(response.data);
+        
+        response.data.map(museum => {
+          if(this.props.museumId === museum.activityId){
+            // console.log(museum.participants[0] + "is here")
+            axios
+              .get("/api/users/" + museum.participants[0])
+              .then(response => {
+                console.log(response.data)
+                this.setState({ guests: response.data.name, img: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+
+            if(museum.participants[1]){
+              console.log("two people here")
+              axios
+              .get("/api/users/" + museum.participants[1])
+              .then(response => {
+                console.log(response.data.name + "is here")
+                this.setState({ guest2: response.data.name, img2: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+            }
+
+            if(museum.participants[2]){
+              // console.log("two people here")
+              axios
+              .get("/api/users/" + museum.participants[2])
+              .then(response => {
+                console.log(response.data.name + "is here")
+                this.setState({ guest3: response.data.name, img3: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+            }
+          }
+          // console.log(museum.participants[0])
+        });
+        // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
+        // this.setState({
+        //   trip: response.data,
+        //   tripLegs: response.data.tripLegs
+        // });
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
 
   //   // })
-  //   // console.log(this.props);
-  // }
+    // console.log(this.props);
+  }
 
   sendMuseum = (name, address, id) => {
     console.log("click seen on Museum");
@@ -112,8 +167,8 @@ class Museums extends Component {
                 Rating: {this.props.rating ? this.props.rating : "None Provided"}
               </h3>
               <p className="card-text text-left" style={styles.rating}>
-                This is where we'll display those in our DB who have stayed here/are
-                staying here
+                {/* <img style={styles.img} src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"></img> */}
+                <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
               </p>
             </div>
             <button
