@@ -31,47 +31,85 @@ const styles = {
     color: "white",
     boxShadow: "1px 1px 4px 1px #888888",
     opacity: "10"
+  },
+  img: {
+    height: "20px",
+    width: "20px",
+    borderRadius: "50%"
   }
 };
 
-// const sendRestaurant = (name, address, id) => {
-//   console.log("click works on Restaurants");
-//   console.log(name, address, id);
-
-//   axios
-//     .post("/api/activity", {
-//       name: name,
-//       address: address,
-//       restaurantBoolean: true,
-//       activityId: id
-//     })
-//     .then(function(res) {
-//       console.log(res);
-//     })
-//     .catch(function(err) {
-//       console.log("error found:  " + err);
-//     });
-// };
-
 class Restaurant extends Component {
 
-  componentDidMount(){
-    // this.props.hotelId.map( id => {
-      // axios
-      // .get("/api/activity/" + this.props.restaurantId)
-      // .then(response => {
-      //   console.log(response);
-      //   // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
-      //   // this.setState({
-      //   //   trip: response.data,
-      //   //   tripLegs: response.data.tripLegs
-      //   // });
-      // })
-      // .catch(function(error) {
-      //   console.log("Error: " + error);
-      // });
+  state= {
+    guests: [],
+    img: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    guest2: [],
+    img2: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    guest3: [],
+    img3: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg"
 
-    // })
+  }
+
+  componentDidMount(){
+  //   // this.props.hotelId.map( id => {
+      axios
+      .get("/api/activity/")
+      .then(response => {
+        console.log(response.data);
+        
+        response.data.map(restaurant => {
+          if(this.props.restaurantId === restaurant.activityId){
+            // console.log(museum.participants[0] + "is here")
+            axios
+              .get("/api/users/" + restaurant.participants[0])
+              .then(response => {
+                console.log(response.data)
+                this.setState({ guests: response.data.name, img: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+
+            if(restaurant.participants[1]){
+              console.log("two people here")
+              axios
+              .get("/api/users/" + restaurant.participants[1])
+              .then(response => {
+                console.log(response.data.name + "is here")
+                this.setState({ guest2: response.data.name, img2: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+            }
+
+            if(restaurant.participants[2]){
+              // console.log("two people here")
+              axios
+              .get("/api/users/" + restaurant.participants[2])
+              .then(response => {
+                console.log(response.data.name + "is here")
+                this.setState({ guest3: response.data.name, img3: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+            }
+          }
+          // console.log(museum.participants[0])
+        });
+        // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
+        // this.setState({
+        //   trip: response.data,
+        //   tripLegs: response.data.tripLegs
+        // });
+      })
+      .catch(function(error) {
+        console.log("Error: " + error);
+      });
+
+  //   // })
     // console.log(this.props);
   }
 
@@ -146,8 +184,8 @@ class Restaurant extends Component {
                 {this.props.rating ? this.props.rating : "None Provided"}
               </h3>
               <p className="card-text text-left" style={styles.rating}>
-                This is where we'll display those in our DB who have stayed
-                here/are staying here
+                <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
+
               </p>
             </div>
             <button

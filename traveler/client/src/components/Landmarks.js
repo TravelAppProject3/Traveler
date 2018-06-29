@@ -37,17 +37,74 @@ const styles = {
     color: "white",
     boxShadow: "1px 1px 4px 1px #888888",
     opacity: "10"
+  },
+  img: {
+    height: "20px",
+    width: "20px",
+    borderRadius: "50%"
   }
 };
 
 class Landmarks extends Component {
 
+  state= {
+    guests: [],
+    img: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    guest2: [],
+    img2: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    guest3: [],
+    img3: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg"
+
+  }
+
   componentDidMount(){
-    // this.props.hotelId.map( id => {
+  //   // this.props.hotelId.map( id => {
       axios
-      .get("/api/activity/" + this.props.landmarkId)
+      .get("/api/activity/")
       .then(response => {
-        console.log(response);
+        console.log(response.data);
+        
+        response.data.map(landmark => {
+          if(this.props.landmarkId === landmark.activityId){
+            // console.log(museum.participants[0] + "is here")
+            axios
+              .get("/api/users/" + landmark.participants[0])
+              .then(response => {
+                console.log(response.data)
+                this.setState({ guests: response.data.name, img: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+
+            if(landmark.participants[1]){
+              console.log("two people here")
+              axios
+              .get("/api/users/" + landmark.participants[1])
+              .then(response => {
+                console.log(response.data.name + "is here")
+                this.setState({ guest2: response.data.name, img2: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+            }
+
+            if(landmark.participants[2]){
+              // console.log("two people here")
+              axios
+              .get("/api/users/" + landmark.participants[2])
+              .then(response => {
+                console.log(response.data.name + "is here")
+                this.setState({ guest3: response.data.name, img3: response.data.thumbnail})
+              })
+              .catch(function(error) {
+                console.log("Error: " + error);
+              });
+            }
+          }
+          // console.log(museum.participants[0])
+        });
         // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
         // this.setState({
         //   trip: response.data,
@@ -58,8 +115,8 @@ class Landmarks extends Component {
         console.log("Error: " + error);
       });
 
-    // })
-    console.log(this.props);
+  //   // })
+    // console.log(this.props);
   }
 
   sendLandmark = (name, address, id) => {
@@ -119,6 +176,12 @@ class Landmarks extends Component {
                   <h4>{this.props.type}</h4>
                 )}
               </div>
+            </div>
+            <div className="card-body text-dark">
+              <p className="card-text text-left" style={styles.rating}>
+                {/* <img style={styles.img} src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"></img> */}
+                <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
+              </p>
             </div>
             <button
               type="button"
