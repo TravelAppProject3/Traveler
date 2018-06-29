@@ -30,6 +30,26 @@ const styles = {
 
 class Event extends Component {
 
+  componentDidMount(){
+    // this.props.hotelId.map( id => {
+      // axios
+      // .get("/api/activity/" + this.props.eventId)
+      // .then(response => {
+      //   console.log(response);
+      //   // this.setState({ guests: response.data[0] ? response.data[0].guests : []})
+      //   // this.setState({
+      //   //   trip: response.data,
+      //   //   tripLegs: response.data.tripLegs
+      //   // });
+      // })
+      // .catch(function(error) {
+      //   console.log("Error: " + error);
+      // });
+
+    // })
+    console.log(this.props);
+  }
+
   sendEvent = (name, address, id) => {
     console.log("click works on Event");
     console.log(name, address, id);
