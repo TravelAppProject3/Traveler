@@ -5,7 +5,7 @@ import cityPicApi from "../../utils/cityPicApi";
 class Img extends Component {
   state = {
     city: "",
-    cityPic: ""
+    cityPic: "https://d1hw6n3yxknhky.cloudfront.net/012021977_prevstill.jpeg"
   };
 
   styles = {
@@ -36,7 +36,16 @@ class Img extends Component {
   getCityPic = city => {
     cityPicApi
       .cityPic(city)
-      .then(data => this.setState({ cityPic: data.data.photos[0].image.web }))
+      .then(
+        (data) => {
+          console.log(data)
+        if(data.data.photos.length){
+          this.setState({ cityPic: data.data.photos[0].image.web })
+        }else{
+        }
+      }
+        //  data => data ? this.setState({ cityPic: data.data.photos[0].image.web }) : this.setState({ cityPic: "https://ak3.picdn.net/shutterstock/videos/4757393/thumb/1.jpg"})
+      )
       .then(console.log(this.state.cityPic))
       .catch(err => console.log(err));
   };

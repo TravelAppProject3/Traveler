@@ -34,18 +34,24 @@ const Weather = props => {
       // marginRight: "5px"
     }
   };
-  return (
-    <div className="container" style={styles.weather}>
-      <div>
-        <img src={props.weather.icon} style={styles.img} />
-      </div>
-      <div className="row" style={styles.text}>
-        <div className="conditions">
-          {props.weather.conditions}, {props.weather.temp}°{" "}
+  
+  if (props.weather.temp) {
+    return (
+      <div className="container" style={styles.weather}>
+        <div>
+          <img src={props.weather.icon} style={styles.img} />
+        </div>
+        <div className="row" style={styles.text}>
+          <div className="conditions">
+            {props.weather.conditions}, {props.weather.temp}°{" "}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }else {
+    return null;
+  }
+
 };
 
 export default Weather;
