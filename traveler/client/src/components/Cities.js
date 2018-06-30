@@ -45,17 +45,17 @@ class Cities extends Component {
     hotelIcon: {
       position: "absolute",
       marginTop: "10px",
-      left: 165
+      left: 135
     },
     cameraIcon: {
       position: "absolute",
       marginTop: "10px",
-      left: 150
+      left: 115
     },
     beerIcon: {
       position: "absolute",
       marginTop: "10px",
-      left: 175
+      left: 140
     },
     city: {
       backgroundImage: `url(${this.state.cityPic})`
@@ -231,12 +231,14 @@ class Cities extends Component {
         ) : (
           ""
         )}
-        <h2 style={this.styles.h2}> Click a card below to get started! 
+        <h2 style={this.styles.h2}>
+          {" "}
+          Click a card below to get started!
           <Link to="/Trips">
-            <span style={this.styles.span} className="fa fa-arrow-right" /> 
+            <span style={this.styles.span} className="fa fa-arrow-right" />
           </Link>
         </h2>
-  
+
         <div className="row justify-content-center">
           {/* Hotel Card */}
           <div

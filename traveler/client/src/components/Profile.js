@@ -76,7 +76,8 @@ class Profile extends Component {
       paddingLeft: "200px",
       backgroundColor: "rgba(255, 255, 255, .8)",
       border: "1px black solid",
-      borderRadius: "10px"
+      borderRadius: "10px",
+      marginBottom: "40px"
     },
     span: {
       marginRight: "20px"
@@ -97,7 +98,8 @@ class Profile extends Component {
       fontSize: "18px",
       color: "black",
       textDecoration: "none",
-      backgroundColor: "lightGrey"
+      backgroundColor: "lightGrey",
+      marginTop: "10px"
     },
     deleteButton: {
       height: "auto",
